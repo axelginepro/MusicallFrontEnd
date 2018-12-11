@@ -58,6 +58,6 @@ var StackNavigator = createStackNavigator({
 
   // pages de ma nvigation avec le bottom créés juste avant
   MainNavigator: MainNavigator
-})
+},{headerMode: "screen"})
 
 export default Navigation = createAppContainer(StackNavigator);
