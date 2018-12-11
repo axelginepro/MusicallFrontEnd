@@ -34,18 +34,29 @@ export default class AddEventScreen extends React.Component {
     Geocoder.from(this.state.adresse).then(json => {
       var location = json.results[0].geometry.location;
       console.log(location);
-      this.setState({})
-      fetch('https://musicall1.herokuapp.com/addEvent', {
+      fetch('http://10.69.220.53:3000/addEvent', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/json'
         },
-        body: 'eventDate=' + this.state.eventDate + '&adresse=' + this.state.adresse + '&name=' + this.state.name + '&artist=' + this.state.artist + '&style=' + this.state.style + '&price=' + this.state.price + '&description=' + this.state.description
+        body: JSON.stringify({
+          eventDate: this.state.eventDate,
+          adresse: this.state.adresse,
+          name: this.state.name,
+          artist: this.state.artist,
+          style: this.state.style,
+          price: this.state.price,
+          description: this.state.description,
+          coords: {
+            latitude: location.lat,
+            longitude: location.lng
+          }
+        })
       }).then(function(response) {
         return response.json()
       }).then(function(eventData) {
         console.log(eventData);
-        this.props.navigation.navigate('Map')
+        // this.props.navigation.navigate('Map') // // BUG: navigation undifined
       }).catch(function(error) {
         console.error(error);
       });
@@ -79,7 +90,7 @@ export default class AddEventScreen extends React.Component {
           buttonStyle={{borderRadius:25}}
           title="Add Event"
           backgroundColor = "#2c3e50"
-          onPress={ () => this.handleSubmit}
+          onPress={this.handleSubmit}
         />
         </View>
       </ScrollView>
