@@ -128,7 +128,7 @@ onPress= {value => this.setState({checkedDate3: !this.state.checkedDate3})}
   flex: 1,
   justifyContent: "start",
   alignItems: "stretch",
-  alignContent: "start",
+  alignContent: "center",
   flexDirection: "row"
 }}>
 <CheckBox
@@ -205,7 +205,7 @@ onPress= {value => this.setState({checkedStyle3: !this.state.checkedStyle3})}
   flex: 1,
   justifyContent: "start",
   alignItems: "stretch",
-  alignContent: "start",
+    alignContent: "center",
   flexDirection: "row"
 }}>
 <CheckBox
@@ -282,7 +282,7 @@ onPress= {value => this.setState({checkedStyle6: !this.state.checkedStyle6})}
   flex: 1,
   justifyContent: "start",
   alignItems: "stretch",
-  alignContent: "start",
+  alignContent: "center",
   flexDirection: "row"
 }}>
 <CheckBox
