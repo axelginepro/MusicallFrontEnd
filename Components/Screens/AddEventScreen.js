@@ -34,7 +34,7 @@ export default class AddEventScreen extends React.Component {
     Geocoder.from(this.state.adresse).then(json => {
       var location = json.results[0].geometry.location;
       console.log(location);
-      
+
       fetch('https://musicall1.herokuapp.com/addEvent', {
         method: 'POST',
         headers: {
@@ -69,30 +69,31 @@ export default class AddEventScreen extends React.Component {
 
     return (
       <ScrollView>
-      <Image  style={styles.image} source={require('../../assets/Icons/musicall.png')}
-        resizeMode = "center"
-      />
+
       <View style={styles.container}>
-      <Text style={{color: 'red', fontSize: 35}}>Ajouter un événement</Text>
-            <FormInput  inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({eventDate: text})} placeholder="Date" />
-            <Divider style={{height:20}}/>
-            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" />
-            <Divider style={{height:20}}/>
-            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Lieu" />
-            <Divider style={{height:20}}/>
-            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" />
-            <Divider style={{height:20}}/>
-            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({style: text})} placeholder="Style" />
-            <Divider style={{height:20}}/>
-            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" />
-            <Divider style={{height:20}}/>
-            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({description: text})} placeholder="Description" />
-            <Divider style={{height:50}}/>
-<Button
-          buttonStyle={{borderRadius:25,width:200, marginTop:5}}
-          title="Add Event"
-          backgroundColor = "#2c3e50"
-          onPress={this.handleSubmit}
+        <Image  style={styles.image} source={require('../../assets/Icons/musicall.png')}
+          resizeMode = "center"
+        />
+        <Text style={{color: 'red', fontSize: 35}}>Ajouter un événement</Text>
+              <FormInput  inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({eventDate: text})} placeholder="Date" />
+              <Divider style={{height:20}}/>
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" />
+              <Divider style={{height:20}}/>
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Lieu" />
+              <Divider style={{height:20}}/>
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" />
+              <Divider style={{height:20}}/>
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({style: text})} placeholder="Style" />
+              <Divider style={{height:20}}/>
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" />
+              <Divider style={{height:20}}/>
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({description: text})} placeholder="Description" />
+              <Divider style={{height:50}}/>
+        <Button
+            buttonStyle={{borderRadius:25,width:200, marginTop:5}}
+            title="Add Event"
+            backgroundColor = "#2c3e50"
+            onPress={this.handleSubmit}
         />
         </View>
       </ScrollView>

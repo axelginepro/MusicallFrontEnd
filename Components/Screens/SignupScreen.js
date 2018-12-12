@@ -15,7 +15,7 @@ export default class SignupScreen extends React.Component {
 
   handleSubmit(){
   	var ctx = this;
-  	fetch('http://10.69.220.30:3000/signup',{
+  	fetch('http://10.69.220.38:3000/signup',{
   		method: 'POST',
   		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
   		body: 'pseudo='+this.state.pseudo+'&email='+this.state.email+'&password='+this.state.password
@@ -49,7 +49,7 @@ export default class SignupScreen extends React.Component {
 
             <FormLabel>Mot de passe</FormLabel>
             <FormInput onChangeText={(text) => this.setState({password: text})}/>
-        
+
 
            <Button
              buttonStyle={{borderRadius:25, width:300, height:50, justifyContent: 'center', marginTop:10}}
@@ -63,14 +63,13 @@ export default class SignupScreen extends React.Component {
            </Button>
 
        </View>
-      </ImageBackground> 
+      </ImageBackground>
     );
   }
 };
 var styles = StyleSheet.create({
   titleText: {
     fontSize:50,
-    fontFamily: 'Georgia',
     color:'#CD3C30',
   }
   })
