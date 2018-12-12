@@ -64,7 +64,7 @@ export default class SignInScreen extends React.Component {
 var styles = StyleSheet.create({
   titleText: {
     fontSize:50,
-    fontFamily: 'Georgia',
+    // fontFamily: 'Georgia',
     color:'#CD3C30',
   },
   formText:{
