@@ -10,7 +10,7 @@ export default class HomeScreen extends React.Component {
     return (
     <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")}>
       <View style={{flex:1,justifyContent: 'center', alignItems: 'center'}}>
-       <Image  style={{width: 400, height: 400, marginTop:5}} source={require('../../assets/Icons/musicall.png')}/>
+       <Image  style={{flex:0.1, marginBottom: 100}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
     	 	<Button
     	 	 buttonStyle={{borderRadius:25, width:300, height:50}}
              title="Sign in"
@@ -32,11 +32,11 @@ export default class HomeScreen extends React.Component {
            </Button>
 
            <Text onPress= { ()=> this.props.navigation.navigate('Map')}>Hello</Text>
-           <Text onPress= { ()=> this.props.navigation.navigate('Filter')}>Go to filter sa meure</Text>
+           <Text onPress= { ()=> this.props.navigation.navigate('Filter')}>Go to filter sa mere</Text>
 
        </View>
       </ImageBackground>
     );
   }
 };
-;
+

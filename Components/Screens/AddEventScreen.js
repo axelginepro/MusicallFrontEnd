@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, View, ScrollView } from 'react-native';
-import {Button, FormLabel, FormInput, Divider} from 'react-native-elements';
+import {Button, FormLabel, FormInput, Divider, Text} from 'react-native-elements';
 import Geocoder from 'react-native-geocoding';
 
 Geocoder.init('AIzaSyCpwkK4H7BrdzwW-yEhyzR5i92R4JWR5yk');
@@ -34,7 +34,8 @@ export default class AddEventScreen extends React.Component {
     Geocoder.from(this.state.adresse).then(json => {
       var location = json.results[0].geometry.location;
       console.log(location);
-      fetch('http://10.69.220.38:3000/addEvent', {
+      
+      fetch('https://musicall1.herokuapp.com/addEvent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -68,26 +69,27 @@ export default class AddEventScreen extends React.Component {
 
     return (
       <ScrollView>
-      <Image  style={{width: 400, height: 400}} source={require('../../assets/Icons/musicall.png')}/>
+      <Image  style={styles.image} source={require('../../assets/Icons/musicall.png')}
+        resizeMode = "center"
+      />
       <View style={styles.container}>
-
-            <FormInput  textAlign={'center'} onChangeText={(text) => this.setState({eventDate: text})} placeholder="Date" />
+      <Text style={{color: 'red', fontSize: 35}}>Ajouter un événement</Text>
+            <FormInput  inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({eventDate: text})} placeholder="Date" />
             <Divider style={{height:20}}/>
-            <FormInput textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" />
+            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" />
             <Divider style={{height:20}}/>
-            <FormInput textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Lieu" />
+            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Lieu" />
             <Divider style={{height:20}}/>
-            <FormInput textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" />
+            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" />
             <Divider style={{height:20}}/>
-            <FormInput textAlign={'center'} onChangeText={(text) => this.setState({style: text})} placeholder="Style" />
+            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({style: text})} placeholder="Style" />
             <Divider style={{height:20}}/>
-            <FormInput textAlign={'center'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" />
+            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" />
             <Divider style={{height:20}}/>
-            <FormInput textAlign={'center'} onChangeText={(text) => this.setState({description: text})} placeholder="Description" />
+            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({description: text})} placeholder="Description" />
             <Divider style={{height:50}}/>
 <Button
-          style={{width:50, marginTop:50}}
-          buttonStyle={{borderRadius:25}}
+          buttonStyle={{borderRadius:25,width:200, marginTop:5}}
           title="Add Event"
           backgroundColor = "#2c3e50"
           onPress={this.handleSubmit}
@@ -104,4 +106,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
       },
+      form: {
+                borderColor: 'lightgrey',
+                borderWidth: 2,
+                fontSize: 30
+        },
+        image: {
+          width: 400,
+          marginLeft: 30,
+        }
     });
