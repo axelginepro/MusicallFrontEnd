@@ -34,7 +34,7 @@ export default class AddEventScreen extends React.Component {
     Geocoder.from(this.state.adresse).then(json => {
       var location = json.results[0].geometry.location;
       console.log(location);
-      fetch('http://10.69.220.38:3000/addEvent', {
+      fetch('http://10.69.220.30:3000/addEvent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
