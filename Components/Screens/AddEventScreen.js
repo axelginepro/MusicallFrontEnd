@@ -47,7 +47,7 @@ export default class AddEventScreen extends React.Component {
           style: this.state.style,
           price: this.state.price,
           description: this.state.description,
-          coords: {
+          coord: {
             latitude: location.lat,
             longitude: location.lng
           }

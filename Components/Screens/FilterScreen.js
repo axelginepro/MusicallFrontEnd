@@ -37,7 +37,7 @@ export default class FilterScreen extends React.Component {
       <Text style={{textDecorationLine: 'underline'}}>DATE</Text>
       <View style={{
         flex: 1,
-        justifyContent: "start",
+        justifyContent: "center",
         alignItems: "stretch",
         alignContent: "center",
         flexDirection: "row"
@@ -126,7 +126,7 @@ onPress= {value => this.setState({checkedDate3: !this.state.checkedDate3})}
 <Text style={{textDecorationLine: 'underline'}}>STYLES</Text>
 <View style={{
   flex: 1,
-  justifyContent: "start",
+  justifyContent: "center",
   alignItems: "stretch",
   alignContent: "center",
   flexDirection: "row"
@@ -203,7 +203,7 @@ onPress= {value => this.setState({checkedStyle3: !this.state.checkedStyle3})}
 </View>
 <View style={{
   flex: 1,
-  justifyContent: "start",
+  justifyContent: "center",
   alignItems: "stretch",
     alignContent: "center",
   flexDirection: "row"
@@ -280,7 +280,7 @@ onPress= {value => this.setState({checkedStyle6: !this.state.checkedStyle6})}
 </View>
 <View style={{
   flex: 1,
-  justifyContent: "start",
+  justifyContent: "center",
   alignItems: "stretch",
   alignContent: "center",
   flexDirection: "row"
