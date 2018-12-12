@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ImageBackground, Image } from 'react-native';
+import { StyleSheet, View, ImageBackground, Image, TouchableOpacity, } from 'react-native';
 import {Divider, Button, Text } from 'react-native-elements'
 
 export default class HomeScreen extends React.Component {
@@ -8,33 +8,30 @@ export default class HomeScreen extends React.Component {
   }
   render() {
     return (
-    <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")}>
-      <View style={{flex:1,justifyContent: 'center', alignItems: 'center'}}>
-       <Image  style={{flex:0.15}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
-       <Divider style={{height:150}}/>
-    	 	<Button
-    	 	 buttonStyle={{borderRadius:25, width:300, height:50}}
-             title="Sign in"
-             style={{width:300}}
-             backgroundColor='#5b6778'
-             color='#CD3C30'
-             onPress={ ()=> this.props.navigation.navigate('SignIn')}
-             >
-           </Button>
-
-           <Button
-             buttonStyle={{borderRadius:25, width:300, height:50, justifyContent: 'center', marginTop:10}}
-             title="Sign up"
-             style={{flex:1}}
-             backgroundColor='#5b6778'
-             color='#CD3C30'
-             onPress={ ()=> this.props.navigation.navigate('SignUp')}
-             >
-           </Button>
+  <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")}>
+        <View style={{flex:1,justifyContent: 'center', alignItems: 'center'}}>
+        <Image  style={{flex:0.2}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+    <Divider style={{height:150}}/>
+    	 	 <Button
+                large rightIcon={{name: 'arrow-right', type: 'font-awesome'}}
+    	          buttonStyle={{borderRadius:25, width:250, height:65}}
+                title="Sign in"
+                backgroundColor='#5b6778'
+                color='white'
+                onPress={ ()=> this.props.navigation.navigate('SignIn')}>
+            </Button>
+    <Divider style={{height:25}}/>
+            <Button
+                large icon={{name: 'envira', type: 'font-awesome'}}
+                buttonStyle={{borderRadius:25, width:250, height:65}}
+                title="Sign up"
+                backgroundColor='#5b6778'
+                color='white'
+                onPress={ ()=> this.props.navigation.navigate('SignUp')}>
+            </Button>
 <Divider style={{height:150}}/>
-            <Text  onPress= { ()=> this.props.navigation.navigate('Map')} h3>Hello</Text>
-            <Text  onPress= { ()=> this.props.navigation.navigate('Filter')} h4>Go to filter sa mere</Text>
-
+            <Text  onPress= { ()=> this.props.navigation.navigate('Map')} h3>Pour Naviguer</Text>
+            <Text  onPress= { ()=> this.props.navigation.navigate('Filter')} h4>Go to Filter Mother Fucker</Text>
         </View>
       </ImageBackground>
     );

@@ -34,7 +34,7 @@ export default class MapScreen extends Component {
     let location = await Location.watchPositionAsync(GEOLOCATION_OPTIONS, data => {
 
 
-      fetch('http://10.69.220.38:3000/listEvent')
+      fetch('https://musicall1.herokuapp.com/listEvent')
 
       .then(response => response.json())
       .then(eventData => {

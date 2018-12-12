@@ -1,6 +1,5 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-
 import {Ionicons, MatterialCommunityIcons} from '@expo/vector-icons';
 
 // imports de mes composants de navigation
