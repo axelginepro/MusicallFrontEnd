@@ -70,6 +70,10 @@ export default class SignupScreen extends React.Component {
 var styles = StyleSheet.create({
   titleText: {
     fontSize:50,
+<<<<<<< HEAD
+    // fontFamily: 'Georgia',
+=======
+>>>>>>> 66794769158fe2968ac7bc272551cd82325db699
     color:'#CD3C30',
   }
   })

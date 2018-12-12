@@ -28,22 +28,38 @@ const MainNavigator = createBottomTabNavigator({
   defaultNavigationOptions: ({navigation}) => ({
     tabBarIcon: ({focused, horizontal, tintColor}) => {
       var iconName;
+      var outline = (focused)
+        ? ""
+        : ""
       if (navigation.state.routeName == 'MapScreen') {
+<<<<<<< HEAD
         iconName = 'ios-map';
       } else if (navigation.state.routeName == 'ListEventScreen') {
         iconName = 'ios-search';
       } else if (navigation.state.routeName == 'AddEventScreen') {
         iconName = "ios-add-circle-outline";
+=======
+        iconName = 'ios-information-circle'
+      } else if (navigation.state.routeName == 'ListEventScreen') {
+      iconName = 'ios-information-circle'
+      } else if (navigation.state.routeName == 'AddEventScreen') {
+        iconName = 'ios-information-circle'
+>>>>>>> fcda3d1ab230ff0eba7fff71cb9fbe75ad388ff4
       } else if (navigation.state.routeName == 'AccountScreen') {
-        iconName = 'contact';
+        iconName = 'ios-information-circle'
       } else if (navigation.state.routeName == 'InfoScreen') {
+<<<<<<< HEAD
         iconName = 'ios-information-circle-outline';
+=======
+        iconName = 'ios-information-circle'
+>>>>>>> fcda3d1ab230ff0eba7fff71cb9fbe75ad388ff4
       }
 
-      return <Ionicons name={iconName} size={25} color={tintColor}/>;
+      return <Ionicons name={iconName + outline} size={25} color={tintColor}/>;
     }
   }),
   tabBarOptions: {
+<<<<<<< HEAD
     activeTintColor: '#780D16',
     inactiveTintColor: 'gray',
     style: {
@@ -51,6 +67,11 @@ const MainNavigator = createBottomTabNavigator({
   },
 
   }
+=======
+    activeTintColor: 'orange',
+    inactiveTintColor: 'gray'
+  },
+>>>>>>> fcda3d1ab230ff0eba7fff71cb9fbe75ad388ff4
 });
 
 var StackNavigator = createStackNavigator({

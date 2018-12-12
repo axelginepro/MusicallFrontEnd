@@ -1,8 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {Divider, CheckBox } from 'react-native-elements'
-
-// test //
+import {StyleSheet, View} from 'react-native';
+import {Divider, CheckBox } from 'react-native-elements';
+import { Container, Header, Content, DatePicker, ListItem, Text, Radio, Right, Left, Button } from 'native-base';
 
 export default class FilterScreen extends React.Component {
 
@@ -22,400 +21,391 @@ export default class FilterScreen extends React.Component {
       checkedStyle8: false,
       checkedStyle9: false,
       checkedPrice1: false,
-      checkedPrice2: false
+      checkedPrice2: false,
+      chosenDate: new Date()
     };
+    this.setDate = this.setDate.bind(this)
   }
 
+  setDate(newDate) {
+    this.setState({ chosenDate: newDate })
+  }
+
+
+
   render() {
+    var maintenant=new Date();
+    var jour=maintenant.getDate();
+    var mois=maintenant.getMonth();
+    var an=maintenant.getFullYear();
 
     return (
-      <View style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
+      <Container>
 
-      }}>
+        <Content>
+          <View style={{
+          flex: 1,
+          justifyContent: "space-around",
+          alignItems: "stretch",
+          alignContent: "center",
+          flexDirection: "row"
+          }}>
+          <Text style={{textDecorationLine: 'underline'}}>DATE DES EVENEMENTS</Text>
+        </View>
 
-      <Text style={{textDecorationLine: 'underline'}}>DATE</Text>
-      <View style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "stretch",
-        alignContent: "center",
-        flexDirection: "row"
-      }}>
-      <CheckBox
-  center
-  title="Aujourd'hui"
-  checkedIcon='dot-circle-o'
-  uncheckedIcon='circle-o'
-  checkedColor= 'red'
-  containerStyle ={{
-
-      margin: 5,
-      marginLeft: 2,
-      marginRight: 2,
-      height: 50,
-      justifyContent: 'center',
-      backgroundColor: '#fafafa',
-      borderColor: '#ededed',
-      borderWidth: 1,
-      padding: 0,
-      borderRadius: 3,
-
-  }}
-  checked={this.state.checkedDate1}
-  onPress= {value => this.setState({checkedDate1: !this.state.checkedDate1})}
-/>
-<CheckBox
-center
-title='Cette semaine'
-checkedIcon='dot-circle-o'
-uncheckedIcon='circle-o'
-checkedColor= 'red'
-containerStyle ={{
-
-    margin: 5,
-    height: 50,
-    marginLeft: 2,
-    marginRight: 2,
-    justifyContent: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#ededed',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 3,
-
-}}
-checked={this.state.checkedDate2}
-onPress= {value => this.setState({checkedDate2: !this.state.checkedDate2})}
-/>
-</View>
-<View style={{
-  flex: 1,
-  justifyContent: "center",
-  alignItems: "stretch",
-  alignContent: "center",
-  flexDirection: "row",
-  marginBottom: 0,
-  marginTop: 0
-}}>
-
-<CheckBox
-center
-title='Sous 15 jours'
-checkedIcon='dot-circle-o'
-uncheckedIcon='circle-o'
-checkedColor= 'red'
-containerStyle ={{
+          <DatePicker
 
 
-    marginLeft: 2,
-    marginRight: 2,
-    height: 50,
-    justifyContent: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#ededed',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 3,
+            defaultDate={new Date(an, mois, jour-1)}
+            minimumDate={new Date(an, mois, jour-1)}
+            maximumDate={new Date(an, mois, jour+15)}
+            locale={"fr"}
+            timeZoneOffsetInMinutes={undefined}
+            modalTransparent={false}
+            animationType={"fade"}
+            androidMode={"default"}
+            placeHolderText={'Choisir une date'}
+            textStyle={{ color: "grey" }}
+            placeHolderTextStyle={{ color: "#d3d3d3" }}
+            onDateChange={this.setDate}
+            />
 
-}}
-checked={this.state.checkedDate3}
-onPress= {value => this.setState({checkedDate3: !this.state.checkedDate3})}
-/>
-</View>
-<Text style={{textDecorationLine: 'underline'}}>STYLES</Text>
-<View style={{
-  flex: 1,
-  justifyContent: "center",
-  alignItems: "stretch",
-  alignContent: "center",
-  flexDirection: "row"
-}}>
-<CheckBox
-center
-title="Rock"
-checkedIcon='dot-circle-o'
-uncheckedIcon='circle-o'
-checkedColor= 'red'
-containerStyle ={{
+            <Text
+              style={{textAlign: "center",
+            fontStyle: "italic"}}>
+              {this.state.chosenDate.getDate() === jour ? null : "Evenement jusqu'au: " + this.state.chosenDate.toString().substr(4, 12)}
+            </Text>
 
-    margin: 5,
-    marginLeft: 2,
-    marginRight: 2,
-    height: 50,
-    justifyContent: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#ededed',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 3,
+            <View style={{
+            flex: 1,
+            justifyContent: "space-around",
+            alignItems: "stretch",
+            alignContent: "center",
+            flexDirection: "row",
+            marginTop: 15
+            }}>
+            <Text style={{textDecorationLine: 'underline'}}>STYLES</Text>
+          </View>
+            <View style={{
+            flex: 1,
+            justifyContent: "space-around",
+            alignItems: "stretch",
+            alignContent: "center",
+            flexDirection: "row",
+            marginTop: 15
+            }}>
+            <CheckBox
+            center
+            title="Rock"
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checkedColor= 'red'
+            containerStyle ={{
 
-}}
-checked={this.state.checkedStyle1}
-onPress= {value => this.setState({checkedStyle1: !this.state.checkedStyle1})}
-/>
-<CheckBox
-center
-title='Jazz'
-checkedIcon='dot-circle-o'
-uncheckedIcon='circle-o'
-checkedColor= 'red'
-containerStyle ={{
+            margin: 5,
+            marginLeft: 2,
+            marginRight: 2,
+            height: 50,
+            justifyContent: 'center',
+            backgroundColor: '#fafafa',
+            borderColor: '#ededed',
+            borderWidth: 1,
+            padding: 0,
+            borderRadius: 3,
 
-    margin: 5,
-    marginLeft: 2,
-    marginRight: 2,
-    height: 50,
-    justifyContent: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#ededed',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 3,
+            }}
+            checked={this.state.checkedStyle1}
+            onPress= {value => this.setState({checkedStyle1: !this.state.checkedStyle1})}
+            />
+            <CheckBox
+            center
+            title='Jazz'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checkedColor= 'red'
+            containerStyle ={{
 
-}}
-checked={this.state.checkedStyle2}
-onPress= {value => this.setState({checkedStyle2: !this.state.checkedStyle2})}
-/>
-<CheckBox
-center
-title='Variété'
-checkedIcon='dot-circle-o'
-uncheckedIcon='circle-o'
-checkedColor= 'red'
-containerStyle ={{
+            margin: 5,
+            marginLeft: 2,
+            marginRight: 2,
+            height: 50,
+            justifyContent: 'center',
+            backgroundColor: '#fafafa',
+            borderColor: '#ededed',
+            borderWidth: 1,
+            padding: 0,
+            borderRadius: 3,
 
-    margin: 5,
-    marginLeft: 2,
-    marginRight: 2,
-    height: 50,
-    justifyContent: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#ededed',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 3,
+            }}
+            checked={this.state.checkedStyle2}
+            onPress= {value => this.setState({checkedStyle2: !this.state.checkedStyle2})}
+            />
+            <CheckBox
+            center
+            title='Variété'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checkedColor= 'red'
+            containerStyle ={{
 
-}}
-checked={this.state.checkedStyle3}
-onPress= {value => this.setState({checkedStyle3: !this.state.checkedStyle3})}
-/>
-</View>
-<View style={{
-  flex: 1,
-  justifyContent: "center",
-  alignItems: "stretch",
-    alignContent: "center",
-  flexDirection: "row"
-}}>
-<CheckBox
-center
-title='Rap'
-checkedIcon='dot-circle-o'
-uncheckedIcon='circle-o'
-checkedColor= 'red'
-containerStyle ={{
+            margin: 5,
+            marginLeft: 2,
+            marginRight: 2,
+            height: 50,
+            justifyContent: 'center',
+            backgroundColor: '#fafafa',
+            borderColor: '#ededed',
+            borderWidth: 1,
+            padding: 0,
+            borderRadius: 3,
 
-    margin: 5,
-    marginLeft: 2,
-    marginRight: 2,
-    height: 50,
-    justifyContent: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#ededed',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 3,
+            }}
+            checked={this.state.checkedStyle3}
+            onPress= {value => this.setState({checkedStyle3: !this.state.checkedStyle3})}
+            />
+            </View>
+            <View style={{
+            flex: 1,
+            justifyContent: "space-around",
+            alignItems: "stretch",
+            alignContent: "center",
+            flexDirection: "row",
+            marginTop: 15
+            }}>
+            <CheckBox
+            center
+            title='Rap'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checkedColor= 'red'
+            containerStyle ={{
 
-}}
-checked={this.state.checkedStyle4}
-onPress= {value => this.setState({checkedStyle4: !this.state.checkedStyle4})}
-/>
-<CheckBox
-center
-title='Reggae'
-checkedIcon='dot-circle-o'
-uncheckedIcon='circle-o'
-checkedColor= 'red'
-containerStyle ={{
+            margin: 5,
+            marginLeft: 2,
+            marginRight: 2,
+            height: 50,
+            justifyContent: 'center',
+            backgroundColor: '#fafafa',
+            borderColor: '#ededed',
+            borderWidth: 1,
+            padding: 0,
+            borderRadius: 3,
 
-    margin: 5,
-    marginLeft: 2,
-    marginRight: 2,
-    height: 50,
-    justifyContent: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#ededed',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 3,
+            }}
+            checked={this.state.checkedStyle4}
+            onPress= {value => this.setState({checkedStyle4: !this.state.checkedStyle4})}
+            />
+            <CheckBox
+            center
+            title='Reggae'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checkedColor= 'red'
+            containerStyle ={{
 
-}}
-checked={this.state.checkedStyle5}
-onPress= {value => this.setState({checkedStyle5: !this.state.checkedStyle5})}
-/>
-<CheckBox
-center
-title='Electro'
-checkedIcon='dot-circle-o'
-uncheckedIcon='circle-o'
-checkedColor= 'red'
-containerStyle ={{
+            margin: 5,
+            marginLeft: 2,
+            marginRight: 2,
+            height: 50,
+            justifyContent: 'center',
+            backgroundColor: '#fafafa',
+            borderColor: '#ededed',
+            borderWidth: 1,
+            padding: 0,
+            borderRadius: 3,
 
-    margin: 5,
-    marginLeft: 2,
-    marginRight: 2,
-    height: 50,
-    justifyContent: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#ededed',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 3,
+            }}
+            checked={this.state.checkedStyle5}
+            onPress= {value => this.setState({checkedStyle5: !this.state.checkedStyle5})}
+            />
+            <CheckBox
+            center
+            title='Electro'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checkedColor= 'red'
+            containerStyle ={{
 
-}}
-checked={this.state.checkedStyle6}
-onPress= {value => this.setState({checkedStyle6: !this.state.checkedStyle6})}
-/>
-</View>
-<View style={{
-  flex: 1,
-  justifyContent: "center",
-  alignItems: "stretch",
-  alignContent: "center",
-  flexDirection: "row"
-}}>
-<CheckBox
-center
-title='World Music'
-checkedIcon='dot-circle-o'
-uncheckedIcon='circle-o'
-checkedColor= 'red'
-containerStyle ={{
+            margin: 5,
+            marginLeft: 2,
+            marginRight: 2,
+            height: 50,
+            justifyContent: 'center',
+            backgroundColor: '#fafafa',
+            borderColor: '#ededed',
+            borderWidth: 1,
+            padding: 0,
+            borderRadius: 3,
 
-    margin: 5,
-    marginLeft: 2,
-    marginRight: 2,
-    height: 50,
-    justifyContent: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#ededed',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 3,
+            }}
+            checked={this.state.checkedStyle6}
+            onPress= {value => this.setState({checkedStyle6: !this.state.checkedStyle6})}
+            />
+            </View>
+            <View style={{
+            flex: 1,
+            justifyContent: "space-around",
+            alignItems: "stretch",
+            alignContent: "center",
+            flexDirection: "row",
+            marginTop: 15
+            }}>
+            <CheckBox
+            center
+            title='World Music'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checkedColor= 'red'
+            containerStyle ={{
 
-}}
-checked={this.state.checkedStyle7}
-onPress= {value => this.setState({checkedStyle7: !this.state.checkedStyle7})}
-/>
-<CheckBox
-center
-title='Metal'
-checkedIcon='dot-circle-o'
-uncheckedIcon='circle-o'
-checkedColor= 'red'
-containerStyle ={{
+            margin: 5,
+            marginLeft: 2,
+            marginRight: 2,
+            height: 50,
+            justifyContent: 'center',
+            backgroundColor: '#fafafa',
+            borderColor: '#ededed',
+            borderWidth: 1,
+            padding: 0,
+            borderRadius: 3,
 
-    margin: 5,
-    marginLeft: 2,
-    marginRight: 2,
-    height: 50,
-    justifyContent: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#ededed',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 3,
+            }}
+            checked={this.state.checkedStyle7}
+            onPress= {value => this.setState({checkedStyle7: !this.state.checkedStyle7})}
+            />
+            <CheckBox
+            center
+            title='Metal'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checkedColor= 'red'
+            containerStyle ={{
 
-}}
-checked={this.state.checkedStyle8}
-onPress= {value => this.setState({checkedStyle8: !this.state.checkedStyle8})}
-/>
-<CheckBox
-center
-title='Pop'
-checkedIcon='dot-circle-o'
-uncheckedIcon='circle-o'
-checkedColor= 'red'
-containerStyle ={{
+            margin: 5,
+            marginLeft: 2,
+            marginRight: 2,
+            height: 50,
+            justifyContent: 'center',
+            backgroundColor: '#fafafa',
+            borderColor: '#ededed',
+            borderWidth: 1,
+            padding: 0,
+            borderRadius: 3,
 
-    margin: 5,
-    marginLeft: 2,
-    marginRight: 2,
-    height: 50,
-    justifyContent: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#ededed',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 3,
+            }}
+            checked={this.state.checkedStyle8}
+            onPress= {value => this.setState({checkedStyle8: !this.state.checkedStyle8})}
+            />
+            <CheckBox
+            center
+            title='Pop'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checkedColor= 'red'
+            containerStyle ={{
 
-}}
-checked={this.state.checkedStyle9}
-onPress= {value => this.setState({checkedStyle9: !this.state.checkedStyle9})}
-/>
-</View>
+            margin: 5,
+            marginLeft: 2,
+            marginRight: 2,
+            height: 50,
+            justifyContent: 'center',
+            backgroundColor: '#fafafa',
+            borderColor: '#ededed',
+            borderWidth: 1,
+            padding: 0,
+            borderRadius: 3,
+
+            }}
+            checked={this.state.checkedStyle9}
+            onPress= {value => this.setState({checkedStyle9: !this.state.checkedStyle9})}
+            />
+            </View>
 
 
-<Text style={{textDecorationLine: 'underline'}}>TARIF</Text>
-<View style={{
-  flex: 1,
-  justifyContent: "center",
-  alignItems: "stretch",
-  alignContent: "center",
-  flexDirection: "row"
-}}>
-<CheckBox
-center
-title="Gratuit"
-checkedIcon='dot-circle-o'
-uncheckedIcon='circle-o'
-checkedColor= 'red'
-containerStyle ={{
+            <View style={{
+            flex: 1,
+            justifyContent: "space-around",
+            alignItems: "stretch",
+            alignContent: "center",
+            flexDirection: "row",
+            marginTop: 15
+            }}>
+            <Text style={{textDecorationLine: 'underline'}}>TARIF</Text>
+          </View>
+            <View style={{
+            flex: 1,
+            justifyContent: "space-around",
+            alignItems: "stretch",
+            alignContent: "center",
+            flexDirection: "row",
+            marginTop: 15
+            }}>
+            <CheckBox
+            center
+            title="Gratuit"
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checkedColor= 'red'
+            containerStyle ={{
 
-    margin: 5,
-    marginLeft: 2,
-    marginRight: 2,
-    height: 50,
-    justifyContent: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#ededed',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 3,
+            margin: 5,
+            marginLeft: 2,
+            marginRight: 2,
+            height: 50,
+            justifyContent: 'center',
+            backgroundColor: '#fafafa',
+            borderColor: '#ededed',
+            borderWidth: 1,
+            padding: 0,
+            borderRadius: 3,
 
-}}
-checked={this.state.checkedPrice1}
-onPress= {value => this.setState({checkedPrice1: !this.state.checkedPrice1})}
-/>
-<CheckBox
-center
-title='Payant'
-checkedIcon='dot-circle-o'
-uncheckedIcon='circle-o'
-checkedColor= 'red'
-containerStyle ={{
+            }}
+            checked={this.state.checkedPrice1}
+            onPress= {value => this.setState({checkedPrice1: !this.state.checkedPrice1})}
+            />
+            <CheckBox
+            center
+            title='Payant'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checkedColor= 'red'
+            containerStyle ={{
 
-    margin: 5,
-    marginLeft: 2,
-    marginRight: 2,
-    height: 50,
-    justifyContent: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#ededed',
-    borderWidth: 1,
-    padding: 0,
-    borderRadius: 3,
+            margin: 5,
+            marginLeft: 2,
+            marginRight: 2,
+            height: 50,
+            justifyContent: 'center',
+            backgroundColor: '#fafafa',
+            borderColor: '#ededed',
+            borderWidth: 1,
+            padding: 0,
+            borderRadius: 3,
 
-}}
-checked={this.state.checkedPrice2}
-onPress= {value => this.setState({checkedPrice2: !this.state.checkedPrice2})}
-/>
+            }}
+            checked={this.state.checkedPrice2}
+            onPress= {value => this.setState({checkedPrice2: !this.state.checkedPrice2})}
+            />
 
-</View>
-    </View>
+            </View>
+            <View style={{
+            flex: 1,
+            justifyContent: "space-around",
+            alignItems: "stretch",
+            alignContent: "center",
+            flexDirection: "row",
+            marginTop: 10
+          }}><Button rounded grey>
+                <Text>Valider mes filtres</Text>
+              </Button>
+            </View>
+
+        </Content>
+
+
+
+
+      </Container>
 
 );
   }

@@ -36,6 +36,7 @@ export default class AddEventScreen extends React.Component {
       console.log(location);
 
       fetch('https://musicall1.herokuapp.com/addEvent', {
+
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
