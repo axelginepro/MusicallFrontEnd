@@ -10,12 +10,8 @@ export default class HomeScreen extends React.Component {
     return (
     <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")}>
       <View style={{flex:1,justifyContent: 'center', alignItems: 'center'}}>
-<<<<<<< HEAD
-       <Image  style={{flex:0.1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
-=======
        <Image  style={{flex:0.15}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
        <Divider style={{height:150}}/>
->>>>>>> fcda3d1ab230ff0eba7fff71cb9fbe75ad388ff4
     	 	<Button
     	 	 buttonStyle={{borderRadius:25, width:300, height:50}}
              title="Sign in"
