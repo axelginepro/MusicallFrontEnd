@@ -2,6 +2,8 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Divider, CheckBox } from 'react-native-elements'
 
+// test //
+
 export default class FilterScreen extends React.Component {
 
   constructor() {
