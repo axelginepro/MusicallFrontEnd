@@ -29,23 +29,27 @@ const MainNavigator = createBottomTabNavigator({
     tabBarIcon: ({focused, horizontal, tintColor}) => {
       var iconName;
       if (navigation.state.routeName == 'MapScreen') {
-        iconName = 'map';
+        iconName = 'ios-map';
       } else if (navigation.state.routeName == 'ListEventScreen') {
-        iconName = 'search';
+        iconName = 'ios-search';
       } else if (navigation.state.routeName == 'AddEventScreen') {
-        iconName = "add-circle-outline";
+        iconName = "ios-add-circle-outline";
       } else if (navigation.state.routeName == 'AccountScreen') {
         iconName = 'contact';
       } else if (navigation.state.routeName == 'InfoScreen') {
-        iconName = 'information-circle-outline';
+        iconName = 'ios-information-circle-outline';
       }
 
       return <Ionicons name={iconName} size={25} color={tintColor}/>;
     }
   }),
   tabBarOptions: {
-    activeTintColor: '#CD3C30',
-    inactiveTintColor: 'gray'
+    activeTintColor: '#780D16',
+    inactiveTintColor: 'gray',
+    style: {
+    backgroundColor: 'FC8C3D',
+  },
+
   }
 });
 
@@ -58,6 +62,6 @@ var StackNavigator = createStackNavigator({
 
   // pages de ma nvigation avec le bottom créés juste avant
   MainNavigator: MainNavigator
-},{headerMode: "screen"})
+},{headerMode: "none"})
 
 export default Navigation = createAppContainer(StackNavigator);

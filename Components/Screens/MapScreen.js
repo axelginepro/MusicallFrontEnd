@@ -1,21 +1,16 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, Image, Platform, StatusBar} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import { Constants, Location, Permissions } from 'expo';
-import {headerRight,headerLeft} from 'react-navigation'
+import { Container, Header, Left, Body, Right, Button, Icon, Content, Input, Item} from 'native-base';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 
 const GEOLOCATION_OPTIONS = { enableHighAccuracy: true, timeInterval: 200, distanceInterval: 1 };
 
 import {connect} from 'react-redux';
 
-export default class MapScreen extends React.Component {
-  static navigationOptions = {
-    headerRight: (
-      <Image source={require('../../assets/Icons/liste.png')}/>
-    )
-  }
-
+export default class MapScreen extends Component {
   state={
     location: null,
     errorMessage: null,
@@ -62,25 +57,33 @@ export default class MapScreen extends React.Component {
 
     if (this.state.location) {
       return (
-        <View style={{flex: 1}}>
-          <MapView
-            style={{ flex: 1 }}
-            initialRegion={{
-              latitude: this.state.location.coords.latitude,
-              longitude: this.state.location.coords.longitude,
-              latitudeDelta: 0.0200,
-              longitudeDelta: 0.0300,
-            }}
-          >
+        <Container>
+          <Headerbar navigation={this.props.navigation}/>
+          <Grid>
+            <Col style={{ backgroundColor: '#635DB7'}}>
 
-          <Marker
-            pinColor='blue'
-            coordinate={{latitude: this.state.location.coords.latitude, longitude: this.state.location.coords.longitude}}
-          />
+              <MapView
+                style={{ flex: 1 }}
+                initialRegion={{
+                  latitude: this.state.location.coords.latitude,
+                  longitude: this.state.location.coords.longitude,
+                  latitudeDelta: 0.0200,
+                  longitudeDelta: 0.0300,
+                }}
+              >
 
-        </MapView>
+              <Marker
+                pinColor='blue'
+                coordinate={{latitude: this.state.location.coords.latitude, longitude: this.state.location.coords.longitude}}
+              />
 
-        </View>
+            </MapView>
+
+          </Col>
+
+
+        </Grid>
+      </Container>
       );
     }
     else {
@@ -88,5 +91,31 @@ export default class MapScreen extends React.Component {
         <Text>Loading</Text>
       )
     }
+  }
+}
+
+
+class Headerbar extends Component {
+  render() {
+
+    return (
+        <Header noShadow style={{marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight, backgroundColor: '#FC8C3D'}}>
+          <Left>
+            <Button transparent onPress= { () => this.props.navigation.navigate('Filter')}>
+              <Icon name='menu'/>
+            </Button>
+          </Left>
+          <Right>
+
+            <Button transparent>
+              <Icon name='search' />
+            </Button>
+
+            <Item regular>
+              <Input placeholder='Recherche ...'/>
+            </Item>
+          </Right>
+        </Header>
+    );
   }
 }
