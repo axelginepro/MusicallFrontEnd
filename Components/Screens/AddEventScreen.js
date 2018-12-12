@@ -30,11 +30,11 @@ export default class AddEventScreen extends React.Component {
 
 
   handleSubmit() {
-
+    const ctx = this
     Geocoder.from(this.state.adresse).then(json => {
       var location = json.results[0].geometry.location;
       console.log(location);
-      fetch('http://10.69.220.53:3000/addEvent', {
+      fetch('http://10.69.220.38:3000/addEvent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ export default class AddEventScreen extends React.Component {
         return response.json()
       }).then(function(eventData) {
         console.log(eventData);
-        // this.props.navigation.navigate('Map') // // BUG: navigation undifined
+        ctx.props.navigation.navigate('Map')
       }).catch(function(error) {
         console.error(error);
       });

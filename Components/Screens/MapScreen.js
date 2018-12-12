@@ -37,7 +37,7 @@ export default class MapScreen extends React.Component {
     }
 
     let location = await Location.watchPositionAsync(GEOLOCATION_OPTIONS, data => {
-      fetch('http://10.69.220.53:3000/listEvent')
+      fetch('http://10.69.220.38:3000/listEvent')
       .then(response => response.json())
       .then(eventData => {
         // console.log(eventData);
