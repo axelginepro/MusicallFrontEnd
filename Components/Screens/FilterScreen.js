@@ -39,7 +39,7 @@ export default class FilterScreen extends React.Component {
         flex: 1,
         justifyContent: "start",
         alignItems: "stretch",
-        alignContent: "start",
+        alignContent: "center",
         flexDirection: "row"
       }}>
       <CheckBox
