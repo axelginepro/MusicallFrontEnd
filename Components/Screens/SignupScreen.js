@@ -50,13 +50,13 @@ export default class SignupScreen extends React.Component {
       </Col>
 
       <Col>
-            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Pseudo" placeholderTextColor='white'  />
+            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({pseudo: text})} placeholder="Pseudo" placeholderTextColor='white'  />
       </Col>
       <Col>
-              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Email" placeholderTextColor='white'  />
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({email: text})} placeholder="Email" placeholderTextColor='white'  />
       </Col>
       <Col>
-              <FormInput secureTextEntry={true} inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Password" placeholderTextColor='white'  />
+              <FormInput secureTextEntry={true} inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
        </Col>
       <Col>
             <Button
