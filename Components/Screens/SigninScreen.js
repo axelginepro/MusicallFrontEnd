@@ -35,7 +35,7 @@ export default class SignInScreen extends React.Component {
     return (
         <ImageBackground style={{flex:1}} source={require("../../assets/Images/rocksign.jpeg")} resizeMode='stretch'>
           <View style={{flex:1, justifyContent:"center", alignItems:"center", flexDirection: 'column'}}>
-<Divider style={{height:20}}/>
+      <Divider style={{height:20}}/>
               <Image  style={{flex:0.6}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
       <Divider style={{height:125}}/>
               <Text style={styles.titleText}>Sign in</Text>
