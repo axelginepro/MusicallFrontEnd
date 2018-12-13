@@ -11,7 +11,7 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
  
-  <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")}>
+  <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")} resizeMode='stretch'>
 
     <Grid style={styles.row}>
         <Row>

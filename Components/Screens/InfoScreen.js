@@ -17,32 +17,32 @@ export default class InfoScreen extends React.Component {
 
 
   <Col  style={styles.contentView}>
-          <Ionicons name='ios-list' size={35} style={{marginRight: 25, marginLeft: 25}}/>
+          <Ionicons name='ios-list' size={35} style={styles.icon}/>
           <Text h4>Filtrer les events</Text>
         </Col>
 
 
         <Col style={styles.contentView}>
-        <Ionicons name='ios-map' size={35} style={{marginRight: 25, marginLeft: 25}} />
+        <Ionicons name='ios-map' size={35} style={styles.icon} />
           <Text h4> Map des events </Text>
         </Col>
 
 
         <Col style={styles.contentView}>
-          <Ionicons name='ios-search' size={35} style={{marginRight: 25, marginLeft: 25}} />
+          <Ionicons name='ios-search' size={35} style={styles.icon} />
           <Text h4> Chercher un event</Text>
         </Col>
 
 
         <Col style={styles.contentView}>
-            <Ionicons name="ios-add-circle-outline" size={35} style={{marginRight: 25, marginLeft: 25}} />
+            <Ionicons name="ios-add-circle-outline" size={35} style={styles.icon} />
           <Text h4> Ajouter un Concert </Text>
         </Col>
       
 
 
         <Col style={styles.contentView}>
-          <Ionicons name='ios-person' size={35} style={{marginRight: 25, marginLeft: 25}} />
+          <Ionicons name='ios-person' size={35} style={styles.icon} />
           <Text h4> Accéder à son compte</Text>
         </Col>
       
@@ -50,7 +50,7 @@ export default class InfoScreen extends React.Component {
 
       <Col style={styles.contentView}>
           <Image
-        source={require('../../assets/Icons/IconDoubleCrocheCouleur.png')}
+        source={require('../../assets/Icons/CrocheCouleur.png')}
         style={{width: 75, height: 75, }}
       />
           <Text h4> Liker vos événements</Text>
@@ -74,4 +74,8 @@ row: {
   width: '100%',
   height: '10%',
 },
+icon: {
+  marginRight: '6%',
+  marginLeft: '7%',
+}
 });

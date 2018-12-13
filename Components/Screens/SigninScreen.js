@@ -45,11 +45,11 @@ export default class SignInScreen extends React.Component {
 <Col  >
             <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({email: text})} placeholder="Email" placeholderTextColor='white'  />
 
-	            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
+	            <FormInput secureTextEntry={true} inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
 </Col>
       <Col>
               <Button
-                  buttonStyle={{borderRadius:25, width:180, height: 65, justifyContent: 'center', marginTop:10}}
+                  buttonStyle={{borderRadius:25, width:'100%', height: '50%', justifyContent: 'center', marginTop:'5%'}}
                     title="Submit"
                     style={{flex:1}}
                     backgroundColor='#5b6778'
@@ -88,8 +88,7 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    height: '10%',
-    marginBottom: '10%'
-    
+    height: '5%',
+    marginBottom: '5%'
   }
 });
