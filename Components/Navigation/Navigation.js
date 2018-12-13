@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import {Ionicons, MatterialCommunityIcons} from '@expo/vector-icons';
+import { Icon } from 'native-base';
 
 // imports de mes composants de navigation
 import {createBottomTabNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
@@ -17,7 +18,7 @@ import DetailEventScreen from '../Screens/DetailEventScreen';
 import AddEventScreen from '../Screens/AddEventScreen';
 import InfoScreen from '../Screens/InfoScreen';
 
-const MainNavigator = createBottomTabNavigator({
+const MainBottomNavigator = createBottomTabNavigator({
   Map: MapScreen,
   ListEvent: ListEventScreen,
   AddEvent: AddEventScreen,
@@ -30,15 +31,15 @@ const MainNavigator = createBottomTabNavigator({
       var outline = (focused)
         ? ""
         : ""
-      if (navigation.state.routeName == 'MapScreen') {
-        iconName = 'ios-map';
-      } else if (navigation.state.routeName == 'ListEventScreen') {
+      if (navigation.state.routeName == 'Map') {
+          iconName = 'ios-map';
+      } else if (navigation.state.routeName == 'ListEvent') {
         iconName = 'ios-search';
-      } else if (navigation.state.routeName == 'AddEventScreen') {
+      } else if (navigation.state.routeName == 'AddEvent') {
         iconName = "ios-add-circle-outline";
-      } else if (navigation.state.routeName == 'AccountScreen') {
-        iconName = 'ios-information-circle'
-      } else if (navigation.state.routeName == 'InfoScreen') {
+      } else if (navigation.state.routeName == 'Account') {
+        iconName = 'ios-person'
+      } else if (navigation.state.routeName == 'Info') {
         iconName = 'ios-information-circle-outline';
       }
 
@@ -63,7 +64,7 @@ var StackNavigator = createStackNavigator({
   Filter: FilterScreen,
 
   // pages de ma nvigation avec le bottom créés juste avant
-  MainNavigator: MainNavigator
+  MainBottomNavigator: MainBottomNavigator
 },{headerMode: "none"})
 
 export default Navigation = createAppContainer(StackNavigator);
