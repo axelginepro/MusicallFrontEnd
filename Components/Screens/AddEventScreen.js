@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, View, ScrollView } from 'react-native';
 import {Button, FormLabel, FormInput, Divider, Text} from 'react-native-elements';
 import Geocoder from 'react-native-geocoding';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 Geocoder.init('AIzaSyCpwkK4H7BrdzwW-yEhyzR5i92R4JWR5yk');
 
@@ -72,10 +73,13 @@ export default class AddEventScreen extends React.Component {
       <ScrollView>
 
       <View style={styles.container}>
-        <Image  style={styles.image} source={require('../../assets/Icons/musicall.png')}
-          resizeMode = "center"
-        />
-        <Text style={{color: 'red', fontSize: 35}}>Ajouter un événement</Text>
+
+
+  <Row style={styles.row}>
+      <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+</Row>
+
+        <Text style={{color: 'red', fontSize: 35, marginTop: '10%'}}>Ajouter un événement</Text>
               <FormInput  inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({eventDate: text})} placeholder="Date" />
               <Divider style={{height:20}}/>
               <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" />
@@ -109,12 +113,15 @@ const styles = StyleSheet.create({
         alignItems: "center",
       },
       form: {
+        width: 250,
                 borderColor: 'lightgrey',
                 borderWidth: 2,
                 fontSize: 30
         },
-        image: {
-          width: 400,
-          marginLeft: 30,
-        }
+        row: {
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  height: '10%',
+},
     });

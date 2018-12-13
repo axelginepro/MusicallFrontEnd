@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image  } from 'react-native';
 import {Divider, Button, FormLabel, FormInput } from 'react-native-elements'
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class SignInScreen extends React.Component {
   constructor() {
@@ -32,16 +33,21 @@ export default class SignInScreen extends React.Component {
   render() {
     return (
         <ImageBackground style={{flex:1}} source={require("../../assets/Images/rocksign.jpeg")} resizeMode='stretch'>
-          <View style={{flex:1, justifyContent:"center", alignItems:"center", flexDirection: 'column'}}>
 
-              <Image  style={{flex:0.6}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
-      <Divider style={{height:50}}/>
+      <Grid style={styles.row}>
+            <Row>
+              <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+            </Row>
+
+<Col style={styles.grille}>
               <Text style={styles.titleText}>Sign in</Text>
-      <Divider style={{height:50}}/>
+</Col>
+<Col  >
             <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({email: text})} placeholder="Email" placeholderTextColor='white'  />
-      <Divider style={{height:25}}/>
+
 	            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
-      <Divider style={{height:50}}/>
+</Col>
+      <Col>
               <Button
                   buttonStyle={{borderRadius:25, width:180, height: 65, justifyContent: 'center', marginTop:10}}
                     title="Submit"
@@ -51,9 +57,8 @@ export default class SignInScreen extends React.Component {
                     onPress={this.handleSubmit}>
               </Button>
               <Text style={{color: '#CD3C30'}}>{this.state.error}</Text>
-      <Divider style={{height:50}}/>
-
-    </View>
+</Col>
+      </Grid>
   </ImageBackground>
     );
   }
@@ -73,4 +78,18 @@ var styles = StyleSheet.create({
       width: 350,
       height: 75,
     },
+    row: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '10%',
+  },
+    grille: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '10%',
+    marginBottom: '10%'
+    
+  }
 });
