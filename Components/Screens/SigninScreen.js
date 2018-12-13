@@ -8,25 +8,23 @@ export default class SignInScreen extends React.Component {
     this.state = {
       email: '',
       password: '',
-     
+      error: null
     };
   }
 
-  handleSubmit = (value) => {
-    fetch(`http://10.69.220.30:3000/signin?email=${this.state.email}&password=${this.state.password}`)
-    .then(response => {
-     	response.json()
-    	console.log(response)
-    }) 
+
+
+  handleSubmit = () => {
+    fetch(`https://musicall1.herokuapp.com/signin?email=${this.state.email}&password=${this.state.password}`)
+    .then(response => response.json())
     .then(data => {
-    	console.log(data);
-      // if (data.isUserExist) {
-        // this.setState({error: null});
+    	console.log('je suis dans le fecth', data);
+      if (data.isUserExist) {
+        this.setState({error: null});
         this.props.navigation.navigate('Map');
-      // } else {
-        
-      //   this.setState({error: 'login failed'});
-      // }
+      } else {
+        this.setState({error: `Erreur d'identification, veuillez verifier vos identifiants`});
+      }
     }).catch(error => console.error(error));
   };
 
@@ -35,14 +33,14 @@ export default class SignInScreen extends React.Component {
     return (
         <ImageBackground style={{flex:1}} source={require("../../assets/Images/rocksign.jpeg")} resizeMode='stretch'>
           <View style={{flex:1, justifyContent:"center", alignItems:"center", flexDirection: 'column'}}>
-      <Divider style={{height:20}}/>
+
               <Image  style={{flex:0.6}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
-      <Divider style={{height:125}}/>
+      <Divider style={{height:50}}/>
               <Text style={styles.titleText}>Sign in</Text>
-      <Divider style={{height:100}}/>
-            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Email" placeholderTextColor='white'  />
+      <Divider style={{height:50}}/>
+            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({email: text})} placeholder="Email" placeholderTextColor='white'  />
       <Divider style={{height:25}}/>
-	            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Password" placeholderTextColor='white'  />
+	            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
       <Divider style={{height:50}}/>
               <Button
                   buttonStyle={{borderRadius:25, width:180, height: 65, justifyContent: 'center', marginTop:10}}
@@ -51,10 +49,12 @@ export default class SignInScreen extends React.Component {
                     backgroundColor='#5b6778'
                     color='#FFFFFF'
                     onPress={this.handleSubmit}>
-                    </Button>
-      <Divider style={{height:200}}/>
+              </Button>
+              <Text style={{color: '#CD3C30'}}>{this.state.error}</Text>
+      <Divider style={{height:50}}/>
+
     </View>
-  </ImageBackground> 
+  </ImageBackground>
     );
   }
 }
@@ -62,7 +62,7 @@ var styles = StyleSheet.create({
   titleText: {
     fontSize:65,
     color:'#CD3C30',
-  
+
   },
     form: {
       backgroundColor: 'rgba(0,0,0,0.4)',
