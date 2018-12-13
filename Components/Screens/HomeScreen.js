@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, ImageBackground, Image, TouchableOpacity, } from 'react-native';
+import { StyleSheet, View, ImageBackground, Image } from 'react-native';
 import {Divider, Button, Text } from 'react-native-elements'
+import { Col, Row, Grid } from 'react-native-easy-grid';
+
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -8,10 +10,17 @@ export default class HomeScreen extends React.Component {
   }
   render() {
     return (
+ 
   <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")}>
-        <View style={{flex:1,justifyContent: 'center', alignItems: 'center'}}>
-        <Image  style={{flex:0.2}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
-    <Divider style={{height:150}}/>
+
+    <Grid style={styles.row}>
+        <Row>
+        <Image style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+        </Row>
+        
+
+    
+    <Col style={styles.row}>
     	 	 <Button
                 large rightIcon={{name: 'arrow-right', type: 'font-awesome'}}
     	          buttonStyle={{borderRadius:25, width:250, height:65}}
@@ -20,7 +29,9 @@ export default class HomeScreen extends React.Component {
                 color='white'
                 onPress={ ()=> this.props.navigation.navigate('SignIn')}>
             </Button>
-    <Divider style={{height:25}}/>
+            </Col>
+
+    <Col>
             <Button
                 large icon={{name: 'envira', type: 'font-awesome'}}
                 buttonStyle={{borderRadius:25, width:250, height:65}}
@@ -29,11 +40,24 @@ export default class HomeScreen extends React.Component {
                 color='white'
                 onPress={ ()=> this.props.navigation.navigate('SignUp')}>
             </Button>
-<Divider style={{height:150}}/>
+      </Col>
+            
+      </Grid>
+
             <Text  onPress= { ()=> this.props.navigation.navigate('Map')} h3>Pour Naviguer</Text>
             <Text  onPress= { ()=> this.props.navigation.navigate('Filter')} h4>Go to Filter Mother Fucker</Text>
-        </View>
       </ImageBackground>
+
     );
   }
 };
+
+const styles = StyleSheet.create({
+      row: {
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          height: '10%',
+          marginBottom: '5%'
+      }
+    });

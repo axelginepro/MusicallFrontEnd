@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet,View, ImageBackground, Image  } from 'react-native';
-import {Divider, Button, FormLabel, FormInput, Text } from 'react-native-elements'
+import { StyleSheet,View, ImageBackground, Image, ScrollView  } from 'react-native';
+import {Divider, Button, FormLabel, FormInput, Text } from 'react-native-elements';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class SignupScreen extends React.Component {
 	 constructor() {
@@ -36,19 +37,28 @@ export default class SignupScreen extends React.Component {
 
   render() {
     return (
+    
       <ImageBackground style={{flex:1}} source={require("../../assets/Images/rocksign.jpeg")} resizeMode='stretch'>
-            <View style={{flex:1, justifyContent:"center", alignItems:"center"}}>
-      <Divider style={{height:20}}/>
-                    <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="center"/>
-      <Divider style={{height:10}}/>
+
+<Grid style={styles.row}>
+        <Row>
+                    <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+        </Row>
+
+       <Col style={styles.grille}>
             <Text style={styles.titleText}>Sign up</Text>
-      <Divider style={{height:100}}/>
+      </Col>
+
+      <Col>
             <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Pseudo" placeholderTextColor='white'  />
-      <Divider style={{height:25}}/>
+      </Col>
+      <Col>
               <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Email" placeholderTextColor='white'  />
-      <Divider style={{height:25}}/>
+      </Col>
+      <Col>
               <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Password" placeholderTextColor='white'  />
-      <Divider style={{height:25}}/>
+       </Col>
+      <Col>
             <Button
                 buttonStyle={{borderRadius:25, width:250, height:65, justifyContent: 'center', marginTop:10}}
                 title="Devenir membre"
@@ -57,16 +67,19 @@ export default class SignupScreen extends React.Component {
                 color='#FFFFFF'
                 onPress={this.handleSubmit}>
               </Button>
-      <Divider style={{height:50}}/>
-            <Text style={{color: 'white'}}>Already have an account ?</Text><Text style={{color: 'white'}}
+       </Col>
+      <Col >
+            <Text style={{color: 'white'}}>Already have an account ?</Text><Text style={{color: 'white', textAlign: 'center'}}
                 onPress={() => this.props.navigation.navigate('SignIn')}>
                               Sign In
             </Text>
-      <Divider style={{height:50}}/>
+      </Col>
+      <Col>
               <Text style={{color: 'white'}}>By creating an account, you agree to our Terms</Text>
-      <Divider style={{height:75}}/>
-  </View>
+      </Col>
+  </Grid>
 </ImageBackground>
+
     );
   }
 };
@@ -79,8 +92,21 @@ var styles = StyleSheet.create({
     color: 'red',
     borderColor: 'lightgrey',
     borderWidth: 2,
-    fontSize: 30,
+    fontSize: 20,
     width: 350,
-    height: 75,
+    height: 55,
   },
+  row: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '10%',
+  },
+    grille: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '10%',
+    marginTop: '20%'
+  }
   })
