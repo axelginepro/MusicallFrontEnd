@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-
 import {Ionicons, MatterialCommunityIcons} from '@expo/vector-icons';
+import { Icon } from 'native-base';
 
 // imports de mes composants de navigation
 import {createBottomTabNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
@@ -18,7 +18,7 @@ import DetailEventScreen from '../Screens/DetailEventScreen';
 import AddEventScreen from '../Screens/AddEventScreen';
 import InfoScreen from '../Screens/InfoScreen';
 
-const MainNavigator = createBottomTabNavigator({
+const MainBottomNavigator = createBottomTabNavigator({
   Map: MapScreen,
   ListEvent: ListEventScreen,
   AddEvent: AddEventScreen,
@@ -28,24 +28,31 @@ const MainNavigator = createBottomTabNavigator({
   defaultNavigationOptions: ({navigation}) => ({
     tabBarIcon: ({focused, horizontal, tintColor}) => {
       var iconName;
-      if (navigation.state.routeName == 'MapScreen') {
-        iconName = 'map';
-      } else if (navigation.state.routeName == 'ListEventScreen') {
-        iconName = 'search';
-      } else if (navigation.state.routeName == 'AddEventScreen') {
-        iconName = "add-circle-outline";
-      } else if (navigation.state.routeName == 'AccountScreen') {
-        iconName = 'contact';
-      } else if (navigation.state.routeName == 'InfoScreen') {
-        iconName = 'information-circle-outline';
+      var outline = (focused)
+        ? ""
+        : ""
+      if (navigation.state.routeName == 'Map') {
+          iconName = 'ios-map';
+      } else if (navigation.state.routeName == 'ListEvent') {
+        iconName = 'ios-search';
+      } else if (navigation.state.routeName == 'AddEvent') {
+        iconName = "ios-add-circle-outline";
+      } else if (navigation.state.routeName == 'Account') {
+        iconName = 'ios-person'
+      } else if (navigation.state.routeName == 'Info') {
+        iconName = 'ios-information-circle-outline';
       }
 
-      return <Ionicons name={iconName} size={25} color={tintColor}/>;
+      return <Ionicons name={iconName + outline} size={25} color={tintColor}/>;
     }
   }),
   tabBarOptions: {
-    activeTintColor: '#CD3C30',
-    inactiveTintColor: 'gray'
+    activeTintColor: '#780D16',
+    inactiveTintColor: 'gray',
+    style: {
+    backgroundColor: 'FC8C3D',
+  },
+
   }
 });
 
@@ -57,7 +64,7 @@ var StackNavigator = createStackNavigator({
   Filter: FilterScreen,
 
   // pages de ma nvigation avec le bottom créés juste avant
-  MainNavigator: MainNavigator
-},{headerMode: "screen"})
+  MainBottomNavigator: MainBottomNavigator
+},{headerMode: "none"})
 
 export default Navigation = createAppContainer(StackNavigator);

@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image  } from 'react-native';
-import {Divider, Button, FormLabel, FormInput } from 'react-native-elements'
+import { StyleSheet,View, ImageBackground, Image, ScrollView  } from 'react-native';
+import {Divider, Button, FormLabel, FormInput, Text } from 'react-native-elements';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class SignupScreen extends React.Component {
 	 constructor() {
@@ -15,7 +16,7 @@ export default class SignupScreen extends React.Component {
 
   handleSubmit(){
   	var ctx = this;
-  	fetch('http://10.69.220.38:3000/signup',{
+  	fetch('https://musicall1.herokuapp.com/signup', {
   		method: 'POST',
   		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
   		body: 'pseudo='+this.state.pseudo+'&email='+this.state.email+'&password='+this.state.password
@@ -36,41 +37,76 @@ export default class SignupScreen extends React.Component {
 
   render() {
     return (
-       <ImageBackground style={{flex:1}} source={require("../../assets/Images/rocksign.jpeg")}>
-       <View style={{flex:1, justifyContent:"center", alignItems:"center"}}>
+    
+      <ImageBackground style={{flex:1}} source={require("../../assets/Images/rocksign.jpeg")} resizeMode='stretch'>
 
-        <Image  style={{width: 400, height: 400}} source={require('../../assets/Icons/musicall.png')}/>
-        <Text style={styles.titleText}>Sign up</Text>
+<Grid style={styles.row}>
+        <Row>
+                    <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+        </Row>
 
-            <FormLabel >Pseudo</FormLabel>
-            <FormInput  style={{backgroundColor:'#CD3C30'}} onChangeText={(text) => this.setState({pseudo: text})}/>
-            <FormLabel>Email</FormLabel>
-           <FormInput onChangeText={(text) => this.setState({email: text})}/>
+       <Col style={styles.grille}>
+            <Text style={styles.titleText}>Sign up</Text>
+      </Col>
 
-            <FormLabel>Mot de passe</FormLabel>
-            <FormInput onChangeText={(text) => this.setState({password: text})}/>
+      <Col>
+            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Pseudo" placeholderTextColor='white'  />
+      </Col>
+      <Col>
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Email" placeholderTextColor='white'  />
+      </Col>
+      <Col>
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Password" placeholderTextColor='white'  />
+       </Col>
+      <Col>
+            <Button
+                buttonStyle={{borderRadius:25, width:250, height:65, justifyContent: 'center', marginTop:10}}
+                title="Devenir membre"
+                style={{flex:1}}
+                backgroundColor='#5b6778'
+                color='#FFFFFF'
+                onPress={this.handleSubmit}>
+              </Button>
+       </Col>
+      <Col >
+            <Text style={{color: 'white'}}>Already have an account ?</Text><Text style={{color: 'white', textAlign: 'center'}}
+                onPress={() => this.props.navigation.navigate('SignIn')}>
+                              Sign In
+            </Text>
+      </Col>
+      <Col>
+              <Text style={{color: 'white'}}>By creating an account, you agree to our Terms</Text>
+      </Col>
+  </Grid>
+</ImageBackground>
 
-
-           <Button
-             buttonStyle={{borderRadius:25, width:300, height:50, justifyContent: 'center', marginTop:10}}
-             title="Devenir membre"
-             style={{flex:1}}
-             backgroundColor='#5b6778'
-             color='#FFFFFF'
-             // onPress={ ()=> this.props.navigation.navigate('Map')}
-             onPress={this.handleSubmit}
-             >
-           </Button>
-
-       </View>
-      </ImageBackground>
     );
   }
 };
 var styles = StyleSheet.create({
   titleText: {
-    fontSize:50,
-    fontFamily: 'Georgia',
+    fontSize:65,
     color:'#CD3C30',
+  }, form: {
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    color: 'red',
+    borderColor: 'lightgrey',
+    borderWidth: 2,
+    fontSize: 20,
+    width: 350,
+    height: 55,
+  },
+  row: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '10%',
+  },
+    grille: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '10%',
+    marginTop: '20%'
   }
   })

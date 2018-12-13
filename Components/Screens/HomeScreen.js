@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
-import {Divider, Button, } from 'react-native-elements'
+import { StyleSheet, View, ImageBackground, Image } from 'react-native';
+import {Divider, Button, Text } from 'react-native-elements'
+import { Col, Row, Grid } from 'react-native-easy-grid';
+
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -8,35 +10,54 @@ export default class HomeScreen extends React.Component {
   }
   render() {
     return (
-    <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")}>
-      <View style={{flex:1,justifyContent: 'center', alignItems: 'center'}}>
-       <Image  style={{width: 400, height: 400, marginTop:5}} source={require('../../assets/Icons/musicall.png')}/>
-    	 	<Button
-    	 	 buttonStyle={{borderRadius:25, width:300, height:50}}
-             title="Sign in"
-             style={{width:300}}
-             backgroundColor='#dadada'
-             color='#CD3C30'
-             onPress={ ()=> this.props.navigation.navigate('SignIn')}
-             >
-           </Button>
+ 
+  <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")}>
 
-           <Button
-             buttonStyle={{borderRadius:25, width:300, height:50, justifyContent: 'center', marginTop:10}}
-             title="Sign up"
-             style={{flex:1}}
-             backgroundColor='#dadada'
-             color='#CD3C30'
-             onPress={ ()=> this.props.navigation.navigate('SignUp')}
-             >
-           </Button>
+    <Grid style={styles.row}>
+        <Row>
+        <Image style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+        </Row>
+        
 
-           <Text onPress= { ()=> this.props.navigation.navigate('Map')}>Hello</Text>
-           <Text onPress= { ()=> this.props.navigation.navigate('Filter')}>Go to filter sa meure</Text>
+    
+    <Col style={styles.row}>
+    	 	 <Button
+                large rightIcon={{name: 'arrow-right', type: 'font-awesome'}}
+    	          buttonStyle={{borderRadius:25, width:250, height:65}}
+                title="Sign in"
+                backgroundColor='#5b6778'
+                color='white'
+                onPress={ ()=> this.props.navigation.navigate('SignIn')}>
+            </Button>
+            </Col>
 
-       </View>
+    <Col>
+            <Button
+                large icon={{name: 'envira', type: 'font-awesome'}}
+                buttonStyle={{borderRadius:25, width:250, height:65}}
+                title="Sign up"
+                backgroundColor='#5b6778'
+                color='white'
+                onPress={ ()=> this.props.navigation.navigate('SignUp')}>
+            </Button>
+      </Col>
+            
+      </Grid>
+
+            <Text  onPress= { ()=> this.props.navigation.navigate('Map')} h3>Pour Naviguer</Text>
+            <Text  onPress= { ()=> this.props.navigation.navigate('Filter')} h4>Go to Filter Mother Fucker</Text>
       </ImageBackground>
+
     );
   }
 };
-;
+
+const styles = StyleSheet.create({
+      row: {
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          height: '10%',
+          marginBottom: '5%'
+      }
+    });
