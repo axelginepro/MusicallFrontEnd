@@ -38,9 +38,9 @@ export default class MapScreen extends Component {
 
       .then(response => response.json())
       .then(eventData => {
-        // console.log(eventData);
         this.setState({
-          location: data
+          location: data,
+          eventList: eventData.event
         })
       })
       .catch(e => console.error(e));
@@ -54,6 +54,15 @@ export default class MapScreen extends Component {
     if (this.state.errorMessage) {
       text = this.state.errorMessage;
     }
+
+    var eventListPosition = this.state.eventList.map((event, i) =>
+      <Marker
+        key={i}
+        pinColor='red'
+        coordinate={{latitude: event.coord.latitude, longitude: event.coord.longitude}}
+        title={`Artiste: ${event.artist} style: ${event.style}`}
+        description={`${event.name} le ${event.eventDate} entrée ${event.price}`}
+      />);
 
     if (this.state.location) {
       return (
@@ -77,6 +86,8 @@ export default class MapScreen extends Component {
                 coordinate={{latitude: this.state.location.coords.latitude, longitude: this.state.location.coords.longitude}}
               />
 
+              {eventListPosition}
+
             </MapView>
 
           </Col>
@@ -93,7 +104,6 @@ export default class MapScreen extends Component {
     }
   }
 }
-
 
 class Headerbar extends Component {
   render() {
