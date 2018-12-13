@@ -1,62 +1,81 @@
 import React from 'react';
 import { StyleSheet, View, Image, ScrollView } from 'react-native';
-import {Divider, Button, Text, Icon } from 'react-native-elements';
-// import { Container, Header, Content, Icon } from 'native-base';
+import {Divider, Button, Text } from 'react-native-elements';
+import { Col, Row, Grid } from 'react-native-easy-grid';
+import {Ionicons, MatterialCommunityIcons} from '@expo/vector-icons';
+import { Icon } from 'native-base';
 
 export default class InfoScreen extends React.Component {
   render() {
     return (
-      <ScrollView>
-      <View style={{flex:1,justifyContent: 'center', alignItems: 'center'}}>
-      <Image  style={{flex:0.1}} source={require('../../assets/Icons/musicall.png')} resizeMode="center"/>
-      <Divider style={{height:50}}/>
-  <View style={styles.contentView}>
-          <Icon type="FontAwesome" name="home" />
-          <Text h4>Personnaliser les events</Text>
-        </View>
-    <Divider style={{height:50}}/>
+  
 
-        <View style={styles.contentView}>
-          <Icon type="FontAwesome" name="map-marker" />
-          <Text h4> Réperer les évenements sur la carte</Text>
-        </View>
-      <Divider style={{height:50}}/>
+<Grid style={styles.row}>
+        <Row>
+      <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+</Row>
 
-        <View style={styles.contentView}>
-          <Icon type="FontAwesome" name="search" />
-          <Text h4> Visualiser la liste de tout les événements</Text>
-        </View>
-      <Divider style={{height:50}}/>
 
-        <View style={styles.contentView}>
-            <Icon type="FontAwesome" name="plus" />
-          <Text h4> Rajouter un nouvel élément</Text>
-        </View>
+  <Col  style={styles.contentView}>
+          <Ionicons name='ios-list' size={35} style={styles.icon}/>
+          <Text h4>Filtrer les events</Text>
+        </Col>
+
+
+        <Col style={styles.contentView}>
+        <Ionicons name='ios-map' size={35} style={styles.icon} />
+          <Text h4> Map des events </Text>
+        </Col>
+
+
+        <Col style={styles.contentView}>
+          <Ionicons name='ios-search' size={35} style={styles.icon} />
+          <Text h4> Chercher un event</Text>
+        </Col>
+
+
+        <Col style={styles.contentView}>
+            <Ionicons name="ios-add-circle-outline" size={35} style={styles.icon} />
+          <Text h4> Ajouter un Concert </Text>
+        </Col>
       
-      <Divider style={{height:50}}/>
 
-        <View style={styles.contentView}>
-          <Icon name='account' />
+
+        <Col style={styles.contentView}>
+          <Ionicons name='ios-person' size={35} style={styles.icon} />
           <Text h4> Accéder à son compte</Text>
-        </View>
+        </Col>
       
-      <Divider style={{height:50}}/>
 
-      <View style={styles.contentView}>
-          <Icon name='home' />
+
+      <Col style={styles.contentView}>
+          <Image
+        source={require('../../assets/Icons/CrocheCouleur.png')}
+        style={{width: 75, height: 75, }}
+      />
           <Text h4> Liker vos événements</Text>
-        </View>
+        </Col>
 
-      <Divider style={{height:50}}/>
-
-      </View>
-      </ScrollView>
+</Grid>
+  
     );
   }
 }
 var styles = StyleSheet.create({
 contentView: {
-  flex: 1,
+  flex: 0.5,
   flexDirection: 'row',
+  width: '100%',
+  
+},
+row: {
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  height: '10%',
+},
+icon: {
+  marginRight: '6%',
+  marginLeft: '7%',
 }
 });

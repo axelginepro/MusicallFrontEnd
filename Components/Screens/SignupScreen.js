@@ -50,17 +50,17 @@ export default class SignupScreen extends React.Component {
       </Col>
 
       <Col>
-            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Pseudo" placeholderTextColor='white'  />
+            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({pseudo: text})} placeholder="Pseudo" placeholderTextColor='white'  />
       </Col>
       <Col>
-              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Email" placeholderTextColor='white'  />
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({email: text})} placeholder="Email" placeholderTextColor='white'  />
       </Col>
       <Col>
-              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Password" placeholderTextColor='white'  />
+              <FormInput secureTextEntry={true} inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
        </Col>
       <Col>
             <Button
-                buttonStyle={{borderRadius:25, width:250, height:65, justifyContent: 'center', marginTop:10}}
+                buttonStyle={{borderRadius:25, width:'100%', height:'75%', justifyContent: 'center', marginTop:10}}
                 title="Devenir membre"
                 style={{flex:1}}
                 backgroundColor='#5b6778'
@@ -95,6 +95,7 @@ var styles = StyleSheet.create({
     fontSize: 20,
     width: 350,
     height: 55,
+    
   },
   row: {
     justifyContent: 'center',
