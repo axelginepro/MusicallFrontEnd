@@ -5,11 +5,14 @@ import {View, Text} from 'react-native';
 import Navigation from './Components/Navigation/Navigation';
 
 // import de mes Reducers
-
+import filter from './Components/Reducers/filter.reducer';
 
 // import de mes outils Redux
 import {Provider} from 'react-redux';
 import {createStore, combineReducers} from 'redux';
+
+
+const store = createStore(combineReducers({filter}));
 
 // Création de mon Store
 
@@ -17,7 +20,9 @@ import {createStore, combineReducers} from 'redux';
 export default class App extends React.Component {
   render() {
     return (
-      <Navigation/>
+      <Provider store={store}>
+          <Navigation/>
+      </Provider>
     )
   }
 }

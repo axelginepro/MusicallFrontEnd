@@ -1,10 +1,11 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Platform, StatusBar} from 'react-native';
 import {Divider, CheckBox } from 'react-native-elements';
 import { Container, Header, Content, DatePicker, ListItem, Text, Radio, Right, Left, Button } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import {connect} from 'react-redux';
 
-export default class FilterScreen extends React.Component {
+class FilterScreen extends React.Component {
 
 
   constructor() {
@@ -41,13 +42,13 @@ export default class FilterScreen extends React.Component {
     var an=maintenant.getFullYear();
 
     return (
-      <Container>
+      <Container style ={{marginTop: Platform.OS === 'ios' ? 20 : StatusBar.currentHeight}}>
 
 
         <Grid style={{margin: 0}}>
 
-            <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
-        <Text>STYLES</Text>
+            <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' ,backgroundColor: '#96989E', borderRadius: '50%'}}>
+        <Text style={{color: 'white'}}>STYLES</Text>
       </Col>
 
 
@@ -75,7 +76,7 @@ export default class FilterScreen extends React.Component {
 
         }}
         checked={this.state.checkedStyle1}
-        onPress= {value => this.setState({checkedStyle1: !this.state.checkedStyle1})}
+        onPress= {value => this.setState({checkedStyle1: !this.state.checkedStyle1, checkedStyle1bis: 'Rock'})}
         />
         <CheckBox
         center
@@ -273,8 +274,8 @@ export default class FilterScreen extends React.Component {
       </Row>
 
 
-            <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
-              <Text>DATE DES EVENEMENTS</Text>
+            <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', backgroundColor: '#96989E', borderRadius: '50%'}}>
+              <Text style={{color: 'white'}}>DATE DES EVENEMENTS</Text>
             </Col>
 
 
@@ -306,8 +307,8 @@ export default class FilterScreen extends React.Component {
 
 
 
-              <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
-            <Text>TARIF</Text>
+              <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', backgroundColor: '#96989E', borderRadius: '50%'}}>
+            <Text style={{color: 'white'}}>TARIF</Text>
           </Col>
 
               <Row style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '100%'}}>
@@ -355,17 +356,17 @@ export default class FilterScreen extends React.Component {
 
             }}
             checked={this.state.checkedPrice2}
-            onPress= {value => this.setState({checkedPrice2: !this.state.checkedPrice2})}
+            onPress= {() => this.setState({checkedPrice2: !this.state.checkedPrice2})}
             />
           </Row>
 
               <Row style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
-          <Button rounded grey>
+          <Button rounded grey
+            onPress= {() => this.props.saveFilter(this.state.checkedStyle1bis, this.state.checkedPrice1)}>
                 <Text>Valider mes filtres</Text>
               </Button>
             </Row>
   </Grid>
-
 
 
       </Container>
@@ -373,3 +374,21 @@ export default class FilterScreen extends React.Component {
 );
   }
 }
+
+var mapDispatchToProps = dispatch => {
+  return {
+    saveFilter: (checkedStyle1, checkedPrice1) => {
+      dispatch({
+        type: 'save_filter',
+        style1: checkedStyle1,
+        price1: checkedPrice1
+
+      });
+    },
+  };
+};
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(FilterScreen);
