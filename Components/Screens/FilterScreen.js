@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Platform, StatusBar} from 'react-native';
 import {Divider, CheckBox } from 'react-native-elements';
-import { Container, Header, Content, DatePicker, ListItem, Text, Radio, Right, Left, Button } from 'native-base';
+import { Container, Header, Content, DatePicker, Text, Button } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import {connect} from 'react-redux';
 
@@ -61,22 +61,9 @@ class FilterScreen extends React.Component {
         checkedIcon='dot-circle-o'
         uncheckedIcon='circle-o'
         checkedColor= 'red'
-        containerStyle ={{
-
-        margin: 5,
-        marginLeft: 2,
-        marginRight: 2,
-        height: 50,
-        justifyContent: 'center',
-        backgroundColor: '#fafafa',
-        borderColor: '#ededed',
-        borderWidth: 1,
-        padding: 0,
-        borderRadius: 3,
-
-        }}
+        containerStyle ={[styles.checkbox]}
         checked={this.state.checkedStyle1}
-        onPress= {value => this.setState({checkedStyle1: !this.state.checkedStyle1, checkedStyle1bis: 'Rock'})}
+        onPress= {value => this.setState({checkedStyle1: !this.state.checkedStyle1})}
         />
         <CheckBox
         center
@@ -84,20 +71,7 @@ class FilterScreen extends React.Component {
         checkedIcon='dot-circle-o'
         uncheckedIcon='circle-o'
         checkedColor= 'red'
-        containerStyle ={{
-
-        margin: 5,
-        marginLeft: 2,
-        marginRight: 2,
-        height: 50,
-        justifyContent: 'center',
-        backgroundColor: '#fafafa',
-        borderColor: '#ededed',
-        borderWidth: 1,
-        padding: 0,
-        borderRadius: 3,
-
-        }}
+        containerStyle ={[styles.checkbox]}
         checked={this.state.checkedStyle2}
         onPress= {value => this.setState({checkedStyle2: !this.state.checkedStyle2})}
         />
@@ -107,20 +81,7 @@ class FilterScreen extends React.Component {
         checkedIcon='dot-circle-o'
         uncheckedIcon='circle-o'
         checkedColor= 'red'
-        containerStyle ={{
-
-        margin: 5,
-        marginLeft: 2,
-        marginRight: 2,
-        height: 50,
-        justifyContent: 'center',
-        backgroundColor: '#fafafa',
-        borderColor: '#ededed',
-        borderWidth: 1,
-        padding: 0,
-        borderRadius: 3,
-
-        }}
+        containerStyle ={[styles.checkbox]}
         checked={this.state.checkedStyle3}
         onPress= {value => this.setState({checkedStyle3: !this.state.checkedStyle3})}
         />
@@ -134,20 +95,7 @@ class FilterScreen extends React.Component {
         checkedIcon='dot-circle-o'
         uncheckedIcon='circle-o'
         checkedColor= 'red'
-        containerStyle ={{
-
-        margin: 5,
-        marginLeft: 2,
-        marginRight: 2,
-        height: 50,
-        justifyContent: 'center',
-        backgroundColor: '#fafafa',
-        borderColor: '#ededed',
-        borderWidth: 1,
-        padding: 0,
-        borderRadius: 3,
-
-        }}
+        containerStyle ={[styles.checkbox]}
         checked={this.state.checkedStyle4}
         onPress= {value => this.setState({checkedStyle4: !this.state.checkedStyle4})}
         />
@@ -157,20 +105,7 @@ class FilterScreen extends React.Component {
         checkedIcon='dot-circle-o'
         uncheckedIcon='circle-o'
         checkedColor= 'red'
-        containerStyle ={{
-
-        margin: 5,
-        marginLeft: 2,
-        marginRight: 2,
-        height: 50,
-        justifyContent: 'center',
-        backgroundColor: '#fafafa',
-        borderColor: '#ededed',
-        borderWidth: 1,
-        padding: 0,
-        borderRadius: 3,
-
-        }}
+        containerStyle ={[styles.checkbox]}
         checked={this.state.checkedStyle5}
         onPress= {value => this.setState({checkedStyle5: !this.state.checkedStyle5})}
         />
@@ -180,20 +115,7 @@ class FilterScreen extends React.Component {
         checkedIcon='dot-circle-o'
         uncheckedIcon='circle-o'
         checkedColor= 'red'
-        containerStyle ={{
-
-        margin: 5,
-        marginLeft: 2,
-        marginRight: 2,
-        height: 50,
-        justifyContent: 'center',
-        backgroundColor: '#fafafa',
-        borderColor: '#ededed',
-        borderWidth: 1,
-        padding: 0,
-        borderRadius: 3,
-
-        }}
+        containerStyle ={[styles.checkbox]}
         checked={this.state.checkedStyle6}
         onPress= {value => this.setState({checkedStyle6: !this.state.checkedStyle6})}
         />
@@ -208,20 +130,7 @@ class FilterScreen extends React.Component {
         checkedIcon='dot-circle-o'
         uncheckedIcon='circle-o'
         checkedColor= 'red'
-        containerStyle ={{
-
-        margin: 5,
-        marginLeft: 2,
-        marginRight: 2,
-        height: 50,
-        justifyContent: 'center',
-        backgroundColor: '#fafafa',
-        borderColor: '#ededed',
-        borderWidth: 1,
-        padding: 0,
-        borderRadius: 3,
-
-        }}
+        containerStyle ={[styles.checkbox]}
         checked={this.state.checkedStyle7}
         onPress= {value => this.setState({checkedStyle7: !this.state.checkedStyle7})}
         />
@@ -231,20 +140,7 @@ class FilterScreen extends React.Component {
         checkedIcon='dot-circle-o'
         uncheckedIcon='circle-o'
         checkedColor= 'red'
-        containerStyle ={{
-
-        margin: 5,
-        marginLeft: 2,
-        marginRight: 2,
-        height: 50,
-        justifyContent: 'center',
-        backgroundColor: '#fafafa',
-        borderColor: '#ededed',
-        borderWidth: 1,
-        padding: 0,
-        borderRadius: 3,
-
-        }}
+        containerStyle ={[styles.checkbox]}
         checked={this.state.checkedStyle8}
         onPress= {value => this.setState({checkedStyle8: !this.state.checkedStyle8})}
         />
@@ -254,20 +150,7 @@ class FilterScreen extends React.Component {
         checkedIcon='dot-circle-o'
         uncheckedIcon='circle-o'
         checkedColor= 'red'
-        containerStyle ={{
-
-        margin: 5,
-        marginLeft: 2,
-        marginRight: 2,
-        height: 50,
-        justifyContent: 'center',
-        backgroundColor: '#fafafa',
-        borderColor: '#ededed',
-        borderWidth: 1,
-        padding: 0,
-        borderRadius: 3,
-
-        }}
+        containerStyle ={[styles.checkbox]}
         checked={this.state.checkedStyle9}
         onPress= {value => this.setState({checkedStyle9: !this.state.checkedStyle9})}
         />
@@ -318,20 +201,7 @@ class FilterScreen extends React.Component {
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
             checkedColor= 'red'
-            containerStyle ={{
-
-            margin: 5,
-            marginLeft: 2,
-            marginRight: 2,
-            height: 50,
-            justifyContent: 'center',
-            backgroundColor: '#fafafa',
-            borderColor: '#ededed',
-            borderWidth: 1,
-            padding: 0,
-            borderRadius: 3,
-
-            }}
+            containerStyle ={[styles.checkbox]}
             checked={this.state.checkedPrice1}
             onPress= {value => this.setState({checkedPrice1: !this.state.checkedPrice1})}
             />
@@ -341,20 +211,7 @@ class FilterScreen extends React.Component {
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
             checkedColor= 'red'
-            containerStyle ={{
-
-            margin: 5,
-            marginLeft: 2,
-            marginRight: 2,
-            height: 50,
-            justifyContent: 'center',
-            backgroundColor: '#fafafa',
-            borderColor: '#ededed',
-            borderWidth: 1,
-            padding: 0,
-            borderRadius: 3,
-
-            }}
+            containerStyle ={[styles.checkbox]}
             checked={this.state.checkedPrice2}
             onPress= {() => this.setState({checkedPrice2: !this.state.checkedPrice2})}
             />
@@ -362,7 +219,7 @@ class FilterScreen extends React.Component {
 
               <Row style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
           <Button rounded grey
-            onPress= {() => this.props.saveFilter(this.state.checkedStyle1bis, this.state.checkedPrice1)}>
+            onPress= {() => this.props.saveFilter(this.state.checkedStyle1, this.state.checkedStyle2, this.state.checkedStyle3, this.state.checkedStyle4, this.state.checkedStyle5, this.state.checkedStyle6, this.state.checkedStyle7, this.state.checkedStyle8, this.state.checkedStyle9, this.state.checkedPrice1, this.state.checkedPrice2, this.state.chosenDate - new Date(an, mois, jour-1))}>
                 <Text>Valider mes filtres</Text>
               </Button>
             </Row>
@@ -377,16 +234,42 @@ class FilterScreen extends React.Component {
 
 var mapDispatchToProps = dispatch => {
   return {
-    saveFilter: (checkedStyle1, checkedPrice1) => {
+    saveFilter: (checkedStyle1,  checkedStyle2, checkedStyle3, checkedStyle4, checkedStyle5, checkedStyle6, checkedStyle7, checkedStyle8, checkedStyle9, checkedPrice1, checkedPrice2, date) => {
       dispatch({
         type: 'save_filter',
         style1: checkedStyle1,
-        price1: checkedPrice1
+        style2: checkedStyle2,
+        style3: checkedStyle3,
+        style4: checkedStyle4,
+        style5: checkedStyle5,
+        style6: checkedStyle6,
+        style7: checkedStyle7,
+        style8: checkedStyle8,
+        style9: checkedStyle9,
+        price1: checkedPrice1,
+        price2: checkedPrice2,
+        date: date,
+
 
       });
     },
   };
 };
+
+const styles = StyleSheet.create({
+checkbox: {
+  margin: 5,
+  marginLeft: 2,
+  marginRight: 2,
+  height: 50,
+  justifyContent: 'center',
+  backgroundColor: '#fafafa',
+  borderColor: '#ededed',
+  borderWidth: 1,
+  padding: 0,
+  borderRadius: 3,
+  }
+});
 
 export default connect(
     null,
