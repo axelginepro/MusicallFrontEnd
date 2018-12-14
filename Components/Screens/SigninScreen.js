@@ -17,7 +17,11 @@ export default class SignInScreen extends React.Component {
 
   async componentDidMount() {
     await Font.loadAsync({
-      RalewayLight: require('../../assets/fonts/Raleway-Regular.ttf'),
+      RalewayBlackItalic: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+      RalewayLight: require('../../assets/fonts/Raleway-Light.ttf'),
+      RalewayMedium: require('../../assets/fonts/Raleway-Medium.ttf'),
+      RalewayRegular: require('../../assets/fonts/Raleway-Regular.ttf'),
+      RalewayThin: require('../../assets/fonts/Raleway-Thin.ttf')
     })
     this.setState({
       fontLoaded: true
@@ -68,7 +72,8 @@ export default class SignInScreen extends React.Component {
               </Button>
               <Text style={{color: '#CD3C30'}}>{this.state.error}</Text>
 </Col>
-      </Grid> ) : null}
+      </Grid> 
+      ) : null}
   </ImageBackground>
     );
   }
@@ -78,7 +83,7 @@ var styles = StyleSheet.create({
   titleText: {
     fontSize:65,
     color:'#CD3C30',
-    fontFamily: 'RalewayLight'
+    fontFamily: 'RalewayRegular'
 
   },
     form: {
@@ -89,6 +94,7 @@ var styles = StyleSheet.create({
       fontSize: 30,
       width: 350,
       height: 75,
+      fontFamily: 'RalewayRegular'
     },
     row: {
     justifyContent: 'center',

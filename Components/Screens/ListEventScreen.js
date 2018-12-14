@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, Platform, StatusBar } from 'react-native
 import { Container, Header, Content, List, ListItem, Thumbnail, Left, Body, Right, Button, Icon, Item, Input} from 'native-base';
 
 import {connect} from 'react-redux';
+import { Font } from 'expo';
 
 class ListEventScreen extends Component {
 
@@ -42,13 +43,34 @@ class ListEventScreen extends Component {
 }
 
 class Headerbar extends Component {
+    state = {
+    fontLoaded: false,
+  }
+  async componentDidMount() {
+    await Font.loadAsync({
+      RalewayBlackItalic: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+      RalewayLight: require('../../assets/fonts/Raleway-Light.ttf'),
+      RalewayMedium: require('../../assets/fonts/Raleway-Medium.ttf'),
+      RalewayRegular: require('../../assets/fonts/Raleway-Regular.ttf'),
+      RalewayThin: require('../../assets/fonts/Raleway-Thin.ttf')
+    })
+    this.setState({
+      fontLoaded: true
+    })
+  };
+
+  static navigationOptions = {
+    header: null
+  }
   render() {
 
     return (
+      <Container>
+      {this.state.fontLoaded? (
         <Header noShadow style={{marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight, backgroundColor: '#FC8C3D'}}>
           <Left>
             <Button transparent onPress= { () => this.props.navigation.navigate('Filter')}>
-              <Icon name='menu'/>
+              <Icon style={styles.cont} name='menu'/>
             </Button>
           </Left>
           <Right>
@@ -58,13 +80,23 @@ class Headerbar extends Component {
             </Button>
 
             <Item regular>
-              <Input placeholder='Recherche ...'/>
+              <Input style={styles.cont} placeholder='Recherche gh...'/>
             </Item>
           </Right>
-        </Header>
+        </Header> ) : null}
+        </Container>
     );
   }
 }
+
+const styles = StyleSheet.create({
+      cont: {
+        color:'red',
+        fontFamily:'RalewayBlackItalic'            
+      },
+
+    });
+
 
 function mapStateToProps(state) {
   return {

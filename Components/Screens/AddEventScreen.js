@@ -4,6 +4,7 @@ import {Button, FormLabel, FormInput, Divider, Text} from 'react-native-elements
 import Geocoder from 'react-native-geocoding';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Container, Header, Content, DatePicker} from 'native-base';
+import { Font } from 'expo';
 
 Geocoder.init('AIzaSyCpwkK4H7BrdzwW-yEhyzR5i92R4JWR5yk');
 
@@ -23,11 +24,25 @@ export default class AddEventScreen extends React.Component {
         latitude: null,
         longitude: null
       },
+      fontLoaded: false,
       eventDate: new Date()
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setDate = this.setDate.bind(this)
   }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      RalewayBlackItalic: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+      RalewayLight: require('../../assets/fonts/Raleway-Light.ttf'),
+      RalewayMedium: require('../../assets/fonts/Raleway-Medium.ttf'),
+      RalewayRegular: require('../../assets/fonts/Raleway-Regular.ttf'),
+      RalewayThin: require('../../assets/fonts/Raleway-Thin.ttf')
+    })
+    this.setState({
+      fontLoaded: true
+    })
+  };
 
  setDate(newDate) {
     this.setState({ eventDate: newDate })
@@ -79,7 +94,7 @@ export default class AddEventScreen extends React.Component {
 
     return (
       <ScrollView>
-
+      {this.state.fontLoaded? (
       <View style={styles.container}>
 
 
@@ -87,7 +102,7 @@ export default class AddEventScreen extends React.Component {
       <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
 </Row>
 
-        <Text style={{color: 'red', fontSize: 35, marginTop: '10%'}}>Ajouter un événement</Text>
+        <Text style={{fontFamily:'RalewayRegular', color: 'red', fontSize: 35, marginTop: '10%'}}>Ajouter un événement</Text>
         
         <Col style={styles.date}>
                 <DatePicker
@@ -101,7 +116,7 @@ export default class AddEventScreen extends React.Component {
                   androidMode={"default"}
                   placeHolderText={'Date'}
                   textStyle={{ color: "grey", textAlign: "center", flex: 1, alignItems: "center", justifyContent: "center"}}
-                  placeHolderTextStyle={{ color: "#d3d3d3" , fontSize: 30, textAlign: "center", textAlignVertical: "center", padding: 0}}
+                  placeHolderTextStyle={{ fontFamily:'RalewayRegular', color: "#d3d3d3" , fontSize: 30, textAlign: "center", textAlignVertical: "center", padding: 0}}
                   onDateChange={this.setDate}
                 />
           </Col>
@@ -126,7 +141,7 @@ export default class AddEventScreen extends React.Component {
             backgroundColor = "#2c3e50"
             onPress={this.handleSubmit}
         />
-        </View>
+        </View>) : null}
       </ScrollView>
     );
   }
@@ -143,7 +158,8 @@ const styles = StyleSheet.create({
         width: 250,
                 borderColor: 'lightgrey',
                 borderWidth: 2,
-                fontSize: 30
+                fontSize: 30,
+                fontFamily:'RalewayRegular',
         },
         date: {
           borderRadius: 50,
@@ -152,6 +168,7 @@ const styles = StyleSheet.create({
                 borderWidth: 2,
                 padding: 0,
                 margin: 0,
+               
         },
         row: {
   justifyContent: 'center',

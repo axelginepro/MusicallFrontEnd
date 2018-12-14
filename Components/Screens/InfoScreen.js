@@ -4,12 +4,28 @@ import {Divider, Button, Text } from 'react-native-elements';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import {Ionicons, MatterialCommunityIcons} from '@expo/vector-icons';
 import { Icon } from 'native-base';
+import { Font } from 'expo';
 
 export default class InfoScreen extends React.Component {
+   state = {
+    fontLoaded: false,
+  }
+  async componentDidMount() {
+    await Font.loadAsync({
+      RalewayBlackItalic: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+      RalewayLight: require('../../assets/fonts/Raleway-Light.ttf'),
+      RalewayMedium: require('../../assets/fonts/Raleway-Medium.ttf'),
+      RalewayRegular: require('../../assets/fonts/Raleway-Regular.ttf'),
+      RalewayThin: require('../../assets/fonts/Raleway-Thin.ttf')
+    })
+    this.setState({
+      fontLoaded: true
+    })
+  };
   render() {
     return (
 <ImageBackground style={{flex:1}} source={require("../../assets/Images/piano.jpg")} resizeMode='stretch'>
-
+  {this.state.fontLoaded? (
 <Grid style={styles.row}>
         <Row>
       <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
@@ -56,7 +72,7 @@ export default class InfoScreen extends React.Component {
           <Text style={styles.textColor} h4> Liker vos événements</Text>
         </Col>
 
-</Grid>
+</Grid> ) : null}
 </ImageBackground>
     );
   }
@@ -67,6 +83,7 @@ contentView: {
   flex: 0.5,
   flexDirection: 'row',
   width: '100%',
+
 },
 row: {
   justifyContent: 'center',
@@ -80,5 +97,6 @@ icon: {
 },
 textColor: {
   color: '#d63031',
+  fontFamily:'RalewayRegular'
 }
 });

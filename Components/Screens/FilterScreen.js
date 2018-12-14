@@ -4,6 +4,7 @@ import {Divider, CheckBox } from 'react-native-elements';
 import { Container, Header, Content, DatePicker, Text, Button } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import {connect} from 'react-redux';
+import { Font } from 'expo';
 
 class FilterScreen extends React.Component {
 
@@ -25,9 +26,23 @@ class FilterScreen extends React.Component {
       checkedStyle9: false,
       checkedPrice1: false,
       checkedPrice2: false,
-      chosenDate: new Date()
+      chosenDate: new Date(),
+      fontLoaded: false
     };
     this.setDate = this.setDate.bind(this)
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      RalewayBlackItalic: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+      RalewayLight: require('../../assets/fonts/Raleway-Light.ttf'),
+      RalewayMedium: require('../../assets/fonts/Raleway-Medium.ttf'),
+      RalewayRegular: require('../../assets/fonts/Raleway-Regular.ttf'),
+      RalewayThin: require('../../assets/fonts/Raleway-Thin.ttf')
+    })
+    this.setState({
+      fontLoaded: true
+    })
   }
 
   setDate(newDate) {
@@ -43,12 +58,12 @@ class FilterScreen extends React.Component {
 
     return (
       <Container style ={{marginTop: Platform.OS === 'ios' ? 20 : StatusBar.currentHeight}}>
-
+      {this.state.fontLoaded? (
 
         <Grid style={{margin: 0}}>
 
             <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' ,backgroundColor: '#1C1F33'}}>
-        <Text style={{color: 'white'}}>STYLES</Text>
+        <Text style={styles.txt}>STYLES</Text>
       </Col>
 
 
@@ -158,7 +173,7 @@ class FilterScreen extends React.Component {
 
 
       <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' ,backgroundColor: '#1C1F33'}}>
-      <Text style={{color: 'white'}}>DATE DES EVENEMENTS</Text>
+      <Text style={styles.txt}>DATE DES EVENEMENTS</Text>
       </Col>
 
 
@@ -177,7 +192,7 @@ class FilterScreen extends React.Component {
                 androidMode={"default"}
                 placeHolderText={'Choisir une date'}
                 textStyle={{ color: "grey" }}
-                placeHolderTextStyle={{ color: "#d3d3d3" }}
+                placeHolderTextStyle={{ fontFamily:'RalewayRegular', color: "#d3d3d3" }}
                 onDateChange={this.setDate}
               />
             </Col>
@@ -193,7 +208,7 @@ class FilterScreen extends React.Component {
 
 
               <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', backgroundColor: '#1C1F33'}}>
-            <Text style={{color: 'white'}}>TARIF</Text>
+            <Text style={styles.txt}>TARIF</Text>
           </Col>
 
               <Row style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '100%'}}>
@@ -222,10 +237,10 @@ class FilterScreen extends React.Component {
               <Row style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
           <Button rounded grey
             onPress= {() => this.props.saveFilter(this.state.checkedStyle1, this.state.checkedStyle2, this.state.checkedStyle3, this.state.checkedStyle4, this.state.checkedStyle5, this.state.checkedStyle6, this.state.checkedStyle7, this.state.checkedStyle8, this.state.checkedStyle9, this.state.checkedPrice1, this.state.checkedPrice2, this.state.chosenDate - new Date(an, mois, jour-1))}>
-                <Text>Valider mes filtres</Text>
+                <Text style={styles.txt}>Valider mes filtres</Text>
               </Button>
             </Row>
-  </Grid>
+  </Grid>): null}
 
 
       </Container>
@@ -270,7 +285,12 @@ checkbox: {
   borderWidth: 1,
   padding: 0,
   borderRadius: 3,
-  }
+  fontFamily:'RalewayBlackItalic'
+  },
+  txt:{
+    color:'white',
+    fontFamily:'RalewayRegular'
+  },
 });
 
 export default connect(

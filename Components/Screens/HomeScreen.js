@@ -4,8 +4,22 @@ import {Divider, Button, Text } from 'react-native-elements'
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Font } from 'expo';
 
-
 export default class HomeScreen extends React.Component {
+   state = {
+    fontLoaded: false,
+  }
+  async componentDidMount() {
+    await Font.loadAsync({
+      RalewayBlackItalic: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+      RalewayLight: require('../../assets/fonts/Raleway-Light.ttf'),
+      RalewayMedium: require('../../assets/fonts/Raleway-Medium.ttf'),
+      RalewayRegular: require('../../assets/fonts/Raleway-Regular.ttf'),
+      RalewayThin: require('../../assets/fonts/Raleway-Thin.ttf')
+    })
+    this.setState({
+      fontLoaded: true
+    })
+  };
 
   static navigationOptions = {
     header: null
@@ -15,7 +29,7 @@ export default class HomeScreen extends React.Component {
 
  
   <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")} resizeMode='stretch'>
-
+  {this.state.fontLoaded? (
 
     <Grid style={styles.row}>
         <Row>
@@ -47,11 +61,10 @@ export default class HomeScreen extends React.Component {
       </Col>
             
       </Grid>
-            
+            ) : null}
             <Text  onPress= { ()=> this.props.navigation.navigate('Map')} h3>Pour Naviguer</Text>
             <Text  onPress= { ()=> this.props.navigation.navigate('Filter')} h4>Go to Filter Mother Fucker</Text>
-   
-      </ImageBackground>
+  </ImageBackground>
 
    
     );
@@ -64,8 +77,7 @@ const styles = StyleSheet.create({
           alignItems: 'center',
           width: '100%',
           height: '10%',
-          marginBottom: '5%',
-               
+          marginBottom: '5%'               
       },
 
     });

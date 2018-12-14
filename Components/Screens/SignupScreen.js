@@ -5,7 +5,7 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Font } from 'expo';
 
 export default class SignupScreen extends React.Component {
-	 constructor() {
+   constructor() {
     super();
     this.state = {
       pseudo: '',
@@ -18,7 +18,11 @@ export default class SignupScreen extends React.Component {
 
   async componentDidMount() {
     await Font.loadAsync({
-      RalewayLight: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+      RalewayBlackItalic: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+      RalewayLight: require('../../assets/fonts/Raleway-Light.ttf'),
+      RalewayMedium: require('../../assets/fonts/Raleway-Medium.ttf'),
+      RalewayRegular: require('../../assets/fonts/Raleway-Regular.ttf'),
+      RalewayThin: require('../../assets/fonts/Raleway-Thin.ttf')
     })
     this.setState({
       fontLoaded: true
@@ -26,11 +30,11 @@ export default class SignupScreen extends React.Component {
   }
 
   handleSubmit(){
-  	var ctx = this;
-  	fetch('https://musicall1.herokuapp.com/signup', {
-  		method: 'POST',
-  		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-  		body: 'pseudo='+this.state.pseudo+'&email='+this.state.email+'&password='+this.state.password
+    var ctx = this;
+    fetch('https://musicall1.herokuapp.com/signup', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: 'pseudo='+this.state.pseudo+'&email='+this.state.email+'&password='+this.state.password
    }).then(function(response) {
       return response.json()
     }).then(function(data) {
@@ -62,16 +66,16 @@ export default class SignupScreen extends React.Component {
       </Col>
 
       <Col>
-            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Pseudo" placeholderTextColor='white'  />
+            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({pseudo: text})} placeholder="Pseudo" placeholderTextColor='white'  />
       </Col>
       <Col>
-              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Email" placeholderTextColor='white'  />
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({email: text})} placeholder="Email" placeholderTextColor='white'  />
       </Col>
       <Col>
-              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Password" placeholderTextColor='white'  />
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
        </Col>
       <Col>
-            <Button
+            <Button 
                 buttonStyle={{borderRadius:25, width:250, height:65, justifyContent: 'center', marginTop:10}}
                 title="Devenir membre"
                 style={{flex:1}}
@@ -81,13 +85,13 @@ export default class SignupScreen extends React.Component {
               </Button>
        </Col>
       <Col >
-            <Text style={{color: 'white'}}>Already have an account ?</Text><Text style={{color: 'white', textAlign: 'center'}}
+            <Text style={styles.bottom}>Already have an account ?</Text><Text style={styles.bottom}
                 onPress={() => this.props.navigation.navigate('SignIn')}>
                               Sign In
             </Text>
       </Col>
       <Col>
-              <Text style={{color: 'white'}}>By creating an account, you agree to our Terms</Text>
+              <Text style={styles.bottom}>By creating an account, you agree to our Terms</Text>
       </Col>
   </Grid>) : null}
 </ImageBackground>
@@ -99,7 +103,7 @@ var styles = StyleSheet.create({
   titleText: {
     fontSize:65,
     color:'#CD3C30',
-    fontFamily: 'RalewayLight'
+    fontFamily: 'RalewayRegular'
     
   }, form: {
     backgroundColor: 'rgba(0,0,0,0.4)',
@@ -109,6 +113,7 @@ var styles = StyleSheet.create({
     fontSize: 20,
     width: 350,
     height: 55,
+    fontFamily: 'RalewayRegular'
   },
   row: {
     justifyContent: 'center',
@@ -122,5 +127,13 @@ var styles = StyleSheet.create({
     width: '100%',
     height: '10%',
     marginTop: '20%'
+  },
+  but:{
+    fontFamily: 'RalewayRegular'
+  },
+  bottom:{
+    color: 'white',
+    textAlign: 'center',
+    fontFamily: 'RalewayThin'
   }
   })
