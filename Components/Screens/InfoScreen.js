@@ -8,7 +8,7 @@ import { Icon } from 'native-base';
 export default class InfoScreen extends React.Component {
   render() {
     return (
-
+<ImageBackground style={{flex:1}} source={require("../../assets/Images/piano.jpg")} resizeMode='stretch'>
 
 <Grid style={styles.row}>
         <Row>
@@ -57,6 +57,7 @@ export default class InfoScreen extends React.Component {
         </Col>
 
 </Grid>
+</ImageBackground>
     );
   }
 };
