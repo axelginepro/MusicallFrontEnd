@@ -2,30 +2,37 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, Platform, StatusBar } from 'react-native';
 import { Container, Header, Content, List, ListItem, Thumbnail, Left, Body, Right, Button, Icon, Item, Input} from 'native-base';
 
+import {connect} from 'react-redux';
 
+class ListEventScreen extends Component {
 
-export default class ListEventScreen extends Component {
   render() {
-    var Iconbis = "../../assets/Icons/CrocheCouleur.png"
-    var photobis = "../../assets/Images/rockhome.jpg"
+
+    var Iconbis = "../../assets/Icons/CrocheVide.png";
+    var Icontris = "../../assets/Icons/CrocheCouleur.png";
+    var photobis = "../../assets/Images/rockhome.jpg";
+
+    var  eventList= this.props.eventList.map((event, i) =>
+      <ListItem key={i} thumbnail>
+        <Left>
+          <Thumbnail square large source={require (photobis)}/>
+        </Left>
+        <Body>
+          <Text>{`Artiste:${event.artist}  style: ${event.style} `}</Text>
+          <Text>{` le ${event.eventDate}  entrée ${event.price}`}</Text>
+        </Body>
+        <Right>
+            <Thumbnail source={require (Icontris)} />
+        </Right>
+      </ListItem>
+    );
     return (
 
         <Container>
           <Headerbar navigation={this.props.navigation}/>
          <Content>
            <List>
-             <ListItem thumbnail>
-               <Left>
-                 <Thumbnail square large source={require (photobis)}/>
-               </Left>
-               <Body>
-                 <Text>Sankhadeep</Text>
-                 <Text>Its time to build a difference . .</Text>
-               </Body>
-               <Right>
-                   <Thumbnail source={require (Iconbis)} />
-               </Right>
-             </ListItem>
+             {eventList}
            </List>
          </Content>
        </Container>
@@ -58,3 +65,11 @@ class Headerbar extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    eventList: state.eventList,
+  };
+}
+
+export default connect(mapStateToProps, null)(ListEventScreen);

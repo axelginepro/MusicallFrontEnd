@@ -8,7 +8,7 @@ import { Icon } from 'native-base';
 export default class InfoScreen extends React.Component {
   render() {
     return (
-  
+
 
 <Grid style={styles.row}>
         <Row>
@@ -38,26 +38,26 @@ export default class InfoScreen extends React.Component {
             <Ionicons name="ios-add-circle-outline" size={35} style={{marginRight: 25, marginLeft: 25}} />
           <Text h4> Ajouter un Concert </Text>
         </Col>
-      
+
 
 
         <Col style={styles.contentView}>
           <Ionicons name='ios-person' size={35} style={{marginRight: 25, marginLeft: 25}} />
           <Text h4> Accéder à son compte</Text>
         </Col>
-      
+
 
 
       <Col style={styles.contentView}>
           <Image
-        source={require('../../assets/Icons/IconDoubleCrocheCouleur.png')}
+        source={require('../../assets/Icons/CrocheCouleur.png')}
         style={{width: 75, height: 75, }}
       />
           <Text h4> Liker vos événements</Text>
         </Col>
 
 </Grid>
-  
+
     );
   }
 }
@@ -66,7 +66,7 @@ contentView: {
   flex: 0.5,
   flexDirection: 'row',
   width: '100%',
-  
+
 },
 row: {
   justifyContent: 'center',

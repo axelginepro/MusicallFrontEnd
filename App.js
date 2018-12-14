@@ -5,7 +5,7 @@ import {View, Text} from 'react-native';
 import Navigation from './Components/Navigation/Navigation';
 
 // import de mes Reducers
-
+import eventList from './Components/Reducers/event.reducer'
 
 // import de mes outils Redux
 import {Provider} from 'react-redux';
@@ -13,11 +13,14 @@ import {createStore, combineReducers} from 'redux';
 
 // Création de mon Store
 
+const store = createStore(combineReducers({eventList}));
 
 export default class App extends React.Component {
   render() {
     return (
-      <Navigation/>
-    )
+      <Provider store={store}>
+        <Navigation/>
+      </Provider>
+    );
   }
 }
