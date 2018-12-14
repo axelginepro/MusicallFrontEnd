@@ -47,7 +47,7 @@ class FilterScreen extends React.Component {
 
         <Grid style={{margin: 0}}>
 
-            <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' ,backgroundColor: '#96989E', borderRadius: '50%'}}>
+            <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' ,backgroundColor: '#1C1F33'}}>
         <Text style={{color: 'white'}}>STYLES</Text>
       </Col>
 
@@ -157,9 +157,11 @@ class FilterScreen extends React.Component {
       </Row>
 
 
-            <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', backgroundColor: '#96989E', borderRadius: '50%'}}>
-              <Text style={{color: 'white'}}>DATE DES EVENEMENTS</Text>
-            </Col>
+      <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' ,backgroundColor: '#1C1F33'}}>
+      <Text style={{color: 'white'}}>DATE DES EVENEMENTS</Text>
+      </Col>
+
+
 
 
 
@@ -190,7 +192,7 @@ class FilterScreen extends React.Component {
 
 
 
-              <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', backgroundColor: '#96989E', borderRadius: '50%'}}>
+              <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', backgroundColor: '#1C1F33'}}>
             <Text style={{color: 'white'}}>TARIF</Text>
           </Col>
 
