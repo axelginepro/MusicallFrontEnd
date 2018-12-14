@@ -17,7 +17,7 @@ export default class SignInScreen extends React.Component {
 
   async componentDidMount() {
     await Font.loadAsync({
-      RalewayLight: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+      RalewayLight: require('../../assets/fonts/Raleway-Regular.ttf'),
     })
     this.setState({
       fontLoaded: true
@@ -55,11 +55,11 @@ export default class SignInScreen extends React.Component {
 <Col  >
             <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({email: text})} placeholder="Email" placeholderTextColor='white'  />
 
-	            <FormInput secureTextEntry={true} inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
+	            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
 </Col>
       <Col>
               <Button
-                  buttonStyle={{borderRadius:25, width:'100%', height: '50%', justifyContent: 'center', marginTop:'5%'}}
+                  buttonStyle={{borderRadius:25, width:180, height: 65, justifyContent: 'center', marginTop:10}}
                     title="Submit"
                     style={{flex:1}}
                     backgroundColor='#5b6778'
@@ -95,11 +95,13 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     height: '10%',
-    
   },
     grille: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '5%'
+    width: '100%',
+    height: '10%',
+    marginBottom: '10%'
+    
   }
 });
