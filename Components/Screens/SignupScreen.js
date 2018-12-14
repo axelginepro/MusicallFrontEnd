@@ -106,8 +106,8 @@ var styles = StyleSheet.create({
     grille: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
-    height: '10%',
-    marginTop: '20%'
+    // width: '100%',
+    // height: '10%',
+    marginTop: '6%'
   }
   })

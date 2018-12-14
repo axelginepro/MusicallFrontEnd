@@ -83,12 +83,11 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     height: '10%',
+    
   },
     grille: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
-    height: '5%',
-    marginBottom: '5%'
+    marginTop: '5%'
   }
 });
