@@ -1,5 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import { Font } from 'expo';
+
 
 // import de ma navigation qui contient tous mes Screens
 import Navigation from './Components/Navigation/Navigation';
