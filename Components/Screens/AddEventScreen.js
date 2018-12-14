@@ -3,6 +3,7 @@ import { Image, StyleSheet, View, ScrollView } from 'react-native';
 import {Button, FormLabel, FormInput, Divider, Text} from 'react-native-elements';
 import Geocoder from 'react-native-geocoding';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import { Container, Header, Content, DatePicker} from 'native-base';
 
 Geocoder.init('AIzaSyCpwkK4H7BrdzwW-yEhyzR5i92R4JWR5yk');
 
@@ -10,7 +11,7 @@ export default class AddEventScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      eventDate: null,
+      
       adresse: null,
       name: null,
       artist: null,
@@ -21,14 +22,17 @@ export default class AddEventScreen extends React.Component {
       coords: {
         latitude: null,
         longitude: null
-      }
+      },
+      eventDate: new Date()
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setDate = this.setDate.bind(this)
   }
 
+ setDate(newDate) {
+    this.setState({ eventDate: newDate })
 
-
-
+ }
 
   handleSubmit() {
     const ctx = this
@@ -68,6 +72,10 @@ export default class AddEventScreen extends React.Component {
   }
 
   render() {
+   var maintenant = new Date();
+   var jour = maintenant.getDate();
+   var mois = maintenant.getMonth();
+   var an = maintenant.getFullYear();
 
     return (
       <ScrollView>
@@ -80,7 +88,25 @@ export default class AddEventScreen extends React.Component {
 </Row>
 
         <Text style={{color: 'red', fontSize: 35, marginTop: '10%'}}>Ajouter un événement</Text>
-              <FormInput  inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({eventDate: text})} placeholder="Date" />
+        
+        <Col style={styles.date}>
+                <DatePicker
+                  defaultDate={new Date(an, mois, jour-1)}
+                  minimumDate={new Date(an, mois, jour-1)}
+                  maximumDate={new Date(an, mois, jour+30)}
+                  locale={"fr"}
+                  timeZoneOffsetInMinutes={undefined}
+                  modalTransparent={false}
+                  animationType={"fade"}
+                  androidMode={"default"}
+                  placeHolderText={'Date'}
+                  textStyle={{ color: "grey", textAlign: "center", flex: 1, alignItems: "center", justifyContent: "center"}}
+                  placeHolderTextStyle={{ color: "#d3d3d3" , fontSize: 30, textAlign: "center", textAlignVertical: "center", padding: 0}}
+                  onDateChange={this.setDate}
+                />
+          </Col>
+
+            
               <Divider style={{height:20}}/>
               <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" />
               <Divider style={{height:20}}/>
@@ -113,10 +139,19 @@ const styles = StyleSheet.create({
         alignItems: "center",
       },
       form: {
+        borderRadius: 50,
         width: 250,
                 borderColor: 'lightgrey',
                 borderWidth: 2,
                 fontSize: 30
+        },
+        date: {
+          borderRadius: 50,
+                width: 250,
+                borderColor: 'lightgrey',
+                borderWidth: 2,
+                padding: 0,
+                margin: 0,
         },
         row: {
   justifyContent: 'center',
