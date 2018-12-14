@@ -50,7 +50,7 @@ export default class InfoScreen extends React.Component {
 
       <Col style={styles.contentView}>
           <Image
-        source={require('../../assets/Icons/IconDoubleCrocheCouleur.png')}
+        source={require('../../assets/Icons/CrocheCouleur.png')}
         style={{width: 75, height: 75, }}
       />
           <Text h4> Liker vos événements</Text>

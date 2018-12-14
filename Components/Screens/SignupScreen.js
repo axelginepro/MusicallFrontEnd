@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet,View, ImageBackground, Image, ScrollView  } from 'react-native';
 import {Divider, Button, FormLabel, FormInput, Text } from 'react-native-elements';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import { Font } from 'expo';
 
 export default class SignupScreen extends React.Component {
 	 constructor() {
@@ -9,9 +10,19 @@ export default class SignupScreen extends React.Component {
     this.state = {
       pseudo: '',
       email: '',
-      password: ''
+      password: '',
+      fontLoaded: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      RalewayLight: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+    })
+    this.setState({
+      fontLoaded: true
+    })
   }
 
   handleSubmit(){
@@ -35,14 +46,15 @@ export default class SignupScreen extends React.Component {
 
 
 
+
   render() {
     return (
     
       <ImageBackground style={{flex:1}} source={require("../../assets/Images/rocksign.jpeg")} resizeMode='stretch'>
-
+      {this.state.fontLoaded? (
 <Grid style={styles.row}>
         <Row>
-                    <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+            <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
         </Row>
 
        <Col style={styles.grille}>
@@ -77,7 +89,7 @@ export default class SignupScreen extends React.Component {
       <Col>
               <Text style={{color: 'white'}}>By creating an account, you agree to our Terms</Text>
       </Col>
-  </Grid>
+  </Grid>) : null}
 </ImageBackground>
 
     );
@@ -87,6 +99,8 @@ var styles = StyleSheet.create({
   titleText: {
     fontSize:65,
     color:'#CD3C30',
+    fontFamily: 'RalewayLight'
+    
   }, form: {
     backgroundColor: 'rgba(0,0,0,0.4)',
     color: 'red',

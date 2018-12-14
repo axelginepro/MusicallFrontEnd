@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image  } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
 import {Divider, Button, FormLabel, FormInput } from 'react-native-elements'
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import { Font } from 'expo';
 
 export default class SignInScreen extends React.Component {
   constructor() {
@@ -9,11 +10,19 @@ export default class SignInScreen extends React.Component {
     this.state = {
       email: '',
       password: '',
-      error: null
+      error: null,
+      fontLoaded: false
     };
   }
 
-
+  async componentDidMount() {
+    await Font.loadAsync({
+      RalewayLight: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+    })
+    this.setState({
+      fontLoaded: true
+    })
+  }
 
   handleSubmit = () => {
     fetch(`https://musicall1.herokuapp.com/signin?email=${this.state.email}&password=${this.state.password}`)
@@ -32,8 +41,9 @@ export default class SignInScreen extends React.Component {
 
   render() {
     return (
+    
         <ImageBackground style={{flex:1}} source={require("../../assets/Images/rocksign.jpeg")} resizeMode='stretch'>
-
+        {this.state.fontLoaded? (
       <Grid style={styles.row}>
             <Row>
               <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
@@ -58,15 +68,17 @@ export default class SignInScreen extends React.Component {
               </Button>
               <Text style={{color: '#CD3C30'}}>{this.state.error}</Text>
 </Col>
-      </Grid>
+      </Grid> ) : null}
   </ImageBackground>
     );
   }
-}
+};
+
 var styles = StyleSheet.create({
   titleText: {
     fontSize:65,
     color:'#CD3C30',
+    fontFamily: 'RalewayLight'
 
   },
     form: {
