@@ -10,7 +10,7 @@ const GEOLOCATION_OPTIONS = { enableHighAccuracy: true, timeInterval: 200, dista
 
 import {connect} from 'react-redux';
 
-export default class MapScreen extends Component {
+class MapScreen extends Component {
   state={
     location: null,
     errorMessage: null,
@@ -35,13 +35,13 @@ export default class MapScreen extends Component {
 
 
       fetch('https://musicall1.herokuapp.com/listEvent')
-
       .then(response => response.json())
       .then(eventData => {
         this.setState({
           location: data,
           eventList: eventData.event
         })
+        this.props.handleEventList(eventData.event)
       })
       .catch(e => console.error(e));
     });
@@ -129,3 +129,16 @@ class Headerbar extends Component {
     );
   }
 }
+
+function mapDispatchToProps(dispatch){
+  return {
+    handleEventList : function(eventList){
+      dispatch({
+        type: 'eventData',
+        event: eventList,
+      })
+    }
+  }
+}
+
+export default connect (null, mapDispatchToProps)(MapScreen);

@@ -6,13 +6,15 @@ import Navigation from './Components/Navigation/Navigation';
 
 // import de mes Reducers
 import filter from './Components/Reducers/filter.reducer';
+import eventList from './Components/Reducers/event.reducer';
+
 
 // import de mes outils Redux
 import {Provider} from 'react-redux';
 import {createStore, combineReducers} from 'redux';
 
 
-const store = createStore(combineReducers({filter}));
+const store = createStore(combineReducers({filter, eventList}));
 
 // Création de mon Store
 

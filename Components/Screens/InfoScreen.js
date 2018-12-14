@@ -8,7 +8,7 @@ import { Icon } from 'native-base';
 export default class InfoScreen extends React.Component {
   render() {
     return (
-  
+
 
 <Grid style={styles.row}>
         <Row>
@@ -38,14 +38,14 @@ export default class InfoScreen extends React.Component {
             <Ionicons name="ios-add-circle-outline" size={35} style={styles.icon} />
           <Text h4> Ajouter un Concert </Text>
         </Col>
-      
+
 
 
         <Col style={styles.contentView}>
           <Ionicons name='ios-person' size={35} style={styles.icon} />
           <Text h4> Accéder à son compte</Text>
         </Col>
-      
+
 
 
       <Col style={styles.contentView}>
@@ -57,7 +57,7 @@ export default class InfoScreen extends React.Component {
         </Col>
 
 </Grid>
-  
+
     );
   }
 }
@@ -66,7 +66,7 @@ contentView: {
   flex: 0.5,
   flexDirection: 'row',
   width: '100%',
-  
+
 },
 row: {
   justifyContent: 'center',
