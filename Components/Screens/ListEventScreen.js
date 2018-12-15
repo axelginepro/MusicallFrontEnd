@@ -6,6 +6,21 @@ import {connect} from 'react-redux';
 import { Font } from 'expo';
 
 class ListEventScreen extends Component {
+    state = {
+    fontLoaded: false,
+  }
+  async componentDidMount() {
+    await Font.loadAsync({
+      RalewayBlackItalic: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+      RalewayLight: require('../../assets/fonts/Raleway-Light.ttf'),
+      RalewayMedium: require('../../assets/fonts/Raleway-Medium.ttf'),
+      RalewayRegular: require('../../assets/fonts/Raleway-Regular.ttf'),
+      RalewayThin: require('../../assets/fonts/Raleway-Thin.ttf')
+    })
+    this.setState({
+      fontLoaded: true
+    })
+  };
 
   render() {
 
@@ -19,8 +34,8 @@ class ListEventScreen extends Component {
           <Thumbnail square large source={require (photobis)}/>
         </Left>
         <Body>
-          <Text>{`Artiste:${event.artist}  style: ${event.style} `}</Text>
-          <Text>{` le ${event.eventDate}  entrée ${event.price}`}</Text>
+          <Text style={styles.head}>{`Artiste:${event.artist}  style: ${event.style} `}</Text>
+          <Text style={styles.head}>{` le ${event.eventDate}  entrée ${event.price}`}</Text>
         </Body>
         <Right>
             <Thumbnail source={require (Icontris)} />
@@ -65,34 +80,31 @@ class Headerbar extends Component {
   render() {
 
     return (
-      <Container>
-      {this.state.fontLoaded? (
+          
         <Header noShadow style={{marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight, backgroundColor: '#FC8C3D'}}>
           <Left>
             <Button transparent onPress= { () => this.props.navigation.navigate('Filter')}>
-              <Icon style={styles.cont} name='menu'/>
+              <Icon style={styles.head} name='menu'/>
             </Button>
           </Left>
           <Right>
 
             <Button transparent>
-              <Icon name='search' />
+              <Icon style={styles.head} name='search' />
             </Button>
 
             <Item regular>
-              <Input style={styles.cont} placeholder='Recherche gh...'/>
+              <Input style={styles.head} placeholder='Recherche ...'/>
             </Item>
           </Right>
-        </Header> ) : null}
-        </Container>
+        </Header> 
     );
   }
 }
 
 const styles = StyleSheet.create({
-      cont: {
-        color:'red',
-        fontFamily:'RalewayBlackItalic'            
+      head: {
+        fontFamily:'RalewayRegular'            
       },
 
     });

@@ -4,6 +4,7 @@ import MapView, {Marker} from 'react-native-maps';
 import { Constants, Location, Permissions } from 'expo';
 import { Container, Header, Left, Body, Right, Button, Icon, Content, Input, Item} from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import { Font } from 'expo';
 
 
 const GEOLOCATION_OPTIONS = { enableHighAccuracy: true, timeInterval: 200, distanceInterval: 1 };
@@ -15,7 +16,22 @@ class MapScreen extends Component {
     location: null,
     errorMessage: null,
     eventList: [],
+    fontLoaded: false,
   }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      RalewayBlackItalic: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+      RalewayLight: require('../../assets/fonts/Raleway-Light.ttf'),
+      RalewayMedium: require('../../assets/fonts/Raleway-Medium.ttf'),
+      RalewayRegular: require('../../assets/fonts/Raleway-Regular.ttf'),
+      RalewayThin: require('../../assets/fonts/Raleway-Thin.ttf')
+    })
+    this.setState({
+      fontLoaded: true
+    })
+  };
+
 
   componentWillMount() {
 
@@ -112,23 +128,31 @@ class Headerbar extends Component {
         <Header noShadow style={{marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight, backgroundColor: '#FC8C3D'}}>
           <Left>
             <Button transparent onPress= { () => this.props.navigation.navigate('Filter')}>
-              <Icon name='menu'/>
+              <Icon style={styles.head} name='menu'/>
             </Button>
           </Left>
           <Right>
 
             <Button transparent>
-              <Icon name='search' />
+              <Icon style={styles.head}  name='search' />
             </Button>
 
             <Item regular>
-              <Input placeholder='Recherche ...'/>
+              <Input style={styles.head} placeholder='Recherche ...'/>
             </Item>
           </Right>
         </Header>
     );
   }
 }
+
+const styles = StyleSheet.create({
+      head: {
+        fontFamily:'RalewayRegular'            
+      },
+
+    });
+
 
 function mapDispatchToProps(dispatch){
   return {

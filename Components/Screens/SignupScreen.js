@@ -76,7 +76,7 @@ export default class SignupScreen extends React.Component {
        </Col>
       <Col>
             <Button 
-                buttonStyle={{borderRadius:25, width:250, height:65, justifyContent: 'center', marginTop:10}}
+                buttonStyle={{borderRadius:25, width:'100%', height:'75%', justifyContent: 'center', marginTop:10}}
                 title="Devenir membre"
                 style={{flex:1}}
                 backgroundColor='#5b6778'
@@ -124,9 +124,8 @@ var styles = StyleSheet.create({
     grille: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
-    height: '10%',
-    marginTop: '20%'
+    marginTop: '6%',
+    padding: 0
   },
   but:{
     fontFamily: 'RalewayRegular'
