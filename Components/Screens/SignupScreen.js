@@ -19,6 +19,7 @@ export default class SignupScreen extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       RalewayBlackItalic: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
+      RalewayBold: require('../../assets/fonts/Raleway-Bold.ttf'),
       RalewayLight: require('../../assets/fonts/Raleway-Light.ttf'),
       RalewayMedium: require('../../assets/fonts/Raleway-Medium.ttf'),
       RalewayRegular: require('../../assets/fonts/Raleway-Regular.ttf'),
@@ -85,7 +86,8 @@ export default class SignupScreen extends React.Component {
               </Button>
        </Col>
       <Col >
-            <Text style={styles.bottom}>Already have an account ?</Text><Text style={styles.bottom}
+            <Text style={styles.bottom}>Already have an account ?</Text>
+            <Text style={styles.bottom}
                 onPress={() => this.props.navigation.navigate('SignIn')}>
                               Sign In
             </Text>
@@ -133,6 +135,6 @@ var styles = StyleSheet.create({
   bottom:{
     color: 'white',
     textAlign: 'center',
-    fontFamily: 'RalewayThin'
+    fontFamily: 'RalewayBold'
   }
   })

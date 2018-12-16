@@ -29,8 +29,7 @@ export default class HomeScreen extends React.Component {
 
  
   <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")} resizeMode='stretch'>
-  {this.state.fontLoaded? (
-
+{this.state.fontLoaded? (
     <Grid style={styles.row}>
         <Row>
         <Image style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
@@ -61,9 +60,10 @@ export default class HomeScreen extends React.Component {
       </Col>
             
       </Grid>
-            ) : null}
-            <Text  onPress= { ()=> this.props.navigation.navigate('Map')} h3>Pour Naviguer</Text>
+            ) : null} 
+            <Text style={styles.txt}  onPress= { ()=> this.props.navigation.navigate('Map')} h3>Pour Naviguer</Text>
             <Text  onPress= { ()=> this.props.navigation.navigate('Filter')} h4>Go to Filter Mother Fucker</Text>
+  
   </ImageBackground>
 
    
@@ -78,6 +78,5 @@ const styles = StyleSheet.create({
           width: '100%',
           height: '10%',
           marginBottom: '5%'               
-      },
-
+      }
     });

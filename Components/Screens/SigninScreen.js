@@ -47,7 +47,7 @@ export default class SignInScreen extends React.Component {
     return (
     
         <ImageBackground style={{flex:1}} source={require("../../assets/Images/rocksign.jpeg")} resizeMode='stretch'>
-        {this.state.fontLoaded? (
+        
       <Grid style={styles.row}>
             <Row>
               <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
@@ -73,7 +73,7 @@ export default class SignInScreen extends React.Component {
               <Text style={{color: '#CD3C30'}}>{this.state.error}</Text>
 </Col>
       </Grid> 
-      ) : null}
+     
   </ImageBackground>
     );
   }
