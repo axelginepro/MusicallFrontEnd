@@ -9,14 +9,14 @@ import Navigation from './Components/Navigation/Navigation';
 // import de mes Reducers
 import filter from './Components/Reducers/filter.reducer';
 import eventList from './Components/Reducers/event.reducer';
-
+import userData from './Components/Reducers/user.reducer';
 
 // import de mes outils Redux
 import {Provider} from 'react-redux';
 import {createStore, combineReducers} from 'redux';
 
 
-const store = createStore(combineReducers({filter, eventList}));
+const store = createStore(combineReducers({filter, eventList, userData}));
 
 // Création de mon Store
 
