@@ -236,7 +236,10 @@ class FilterScreen extends React.Component {
 
               <Row style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
           <Button rounded grey
-            onPress= {() => this.props.saveFilter(this.state.checkedStyle1, this.state.checkedStyle2, this.state.checkedStyle3, this.state.checkedStyle4, this.state.checkedStyle5, this.state.checkedStyle6, this.state.checkedStyle7, this.state.checkedStyle8, this.state.checkedStyle9, this.state.checkedPrice1, this.state.checkedPrice2, this.state.chosenDate - new Date(an, mois, jour-1))}>
+            onPress= {() => {
+              this.props.saveFilter(this.state.checkedStyle1, this.state.checkedStyle2, this.state.checkedStyle3, this.state.checkedStyle4, this.state.checkedStyle5, this.state.checkedStyle6, this.state.checkedStyle7, this.state.checkedStyle8, this.state.checkedStyle9, this.state.checkedPrice1, this.state.checkedPrice2, this.state.chosenDate - new Date(an, mois, jour-1))
+              this.props.navigation.navigate('Map');
+            }}>
                 <Text style={styles.txt}>Valider mes filtres</Text>
               </Button>
             </Row>

@@ -71,14 +71,68 @@ class MapScreen extends Component {
       text = this.state.errorMessage;
     }
 
-    var eventListPosition = this.state.eventList.map((event, i) =>
-      <Marker
-        key={i}
-        pinColor='red'
-        coordinate={{latitude: event.coord.latitude, longitude: event.coord.longitude}}
-        title={`Artiste: ${event.artist} style: ${event.style}`}
-        description={`${event.name} le ${event.eventDate} entrée ${event.price}`}
-      />);
+    console.log(this.props.filter);
+
+    if (!this.props.filter.style1 && !this.props.filter.style2
+      && !this.props.filter.style3 && !this.props.filter.style4
+      && !this.props.filter.style5 && !this.props.filter.style6
+      && !this.props.filter.style7 && !this.props.filter.style8
+      && !this.props.filter.style9){
+      var eventListPosition = this.state.eventList.map((event, i) =>{
+        return (
+        <Marker
+          key={i}
+          pinColor='red'
+          coordinate={{latitude: event.coord.latitude, longitude: event.coord.longitude}}
+          title={`Artiste: ${event.artist} style: ${event.style}`}
+          description={`${event.name} le ${event.eventDate} entrée ${event.price}`}
+        />)
+      });
+    } else {
+        var eventListPosition = this.state.eventList.map((event, i) =>{
+        if(this.props.filter.style1 == event.style || this.props.filter.style2 == event.style
+          || this.props.filter.style3 == event.style || this.props.filter.style4 == event.style
+          || this.props.filter.style5 == event.style || this.props.filter.style6 == event.style
+          || this.props.filter.style7 == event.style || this.props.filter.style8 == event.style
+          || this.props.filter.style9 == event.style) {
+            return (
+            <Marker
+              key={i}
+              pinColor='red'
+              coordinate={{latitude: event.coord.latitude, longitude: event.coord.longitude}}
+              title={`Artiste: ${event.artist} style: ${event.style}`}
+              description={`${event.name} le ${event.eventDate} entrée ${event.price}`}
+            />)}
+        });
+      }
+
+    // let eventListPosition = this.state.eventList.map((event, i) =>{
+    //   console.log(this.props.filter.style4, event.style);
+    //   if(this.props.filter.style1 == event.style || this.props.filter.style2 == event.style
+    //     || this.props.filter.style3 == event.style || this.props.filter.style4 == event.style
+    //     || this.props.filter.style5 == event.style || this.props.filter.style6 == event.style
+    //     || this.props.filter.style7 == event.style || this.props.filter.style8 == event.style
+    //     || this.props.filter.style9 == event.style) {
+    //       return (
+    //       <Marker
+    //         key={i}
+    //         pinColor='red'
+    //         coordinate={{latitude: event.coord.latitude, longitude: event.coord.longitude}}
+    //         title={`Artiste: ${event.artist} style: ${event.style}`}
+    //         description={`${event.name} le ${event.eventDate} entrée ${event.price}`}
+    //       />)}
+    //     else{
+    //       return (
+    //       <Marker
+    //         key={i}
+    //         pinColor='red'
+    //         coordinate={{latitude: event.coord.latitude, longitude: event.coord.longitude}}
+    //         title={`Artiste: ${event.artist} style: ${event.style}`}
+    //         description={`${event.name} le ${event.eventDate} entrée ${event.price}`}
+    //       />)
+    //     }});
+
+
 
     if (this.state.location) {
       return (
@@ -148,7 +202,7 @@ class Headerbar extends Component {
 
 const styles = StyleSheet.create({
       head: {
-        fontFamily:'RalewayRegular'            
+        fontFamily:'RalewayRegular'
       },
 
     });
@@ -165,4 +219,11 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect (null, mapDispatchToProps)(MapScreen);
+function mapStateToProps(state) {
+  console.log("je suis dans le state", state.filter);
+  return {
+    filter: state.filter,
+  };
+}
+
+export default connect (mapStateToProps, mapDispatchToProps)(MapScreen);
