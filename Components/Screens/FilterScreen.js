@@ -38,8 +38,11 @@ class FilterScreen extends React.Component {
       RalewayLight: require('../../assets/fonts/Raleway-Light.ttf'),
       RalewayMedium: require('../../assets/fonts/Raleway-Medium.ttf'),
       RalewayRegular: require('../../assets/fonts/Raleway-Regular.ttf'),
-      RalewayThin: require('../../assets/fonts/Raleway-Thin.ttf')
-    })
+      RalewayThin: require('../../assets/fonts/Raleway-Thin.ttf'),
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+        Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+    }
+    )
     this.setState({
       fontLoaded: true
     })
@@ -288,11 +291,11 @@ checkbox: {
   borderWidth: 1,
   padding: 0,
   borderRadius: 3,
-  fontFamily:'RalewayBlackItalic'
+  // fontFamily:'RalewayBlackItalic'
   },
   txt:{
     color:'white',
-    fontFamily:'RalewayRegular'
+    // fontFamily:'RalewayRegular'
   },
 });
 

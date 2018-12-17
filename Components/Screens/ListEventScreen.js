@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import { Font } from 'expo';
 
 class ListEventScreen extends Component {
+  
     state = {
     fontLoaded: false,
   }
@@ -35,7 +36,7 @@ class ListEventScreen extends Component {
         </Left>
         <Body>
           <Text style={styles.head}>{`Artiste:${event.artist}  style: ${event.style} `}</Text>
-          <Text style={styles.head}>{` le ${event.eventDate}  entrée ${event.price}`}</Text>
+          <Text style={styles.head}>{` le ${event.eventDate.toString().substr(2, 8)}  entrée ${event.price}`}</Text>
         </Body>
         <Right>
             <Thumbnail source={require (Icontris)} />
@@ -81,16 +82,16 @@ class Headerbar extends Component {
 
     return (
           
-        <Header noShadow style={{marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight, backgroundColor: '#FC8C3D'}}>
+        <Header noShadow style={{marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight, backgroundColor: 'white'}}>
           <Left>
             <Button transparent onPress= { () => this.props.navigation.navigate('Filter')}>
-              <Icon style={styles.head} name='menu'/>
+              <Icon style={{color:"black"}} name='menu'/>
             </Button>
           </Left>
           <Right>
 
             <Button transparent>
-              <Icon style={styles.head} name='search' />
+              <Icon style={{color:"black"}} name='search' />
             </Button>
 
             <Item regular>

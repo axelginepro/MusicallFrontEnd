@@ -12,6 +12,10 @@ const GEOLOCATION_OPTIONS = { enableHighAccuracy: true, timeInterval: 200, dista
 import {connect} from 'react-redux';
 
 class MapScreen extends Component {
+  constructor() {
+  super();
+  console.log('constructor');
+  }
   state={
     location: null,
     errorMessage: null,
@@ -32,6 +36,9 @@ class MapScreen extends Component {
     })
   };
 
+  componentDidUpdate(prevProps) {
+  console.log('component did udpate')
+  }
 
   componentWillMount() {
 
@@ -85,7 +92,7 @@ class MapScreen extends Component {
           pinColor='red'
           coordinate={{latitude: event.coord.latitude, longitude: event.coord.longitude}}
           title={`Artiste: ${event.artist} style: ${event.style}`}
-          description={`${event.name} le ${event.eventDate} entrée ${event.price}`}
+          description={`${event.name} le ${event.eventDate.toString().substr(2, 8)} entrée ${event.price}`}
         />)
       });
     } else {
@@ -101,7 +108,7 @@ class MapScreen extends Component {
               pinColor='red'
               coordinate={{latitude: event.coord.latitude, longitude: event.coord.longitude}}
               title={`Artiste: ${event.artist} style: ${event.style}`}
-              description={`${event.name} le ${event.eventDate} entrée ${event.price}`}
+              description={`${event.name} le ${event.eventDate.toString().substr(2, 8)} entrée ${event.price}`}
             />)}
         });
       }
@@ -179,16 +186,16 @@ class Headerbar extends Component {
   render() {
 
     return (
-        <Header noShadow style={{marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight, backgroundColor: '#FC8C3D'}}>
+        <Header noShadow style={{marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight, backgroundColor: 'white'}}>
           <Left>
             <Button transparent onPress= { () => this.props.navigation.navigate('Filter')}>
-              <Icon style={styles.head} name='menu'/>
+              <Icon style={{color:"black"}} name='menu'/>
             </Button>
           </Left>
           <Right>
 
             <Button transparent>
-              <Icon style={styles.head}  name='search' />
+              <Icon   style={{color:"black"}}name='search' />
             </Button>
 
             <Item regular>
@@ -202,7 +209,7 @@ class Headerbar extends Component {
 
 const styles = StyleSheet.create({
       head: {
-        fontFamily:'RalewayRegular'
+        fontFamily:'RalewayRegular',
       },
 
     });

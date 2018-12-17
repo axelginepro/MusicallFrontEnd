@@ -3,8 +3,10 @@ import { Image, StyleSheet, View, ScrollView } from 'react-native';
 import {Button, FormLabel, FormInput, Divider, Text} from 'react-native-elements';
 import Geocoder from 'react-native-geocoding';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import { Container, Header, Content, DatePicker} from 'native-base';
+import { Container, Header, Content, DatePicker, Form, Item, Picker} from 'native-base';
 import { Font } from 'expo';
+import {Ionicons, MatterialCommunityIcons} from '@expo/vector-icons';
+
 
 Geocoder.init('AIzaSyCpwkK4H7BrdzwW-yEhyzR5i92R4JWR5yk');
 
@@ -16,7 +18,7 @@ export default class AddEventScreen extends React.Component {
       adresse: null,
       name: null,
       artist: null,
-      style: null,
+      // style: null,
       price: null,
       description: null,
       image: null,
@@ -25,10 +27,16 @@ export default class AddEventScreen extends React.Component {
         longitude: null
       },
       fontLoaded: false,
-      eventDate: new Date()
+      eventDate: new Date(),
+        style: undefined
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setDate = this.setDate.bind(this)
+  }
+  onValueChange2(value) {
+    this.setState({
+      style: value
+    });
   }
 
   async componentDidMount() {
@@ -83,7 +91,17 @@ export default class AddEventScreen extends React.Component {
         console.error(error);
       });
     }).catch(error => console.warn(error))
+  }
 
+  formatChosenDate(date) {
+    if (this.props.formatChosenDate) {
+      return this.props.formatChosenDate(date);
+    }
+    return [
+      date.getDate(),
+      date.getMonth() + 1,
+      date.getFullYear(),
+    ].join('/');
   }
 
   render() {
@@ -102,7 +120,7 @@ export default class AddEventScreen extends React.Component {
       <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
 </Row>
 
-        <Text style={{fontFamily:'RalewayRegular', color: 'red', fontSize: 35, marginTop: '10%'}}>Ajouter un événement</Text>
+        <Text style={{fontFamily:'RalewayRegular', color: 'red', fontSize: 30, marginTop: '10%'}}>Ajouter un événement</Text>
         
         <Col style={styles.date}>
                 <DatePicker
@@ -115,6 +133,7 @@ export default class AddEventScreen extends React.Component {
                   animationType={"fade"}
                   androidMode={"default"}
                   placeHolderText={'Date'}
+                  
                   textStyle={{ color: "grey", textAlign: "center", flex: 1, alignItems: "center", justifyContent: "center"}}
                   placeHolderTextStyle={{ fontFamily:'RalewayRegular', color: "#d3d3d3" , fontSize: 30, textAlign: "center", textAlignVertical: "center", padding: 0}}
                   onDateChange={this.setDate}
@@ -124,14 +143,42 @@ export default class AddEventScreen extends React.Component {
             
               <Divider style={{height:20}}/>
               <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" />
-              <Divider style={{height:20}}/>
-              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Lieu" />
+                <Divider style={{height:20}}/>
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({lieu: text})} placeholder="Nom du Bar" />
+            
               <Divider style={{height:20}}/>
               <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" />
               <Divider style={{height:20}}/>
-              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({style: text})} placeholder="Style" />
+
+        
+        
+      
+         <Form style={styles.form}>
+            <Item picker rounded  >
+              <Picker
+              
+                mode="dropdown"
+                placeHolderText="Style"
+                selectedValue={this.state.style}
+                onValueChange={this.onValueChange2.bind(this)}
+              >
+                <Picker.Item label="Style" value="key0" />
+                <Picker.Item label="Jazz" value="Jazz" />
+                <Picker.Item label="Rock" value="Rock" />
+                <Picker.Item label="Metal" value="Metal" />
+                <Picker.Item label="Electro" value="Electro" />
+                <Picker.Item label="World Music" value="World Music" />
+                <Picker.Item label="Rap" value="Rap" />
+                <Picker.Item label="Reggae" value="Reggae" />
+                <Picker.Item label="Pop" value="Pop" />
+                <Picker.Item label="Variete" value="Variete" />
+              </Picker>
+            </Item>
+          </Form>
+
+
               <Divider style={{height:20}}/>
-              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" />
+              <FormInput inputStyle={styles.form} textAlign={'center'} keyboardType={'phone-pad'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" />
               <Divider style={{height:20}}/>
               <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({description: text})} placeholder="Description" />
               <Divider style={{height:50}}/>
@@ -154,8 +201,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
       },
       form: {
-        borderRadius: 50,
-        width: 250,
+                borderRadius: 50,
+                width: 250,
                 borderColor: 'lightgrey',
                 borderWidth: 2,
                 fontSize: 30,
@@ -168,7 +215,6 @@ const styles = StyleSheet.create({
                 borderWidth: 2,
                 padding: 0,
                 margin: 0,
-               
         },
         row: {
   justifyContent: 'center',
