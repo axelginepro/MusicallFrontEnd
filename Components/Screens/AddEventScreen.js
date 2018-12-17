@@ -6,15 +6,15 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Container, Header, Content, DatePicker, Form, Item, Picker} from 'native-base';
 import { Font } from 'expo';
 import {Ionicons, MatterialCommunityIcons} from '@expo/vector-icons';
-
+import {connect} from 'react-redux';
 
 Geocoder.init('AIzaSyCpwkK4H7BrdzwW-yEhyzR5i92R4JWR5yk');
 
-export default class AddEventScreen extends React.Component {
+class AddEventScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      
+
       adresse: null,
       name: null,
       artist: null,
@@ -61,7 +61,6 @@ export default class AddEventScreen extends React.Component {
     const ctx = this
     Geocoder.from(this.state.adresse).then(json => {
       var location = json.results[0].geometry.location;
-      console.log(location);
 
       fetch('https://musicall1.herokuapp.com/addEvent', {
 
@@ -85,7 +84,8 @@ export default class AddEventScreen extends React.Component {
       }).then(function(response) {
         return response.json()
       }).then(function(eventData) {
-        console.log(eventData);
+        console.log(eventData.event);
+        ctx.props.handleNewEvent(eventData.event)
         ctx.props.navigation.navigate('Map')
       }).catch(function(error) {
         console.error(error);
@@ -121,7 +121,7 @@ export default class AddEventScreen extends React.Component {
 </Row>
 
         <Text style={{fontFamily:'RalewayRegular', color: 'red', fontSize: 30, marginTop: '10%'}}>Ajouter un événement</Text>
-        
+
         <Col style={styles.date}>
                 <DatePicker
                   defaultDate={new Date(an, mois, jour-1)}
@@ -133,30 +133,30 @@ export default class AddEventScreen extends React.Component {
                   animationType={"fade"}
                   androidMode={"default"}
                   placeHolderText={'Date'}
-                  
+
                   textStyle={{ color: "grey", textAlign: "center", flex: 1, alignItems: "center", justifyContent: "center"}}
                   placeHolderTextStyle={{ fontFamily:'RalewayRegular', color: "#d3d3d3" , fontSize: 15, textAlign: "center", textAlignVertical: "center", padding: 0}}
                   onDateChange={this.setDate}
                 />
           </Col>
 
-            
+
               <Divider style={{height:20}}/>
               <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" />
                 <Divider style={{height:20}}/>
               <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({lieu: text})} placeholder="Nom du Bar" />
-            
+
               <Divider style={{height:20}}/>
               <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" />
               <Divider style={{height:20}}/>
 
-        
-        
-      
+
+
+
          <Form style={styles.form}>
             <Item picker rounded  >
               <Picker
-              
+
                 mode="dropdown"
                 placeHolderText="Style"
                 selectedValue={this.state.style}
@@ -224,3 +224,16 @@ const styles = StyleSheet.create({
           height: '10%',
 },
     });
+
+function mapDispatchToProps(dispatch){
+  return {
+    handleNewEvent : function(newEvent){
+      dispatch({
+        type: 'newEvent',
+        newEvent: newEvent,
+      })
+    }
+  }
+}
+
+export default connect (null, mapDispatchToProps)(AddEventScreen)

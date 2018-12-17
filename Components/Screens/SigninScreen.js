@@ -3,8 +3,9 @@ import { StyleSheet, Text, View, ImageBackground, Image} from 'react-native';
 import {Divider, Button, FormLabel, FormInput } from 'react-native-elements'
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Font } from 'expo';
+import {connect} from 'react-redux';
 
-export default class SignInScreen extends React.Component {
+class SignInScreen extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -32,10 +33,14 @@ export default class SignInScreen extends React.Component {
     fetch(`https://musicall1.herokuapp.com/signin?email=${this.state.email}&password=${this.state.password}`)
     .then(response => response.json())
     .then(data => {
-    	console.log('je suis dans le fecth', data);
+    	// console.log('je suis dans le fecth', data.user._id);
       if (data.isUserExist) {
-        this.setState({error: null});
+        this.setState({
+          error: null,
+        });
+        this.props.handleUserData(data.user._id);
         this.props.navigation.navigate('Map');
+
       } else {
         this.setState({error: `Erreur d'identification, veuillez verifier vos identifiants`});
       }
@@ -47,19 +52,20 @@ export default class SignInScreen extends React.Component {
     return (
     
       <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")} resizeMode='stretch'>
+
         {this.state.fontLoaded? (
       <Grid style={styles.row}>
             <Row>
               <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
             </Row>
 
-      <Col style={styles.grille}>       
+      <Col style={styles.grille}>
         </Col>
-        <Col>             
+        <Col>
             <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({email: text})} placeholder="Email" placeholderTextColor='white'  />
         </Col>
         <Col>
-	         <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
+	        <FormInput secureTextEntry={true} inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
         </Col>
         <Col>
               <Button
@@ -78,6 +84,8 @@ export default class SignInScreen extends React.Component {
     );
   }
 };
+
+
 
 var styles = StyleSheet.create({
   titleText: {
@@ -104,11 +112,11 @@ var styles = StyleSheet.create({
     width: '100%',
     height: '10%',
     marginBottom: '15%'
-   
+
   },
     grille: {
- 
-    justifyContent: 'center',  
+
+    justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     height: '10%',
@@ -116,3 +124,17 @@ var styles = StyleSheet.create({
 
   }
 });
+
+function mapDispatchToProps(dispatch){
+  return {
+    handleUserData : function(userId){
+      dispatch({
+        type: 'userData',
+        userId: userId
+      })
+    }
+  }
+}
+
+
+export default connect (null, mapDispatchToProps)(SignInScreen);
