@@ -63,7 +63,7 @@ export default class SignupScreen extends React.Component {
         </Row>
 
        <Col style={styles.grille}>
-            <Text style={styles.titleText}>Sign up</Text>
+           
       </Col>
 
       <Col>
@@ -77,7 +77,7 @@ export default class SignupScreen extends React.Component {
        </Col>
       <Col>
             <Button 
-                buttonStyle={{borderRadius:25, width:'100%', height:'75%', justifyContent: 'center', marginTop:10}}
+                buttonStyle={{borderRadius:25, width:250, height:65, justifyContent: 'center', marginTop:10}}
                 title="Devenir membre"
                 style={{flex:1}}
                 backgroundColor='#5b6778'
@@ -86,8 +86,7 @@ export default class SignupScreen extends React.Component {
               </Button>
        </Col>
       <Col >
-            <Text style={styles.bottom}>Already have an account ?</Text>
-            <Text style={styles.bottom}
+            <Text style={styles.bottom}>Already have an account ?</Text><Text style={styles.bottom}
                 onPress={() => this.props.navigation.navigate('SignIn')}>
                               Sign In
             </Text>
@@ -126,8 +125,9 @@ var styles = StyleSheet.create({
     grille: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '6%',
-    padding: 0
+    width: '100%',
+    height: '10%',
+    marginTop: '20%'
   },
   but:{
     fontFamily: 'RalewayRegular'
