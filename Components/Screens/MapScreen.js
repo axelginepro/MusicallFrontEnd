@@ -12,10 +12,6 @@ const GEOLOCATION_OPTIONS = { enableHighAccuracy: true, timeInterval: 200, dista
 import {connect} from 'react-redux';
 
 class MapScreen extends Component {
-  constructor() {
-  super();
-  console.log('constructor');
-  }
   state={
     location: null,
     errorMessage: null,
