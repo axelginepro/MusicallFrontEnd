@@ -135,7 +135,7 @@ export default class AddEventScreen extends React.Component {
                   placeHolderText={'Date'}
                   
                   textStyle={{ color: "grey", textAlign: "center", flex: 1, alignItems: "center", justifyContent: "center"}}
-                  placeHolderTextStyle={{ fontFamily:'RalewayRegular', color: "#d3d3d3" , fontSize: 30, textAlign: "center", textAlignVertical: "center", padding: 0}}
+                  placeHolderTextStyle={{ fontFamily:'RalewayRegular', color: "#d3d3d3" , fontSize: 15, textAlign: "center", textAlignVertical: "center", padding: 0}}
                   onDateChange={this.setDate}
                 />
           </Col>
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
                 width: 250,
                 borderColor: 'lightgrey',
                 borderWidth: 2,
-                fontSize: 30,
+                fontSize: 15,
                 fontFamily:'RalewayRegular',
         },
         date: {
@@ -215,11 +215,12 @@ const styles = StyleSheet.create({
                 borderWidth: 2,
                 padding: 0,
                 margin: 0,
+                height: '5%'
         },
         row: {
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '100%',
-  height: '10%',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          height: '10%',
 },
     });

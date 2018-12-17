@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, Platform, StatusBar } from 'react-native';
+import {Ionicons, MatterialCommunityIcons} from '@expo/vector-icons';
 import { Container, Header, Content, List, ListItem, Thumbnail, Left, Body, Right, Button, Icon, Item, Input} from 'native-base';
 
 import {connect} from 'react-redux';
@@ -85,13 +86,13 @@ class Headerbar extends Component {
         <Header noShadow style={{marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight, backgroundColor: 'white'}}>
           <Left>
             <Button transparent onPress= { () => this.props.navigation.navigate('Filter')}>
-              <Icon style={{color:"black"}} name='menu'/>
+              <Ionicons name={"ios-menu"} size={25} color={"black"}/>
             </Button>
           </Left>
           <Right>
 
             <Button transparent>
-              <Icon style={{color:"black"}} name='search' />
+              <Ionicons name={"ios-search"} size={25} color={"black"}/>
             </Button>
 
             <Item regular>
@@ -105,7 +106,8 @@ class Headerbar extends Component {
 
 const styles = StyleSheet.create({
       head: {
-        fontFamily:'RalewayRegular'            
+      fontFamily:'RalewayRegular',
+                
       },
 
     });

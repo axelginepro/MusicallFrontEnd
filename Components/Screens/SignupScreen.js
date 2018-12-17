@@ -19,7 +19,8 @@ export default class SignupScreen extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       RalewayBlackItalic: require('../../assets/fonts/Raleway-BlackItalic.ttf'),
-      RalewayBold: require('../../assets/fonts/Raleway-Bold.ttf'),
+      RalewayBold: require('../../assets/fonts/Raleway-ExtraBold.ttf'),
+      RalewayExtraBold: require('../../assets/fonts/Raleway-Bold.ttf'),
       RalewayLight: require('../../assets/fonts/Raleway-Light.ttf'),
       RalewayMedium: require('../../assets/fonts/Raleway-Medium.ttf'),
       RalewayRegular: require('../../assets/fonts/Raleway-Regular.ttf'),
@@ -55,7 +56,7 @@ export default class SignupScreen extends React.Component {
   render() {
     return (
     
-      <ImageBackground style={{flex:1}} source={require("../../assets/Images/rocksign.jpeg")} resizeMode='stretch'>
+      <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")} resizeMode='stretch'>
       {this.state.fontLoaded? (
 <Grid style={styles.row}>
         <Row>
@@ -107,6 +108,7 @@ var styles = StyleSheet.create({
     fontFamily: 'RalewayRegular'
     
   }, form: {
+    borderRadius: 50,
     backgroundColor: 'rgba(0,0,0,0.4)',
     color: 'red',
     borderColor: 'lightgrey',
@@ -133,8 +135,9 @@ var styles = StyleSheet.create({
     fontFamily: 'RalewayRegular'
   },
   bottom:{
-    color: 'white',
+    color: 'black',
     textAlign: 'center',
-    fontFamily: 'RalewayBold'
+    fontFamily: 'RalewayBlackItalic'
+
   }
   })

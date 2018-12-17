@@ -46,7 +46,7 @@ export default class SignInScreen extends React.Component {
   render() {
     return (
     
-      <ImageBackground style={{flex:1}} source={require("../../assets/Images/rocksign.jpeg")} resizeMode='stretch'>
+      <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")} resizeMode='stretch'>
         {this.state.fontLoaded? (
       <Grid style={styles.row}>
             <Row>
@@ -87,6 +87,7 @@ var styles = StyleSheet.create({
 
   },
     form: {
+      borderRadius: 50,
       backgroundColor: 'rgba(0,0,0,0.4)',
       color: 'red',
       borderColor: 'lightgrey',

@@ -40,7 +40,7 @@ class FilterScreen extends React.Component {
       RalewayRegular: require('../../assets/fonts/Raleway-Regular.ttf'),
       RalewayThin: require('../../assets/fonts/Raleway-Thin.ttf'),
       Roboto: require("native-base/Fonts/Roboto.ttf"),
-        Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
     }
     )
     this.setState({

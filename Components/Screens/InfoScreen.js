@@ -24,6 +24,7 @@ export default class InfoScreen extends React.Component {
   };
   render() {
     return (
+
 <ImageBackground style={{flex:1}} source={require("../../assets/Images/piano.jpg")} resizeMode='stretch'>
   {this.state.fontLoaded? (
 <Grid style={styles.row}>
@@ -67,13 +68,14 @@ export default class InfoScreen extends React.Component {
       <Col style={styles.contentView}>
           <Image
         source={require('../../assets/Icons/CrocheCouleur.png')}
-        style={{width: 75, height: 75, }}
+        style={{width: 75, height: 55}}
       />
           <Text style={styles.textColor} h4> Liker vos événements</Text>
         </Col>
 
 </Grid> ) : null}
 </ImageBackground>
+
     );
   }
 };
@@ -94,9 +96,10 @@ row: {
 icon: {
   marginRight: '6%',
   marginLeft: '7%',
+  color: 'black'
 },
 textColor: {
-  color: '#d63031',
-  fontFamily:'RalewayRegular'
+  color: 'red',
+  fontFamily:'RalewayThin'
 }
 });

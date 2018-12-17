@@ -5,7 +5,7 @@ import { Constants, Location, Permissions } from 'expo';
 import { Container, Header, Left, Body, Right, Button, Icon, Content, Input, Item} from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Font } from 'expo';
-
+import {Ionicons, MatterialCommunityIcons} from '@expo/vector-icons';
 
 const GEOLOCATION_OPTIONS = { enableHighAccuracy: true, timeInterval: 200, distanceInterval: 1 };
 
@@ -185,13 +185,13 @@ class Headerbar extends Component {
         <Header noShadow style={{marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight, backgroundColor: 'white'}}>
           <Left>
             <Button transparent onPress= { () => this.props.navigation.navigate('Filter')}>
-              <Icon style={{color:"black"}} name='menu'/>
+              <Ionicons name={"ios-menu"} size={25} color={"black"}/>
             </Button>
           </Left>
           <Right>
 
             <Button transparent>
-              <Icon   style={{color:"black"}}name='search' />
+              <Ionicons name={"ios-search"} size={25} color={"black"}/>
             </Button>
 
             <Item regular>
@@ -205,7 +205,10 @@ class Headerbar extends Component {
 
 const styles = StyleSheet.create({
       head: {
-        fontFamily:'RalewayRegular',
+      fontFamily:'RalewayRegular',
+      fontSize: 20,
+      width: 150,
+      height: 40,
       },
 
     });
