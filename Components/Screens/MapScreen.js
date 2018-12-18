@@ -192,7 +192,6 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state) {
-  console.log(state.eventList);
   return {
     filter: state.filter,
     eventList: state.eventList
