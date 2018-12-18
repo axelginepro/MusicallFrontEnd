@@ -52,7 +52,6 @@ class FilterScreen extends React.Component {
     this.setState({ chosenDate: newDate })
   }
 
-
   render() {
     var maintenant=new Date();
     var jour=maintenant.getDate();
@@ -205,7 +204,7 @@ class FilterScreen extends React.Component {
             <Text
               style={{textAlign: "center",
             fontStyle: "italic"}}>
-              {this.state.chosenDate.getDate() === jour ? null : "Evenement jusqu'au: " + this.state.chosenDate.toString().substr(4, 12)}
+              {this.state.chosenDate.getDate() === jour ? null : "Evenement du : " + this.state.chosenDate.toString().substr(4, 12)}
             </Text>
 
 
@@ -240,7 +239,7 @@ class FilterScreen extends React.Component {
               <Row style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
           <Button rounded grey
             onPress= {() => {
-              this.props.saveFilter(this.state.checkedStyle1, this.state.checkedStyle2, this.state.checkedStyle3, this.state.checkedStyle4, this.state.checkedStyle5, this.state.checkedStyle6, this.state.checkedStyle7, this.state.checkedStyle8, this.state.checkedStyle9, this.state.checkedPrice1, this.state.checkedPrice2, this.state.chosenDate - new Date(an, mois, jour-1))
+              this.props.saveFilter(this.state.checkedStyle1, this.state.checkedStyle2, this.state.checkedStyle3, this.state.checkedStyle4, this.state.checkedStyle5, this.state.checkedStyle6, this.state.checkedStyle7, this.state.checkedStyle8, this.state.checkedStyle9, this.state.checkedPrice1, this.state.checkedPrice2, this.state.chosenDate.toString().substr(4, 12))
               this.props.navigation.navigate('Map');
             }}>
                 <Text style={styles.txt}>Valider mes filtres</Text>

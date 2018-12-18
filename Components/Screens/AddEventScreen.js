@@ -27,7 +27,7 @@ class AddEventScreen extends React.Component {
       },
       fontLoaded: false,
       eventDate: new Date(),
-        style: undefined
+      style: undefined
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setDate = this.setDate.bind(this)
@@ -52,7 +52,7 @@ class AddEventScreen extends React.Component {
   };
 
  setDate(newDate) {
-    this.setState({ eventDate: newDate })
+    this.setState({ eventDate: newDate.toString().substr(4, 12) })
 
  }
 
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
                 padding: 0,
                 margin: 0,
                 height: '6%',
-                
+
         },
         row: {
           justifyContent: 'center',

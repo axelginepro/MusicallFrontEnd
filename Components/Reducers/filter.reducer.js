@@ -1,9 +1,9 @@
 export default function(filter = {}, action) {
   if (action.type === 'save_filter') {
+    console.log(action);
     var filterCopy = {...filter} ;
     if (action.price1 === false && action.price2 === false) {
 
-    console.log(action);
 
     filterCopy.style1 = action.style1 === true ?  'Rock' : false;
     filterCopy.style2 = action.style2 === true ? 'Jazz' : false;
@@ -32,10 +32,6 @@ export default function(filter = {}, action) {
     filterCopy.price2 = action.price2;
     filterCopy.date = action.date
 
-
-console.log(action.price1, action.price2)
-;
-    console.log(filterCopy);
     return filterCopy
 
   }

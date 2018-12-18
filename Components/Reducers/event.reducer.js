@@ -1,4 +1,7 @@
 export default function (event_List = [], action) {
+  
+console.log(action.newEvent);
+
   if (action.type === 'eventData'){
     return action.event
   } else if (action.type === 'newEvent'){
@@ -8,4 +11,5 @@ export default function (event_List = [], action) {
   } else {
     return event_List
   }
+
 }

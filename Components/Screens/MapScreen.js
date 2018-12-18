@@ -70,10 +70,14 @@ class MapScreen extends Component {
       text = this.state.errorMessage;
     }
 
-    if (!this.props.filter.style1 && !this.props.filter.style2
-      && !this.props.filter.style3 && !this.props.filter.style4
-      && !this.props.filter.style5 && !this.props.filter.style6
-      && !this.props.filter.style7 && !this.props.filter.style8
+    if (!this.props.filter.style1
+      && !this.props.filter.style2
+      && !this.props.filter.style3
+      && !this.props.filter.style4
+      && !this.props.filter.style5
+      && !this.props.filter.style6
+      && !this.props.filter.style7
+      && !this.props.filter.style8
       && !this.props.filter.style9){
       var eventListPosition = this.props.eventList.map((event, i) =>{
         return (
@@ -82,15 +86,20 @@ class MapScreen extends Component {
           pinColor='red'
           coordinate={{latitude: event.coord.latitude, longitude: event.coord.longitude}}
           title={`Artiste: ${event.artist} style: ${event.style}`}
-          description={`${event.name} le ${event.eventDate.toString().substr(2, 8)} entrée ${event.price}`}
+          description={`Au ${event.name} le ${event.eventDate} entrée ${event.price}`}
         />)
       });
     } else {
         var eventListPosition = this.props.eventList.map((event, i) =>{
-        if(this.props.filter.style1 == event.style || this.props.filter.style2 == event.style
-          || this.props.filter.style3 == event.style || this.props.filter.style4 == event.style
-          || this.props.filter.style5 == event.style || this.props.filter.style6 == event.style
-          || this.props.filter.style7 == event.style || this.props.filter.style8 == event.style
+        if(
+             this.props.filter.style1 == event.style
+          || this.props.filter.style2 == event.style
+          || this.props.filter.style3 == event.style
+          || this.props.filter.style4 == event.style
+          || this.props.filter.style5 == event.style
+          || this.props.filter.style6 == event.style
+          || this.props.filter.style7 == event.style
+          || this.props.filter.style8 == event.style
           || this.props.filter.style9 == event.style) {
             return (
             <Marker
@@ -98,7 +107,7 @@ class MapScreen extends Component {
               pinColor='red'
               coordinate={{latitude: event.coord.latitude, longitude: event.coord.longitude}}
               title={`Artiste: ${event.artist} style: ${event.style}`}
-              description={`${event.name} le ${event.eventDate.toString().substr(2, 8)} entrée ${event.price}`}
+              description={`${event.name} le ${event.eventDate} entrée ${event.price}`}
             />)}
         });
       }
@@ -192,6 +201,7 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state) {
+  console.log(state.filter);
   return {
     filter: state.filter,
     eventList: state.eventList

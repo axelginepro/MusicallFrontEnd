@@ -43,8 +43,8 @@ class ListEventScreen extends Component {
               <Thumbnail square large source={require (photobis)}/>
             </Left>
             <Body>
-              <Text style={styles.head}>{`Artiste:${event.artist}  style: ${event.style} `}</Text>
-              <Text style={styles.head}>{` le ${event.eventDate.toString().substr(2, 8)}  entrée ${event.price}`}</Text>
+              <Text style={styles.head}>{`Artiste: ${event.artist}  style: ${event.style}`}</Text>
+              <Text style={styles.head}>{` le ${event.eventDate}  entrée ${event.price}`}</Text>
             </Body>
             <Right>
                 <Thumbnail source={require (Icontris)} />
@@ -66,7 +66,7 @@ class ListEventScreen extends Component {
               </Left>
               <Body>
                 <Text style={styles.head}>{`Artiste:${event.artist}  style: ${event.style} `}</Text>
-                <Text style={styles.head}>{` le ${event.eventDate.toString().substr(2, 8)}  entrée ${event.price}`}</Text>
+                <Text style={styles.head}>{` le ${event.eventDate}  entrée ${event.price}`}</Text>
               </Body>
               <Right>
                   <Thumbnail source={require (Icontris)} />
