@@ -62,10 +62,10 @@ class SignInScreen extends React.Component {
       <Col style={styles.grille}>
         </Col>
         <Col>
-            <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({email: text})} placeholder="Email" placeholderTextColor='white'  />
+            <FormInput inputStyle={styles.form} keyboardType={'email-address'} textAlign={'center'} onChangeText={text => this.setState({email: text})} placeholder="Email" placeholderTextColor='white'  />
         </Col>
         <Col>
-	        <FormInput secureTextEntry={true} inputStyle={styles.form} textAlign={'center'} onChangeText={text => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
+	        <FormInput secureTextEntry={true} inputStyle={styles.form}  textAlign={'center'}  onChangeText={text => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
         </Col>
         <Col>
               <Button

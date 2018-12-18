@@ -214,7 +214,8 @@ const styles = StyleSheet.create({
                 borderWidth: 2,
                 padding: 0,
                 margin: 0,
-                height: '5%'
+                height: '6%',
+                
         },
         row: {
           justifyContent: 'center',
