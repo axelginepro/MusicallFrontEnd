@@ -70,7 +70,7 @@ export default class InfoScreen extends React.Component {
         source={require('../../assets/Icons/CrocheCouleur.png')}
         style={{width: 75, height: 55}}
       />
-          <Text style={styles.textColor} h4> Liker vos événements</Text>
+          <Text  style={styles.textColor}  h4> Liker vos événements</Text>
         </Col>
 
 </Grid> ) : null}
@@ -100,6 +100,7 @@ icon: {
 },
 textColor: {
   color: 'red',
-  fontFamily:'RalewayThin'
+  fontFamily:'RalewayLight',
+  fontWeight: "normal"
 }
 });
