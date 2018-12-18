@@ -18,7 +18,6 @@ class AddEventScreen extends React.Component {
       adresse: null,
       name: null,
       artist: null,
-      // style: null,
       price: null,
       description: null,
       image: null,
