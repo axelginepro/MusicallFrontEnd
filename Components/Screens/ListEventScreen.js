@@ -24,55 +24,28 @@ class ListEventScreen extends Component {
     })
   };
 
+
   render() {
 
-    var Iconbis = "../../assets/Icons/CrocheVide.png";
-    var Icontris = "../../assets/Icons/CrocheCouleur.png";
-    var photobis = "../../assets/Images/rockhome.jpg";
+
+
 
 
     if (!this.props.filter.style1 && !this.props.filter.style2
       && !this.props.filter.style3 && !this.props.filter.style4
       && !this.props.filter.style5 && !this.props.filter.style6
       && !this.props.filter.style7 && !this.props.filter.style8
-      && !this.props.filter.style9){
-        var  eventList= this.props.eventList.map((event, i) => {
-          return(
-          <ListItem key={i} thumbnail>
-            <Left>
-              <Thumbnail square large source={require (photobis)}/>
-            </Left>
-            <Body>
-              <Text style={styles.head}>{`Artiste: ${event.artist}  style: ${event.style}`}</Text>
-              <Text style={styles.head}>{` le ${event.eventDate}  entrée ${event.price}`}</Text>
-            </Body>
-            <Right>
-                <Thumbnail source={require (Icontris)} />
-            </Right>
-          </ListItem>
-        )}
-      );
+      && !this.props.filter.style9) {
+        var eventList = this.props.eventList.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.style} eventDate={event.eventDate} price={event.price}/>);
     } else {
-        var  eventList= this.props.eventList.map((event, i) => {
-        if(this.props.filter.style1 == event.style || this.props.filter.style2 == event.style
+        var eventList = this.props.eventList.map((event, i) => {
+        if (this.props.filter.style1 == event.style || this.props.filter.style2 == event.style
           || this.props.filter.style3 == event.style || this.props.filter.style4 == event.style
           || this.props.filter.style5 == event.style || this.props.filter.style6 == event.style
           || this.props.filter.style7 == event.style || this.props.filter.style8 == event.style
           || this.props.filter.style9 == event.style) {
-            return(
-            <ListItem key={i} thumbnail>
-              <Left>
-                <Thumbnail square large source={require (photobis)}/>
-              </Left>
-              <Body>
-                <Text style={styles.head}>{`Artiste:${event.artist}  style: ${event.style} `}</Text>
-                <Text style={styles.head}>{` le ${event.eventDate}  entrée ${event.price}`}</Text>
-              </Body>
-              <Right>
-                  <Thumbnail source={require (Icontris)} />
-              </Right>
-            </ListItem>
-          )}
+            return <EventListItem key={i} artist={event.artist} styleM={event.style} eventDate={event.eventDate} price={event.price}/>
+          }
         });
       }
 
@@ -135,6 +108,42 @@ class Headerbar extends Component {
     );
   }
 }
+
+  class EventListItem extends Component {
+    state = {
+      like : false
+    }
+    handleClickLike = () => {
+
+      this.setState({
+        like: !this.state.like
+      });
+    }
+    render() {
+      var photobis = require ("../../assets/Images/rockhome.jpg");
+      var Iconbis = require ("../../assets/Icons/CrocheNoire2.png");
+
+      if (this.state.like) {
+        Iconbis = require ("../../assets/Icons/CrocheCouleur.png");
+      }
+      
+    return (
+      <ListItem
+        thumbnail
+        onPress={this.handleClickLike}>
+        <Left>
+          <Thumbnail square large source={photobis}/>
+        </Left>
+        <Body>
+          <Text style={styles.head}>{`Artiste: ${this.props.artist}  style: ${this.props.styleM}`}</Text>
+          <Text style={styles.head}>{` le ${this.props.eventDate}  entrée ${this.props.price}`}</Text>
+        </Body>
+        <Right>
+            <Thumbnail source={Iconbis} />
+        </Right>
+      </ListItem>);
+  }
+  }
 
 const styles = StyleSheet.create({
       head: {
