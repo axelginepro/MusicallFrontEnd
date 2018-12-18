@@ -23,14 +23,7 @@ class ListEventScreen extends Component {
       fontLoaded: true
     })
   };
-
-
   render() {
-
-
-
-
-
     if (!this.props.filter.style1 && !this.props.filter.style2
       && !this.props.filter.style3 && !this.props.filter.style4
       && !this.props.filter.style5 && !this.props.filter.style6
@@ -48,18 +41,15 @@ class ListEventScreen extends Component {
           }
         });
       }
-
-    return (
-
-        <Container>
-          <Headerbar navigation={this.props.navigation}/>
-         <Content>
-           <List>
-             {eventList}
-           </List>
-         </Content>
-       </Container>
-
+  return (
+      <Container>
+        <Headerbar navigation={this.props.navigation}/>
+       <Content>
+         <List>
+           {eventList}
+         </List>
+       </Content>
+     </Container>
     );
   }
 }
@@ -87,7 +77,6 @@ class Headerbar extends Component {
   render() {
 
     return (
-
         <Header noShadow style={{marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight, backgroundColor: 'white'}}>
           <Left>
             <Button transparent onPress= { () => this.props.navigation.navigate('Filter')}>
@@ -101,7 +90,7 @@ class Headerbar extends Component {
             </Button>
 
             <Item regular>
-              <Input style={styles.head} placeholder='Recherche ...'/>
+              <Input style={styles.search} placeholder='Recherche ...'/>
             </Item>
           </Right>
         </Header>
@@ -147,9 +136,15 @@ class Headerbar extends Component {
 
 const styles = StyleSheet.create({
       head: {
-      fontFamily:'RalewayRegular',
+      fontFamily:'RalewayRegular'
 
       },
+      search:{
+      fontFamily:'RalewayRegular',
+      fontSize: 20,
+      width: 150,
+      height: 40
+      }
 
     });
 
