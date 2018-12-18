@@ -18,7 +18,6 @@ class AddEventScreen extends React.Component {
       adresse: null,
       name: null,
       artist: null,
-      // style: null,
       price: null,
       description: null,
       image: null,
@@ -215,7 +214,8 @@ const styles = StyleSheet.create({
                 borderWidth: 2,
                 padding: 0,
                 margin: 0,
-                height: '5%'
+                height: '6%',
+                
         },
         row: {
           justifyContent: 'center',
