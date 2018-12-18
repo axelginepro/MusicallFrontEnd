@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import { Font } from 'expo';
 
 class ListEventScreen extends Component {
-  
+
     state = {
     fontLoaded: false,
   }
@@ -30,20 +30,52 @@ class ListEventScreen extends Component {
     var Icontris = "../../assets/Icons/CrocheCouleur.png";
     var photobis = "../../assets/Images/rockhome.jpg";
 
-    var  eventList= this.props.eventList.map((event, i) =>
-      <ListItem key={i} thumbnail>
-        <Left>
-          <Thumbnail square large source={require (photobis)}/>
-        </Left>
-        <Body>
-          <Text style={styles.head}>{`Artiste:${event.artist}  style: ${event.style} `}</Text>
-          <Text style={styles.head}>{` le ${event.eventDate.toString().substr(2, 8)}  entrée ${event.price}`}</Text>
-        </Body>
-        <Right>
-            <Thumbnail source={require (Icontris)} />
-        </Right>
-      </ListItem>
-    );
+
+    if (!this.props.filter.style1 && !this.props.filter.style2
+      && !this.props.filter.style3 && !this.props.filter.style4
+      && !this.props.filter.style5 && !this.props.filter.style6
+      && !this.props.filter.style7 && !this.props.filter.style8
+      && !this.props.filter.style9){
+        var  eventList= this.props.eventList.map((event, i) => {
+          return(
+          <ListItem key={i} thumbnail>
+            <Left>
+              <Thumbnail square large source={require (photobis)}/>
+            </Left>
+            <Body>
+              <Text style={styles.head}>{`Artiste:${event.artist}  style: ${event.style} `}</Text>
+              <Text style={styles.head}>{` le ${event.eventDate.toString().substr(2, 8)}  entrée ${event.price}`}</Text>
+            </Body>
+            <Right>
+                <Thumbnail source={require (Icontris)} />
+            </Right>
+          </ListItem>
+        )}
+      );
+    } else {
+        var  eventList= this.props.eventList.map((event, i) => {
+        if(this.props.filter.style1 == event.style || this.props.filter.style2 == event.style
+          || this.props.filter.style3 == event.style || this.props.filter.style4 == event.style
+          || this.props.filter.style5 == event.style || this.props.filter.style6 == event.style
+          || this.props.filter.style7 == event.style || this.props.filter.style8 == event.style
+          || this.props.filter.style9 == event.style) {
+            return(
+            <ListItem key={i} thumbnail>
+              <Left>
+                <Thumbnail square large source={require (photobis)}/>
+              </Left>
+              <Body>
+                <Text style={styles.head}>{`Artiste:${event.artist}  style: ${event.style} `}</Text>
+                <Text style={styles.head}>{` le ${event.eventDate.toString().substr(2, 8)}  entrée ${event.price}`}</Text>
+              </Body>
+              <Right>
+                  <Thumbnail source={require (Icontris)} />
+              </Right>
+            </ListItem>
+          )}
+        });
+      }
+
     return (
 
         <Container>
@@ -82,7 +114,7 @@ class Headerbar extends Component {
   render() {
 
     return (
-          
+
         <Header noShadow style={{marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight, backgroundColor: 'white'}}>
           <Left>
             <Button transparent onPress= { () => this.props.navigation.navigate('Filter')}>
@@ -99,7 +131,7 @@ class Headerbar extends Component {
               <Input style={styles.head} placeholder='Recherche ...'/>
             </Item>
           </Right>
-        </Header> 
+        </Header>
     );
   }
 }
@@ -107,15 +139,17 @@ class Headerbar extends Component {
 const styles = StyleSheet.create({
       head: {
       fontFamily:'RalewayRegular',
-                
+
       },
 
     });
 
 
 function mapStateToProps(state) {
+  console.log(state.filter);
   return {
     eventList: state.eventList,
+    filter: state.filter
   };
 }
 
