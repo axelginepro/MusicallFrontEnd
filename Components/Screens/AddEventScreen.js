@@ -144,7 +144,7 @@ class AddEventScreen extends React.Component {
               <Divider style={{height:20}}/>
               <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" />
                 <Divider style={{height:20}}/>
-              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({lieu: text})} placeholder="Nom du Bar" />
+              <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Nom du Bar" />
 
               <Divider style={{height:20}}/>
               <FormInput inputStyle={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" />
