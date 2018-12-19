@@ -23,23 +23,16 @@ class AccountScreen extends React.Component {
     })
   };
   render() {
- if (!this.props.filter.style1 && !this.props.filter.style2
-      && !this.props.filter.style3 && !this.props.filter.style4
-      && !this.props.filter.style5 && !this.props.filter.style6
-      && !this.props.filter.style7 && !this.props.filter.style8
-      && !this.props.filter.style9) {
-        var eventList = this.props.eventList.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.style} eventDate={event.eventDate} price={event.price}/>);
-    } else {
-        var eventList = this.props.eventList.map((event, i) => {
-        if (this.props.filter.style1 == event.style || this.props.filter.style2 == event.style
-          || this.props.filter.style3 == event.style || this.props.filter.style4 == event.style
-          || this.props.filter.style5 == event.style || this.props.filter.style6 == event.style
-          || this.props.filter.style7 == event.style || this.props.filter.style8 == event.style
-          || this.props.filter.style9 == event.style) {
-            return <EventListItem key={i} artist={event.artist} styleM={event.style} eventDate={event.eventDate} price={event.price}/>
-          }
-        });
-      }
+if (this.props.eventLiked) {
+    var eventListLike = this.props.eventLiked.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.styleM} eventDate={event.eventDate} price={event.price}  />);
+}
+
+if (this.props.addEvent) {
+    var addEventList = this.props.addEvent.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.styleM} eventDate={event.eventDate} price={event.price}  />);
+}
+
+
+  
     return (
       this.state.fontLoaded? (
 <Container>
@@ -57,18 +50,22 @@ class AccountScreen extends React.Component {
                   <Text style={styles.textColor} h4 >J'organise</Text>
             </Col>
                 <List>
-                  {eventList}
+                  {addEventList}
               </List>
                   <Col style={styles.container}>
                     <Text style={styles.textColor} h4>Je participe</Text>
             </Col>
-              {eventList}
+              {eventListLike}
     </Content> 
 </Container> 
 ) : null
     );
   }
 }
+
+
+
+
 class EventListItem extends Component {
     state = {
       like : false
@@ -81,16 +78,13 @@ class EventListItem extends Component {
     }
     render() {
       var photobis = require ("../../assets/Images/rockhome.jpg");
-      var Iconbis = require ("../../assets/Icons/CrocheNoire2.png");
+      
 
-      if (this.state.like) {
-        Iconbis = require ("../../assets/Icons/CrocheCouleur.png");
-      }
+        Iconbis = require ("../../assets/Icons/CrocheCouleur.png")
       
     return (
-      <ListItem
-        thumbnail
-        onPress={this.handleClickLike}>
+      < ListItem thumbnail >
+        
         <Left>
           <Thumbnail square large source={photobis}/>
         </Left>
@@ -125,8 +119,11 @@ const styles = StyleSheet.create({
     });
 
 function mapStateToProps(state) {
-  console.log(state.filter);
-  return {eventList: state.eventList, filter: state.filter};
+  console.log(state.eventLike);
+  return {
+    addEvent: state.addEvent,
+    eventLiked: state.eventLike
+  };
 }
 
     export default connect(mapStateToProps, null)(AccountScreen)

@@ -2,6 +2,7 @@ export default function(eventLike = [], action) {
   if (action.type === 'eventLiked') {
     var eventLikeCopy = [...eventLike]
     if(action.eventLike.like){
+      console.log(action.eventLike)
       eventLikeCopy.push(action.eventLike)
       return eventLikeCopy;
     } else {
