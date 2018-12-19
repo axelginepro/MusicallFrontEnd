@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, Platform, StatusBar} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import { Constants, Location, Permissions } from 'expo';
-import { Container, Header, Left, Body, Right, Button, Icon, Content, Input, Item} from 'native-base';
+import { Container, Header, Left, Body, Right, Button, Icon, Content, Input, Item, Spinner} from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Font } from 'expo';
 import {Ionicons, MatterialCommunityIcons} from '@expo/vector-icons';
@@ -147,7 +147,9 @@ class MapScreen extends Component {
     }
     else {
       return (
-        <Text>Loading</Text>
+        <View style={{flex: 1, justifyContent: 'center', alignItem: 'center'}}>
+          <Spinner color='#780D16' />
+        </View>
       )
     }
   }
