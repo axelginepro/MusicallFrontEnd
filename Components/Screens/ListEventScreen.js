@@ -124,8 +124,12 @@ class Headerbar extends Component {
           <Thumbnail square large source={photobis}/>
         </Left>
         <Body>
-          <Text style={styles.head}>{`Artiste: ${this.props.artist}  style: ${this.props.styleM}`}</Text>
-          <Text style={styles.head}>{` le ${this.props.eventDate}  entrée ${this.props.price}`}</Text>
+          <Text style={styles.titleText}>{`Artiste: ${this.props.artist}`}
+          </Text>
+          <Text  style={styles.titleText}>{`Style: ${this.props.styleM}`}</Text>
+          <Text style={styles.head}>{`le ${this.props.eventDate}  `}</Text>
+          <Text style={styles.head}>{`entrée ${this.props.price}€`}
+          </Text>
         </Body>
         <Right>
             <Thumbnail source={Iconbis} />
@@ -136,14 +140,16 @@ class Headerbar extends Component {
 
 const styles = StyleSheet.create({
       head: {
-      fontFamily:'RalewayRegular'
-
+      fontFamily:'RalewayRegular',
       },
       search:{
       fontFamily:'RalewayRegular',
       fontSize: 20,
       width: 150,
       height: 40
+      },
+      titleText :{
+        fontWeight: "bold"
       }
 
     });
