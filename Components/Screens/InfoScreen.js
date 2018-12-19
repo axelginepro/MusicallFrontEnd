@@ -31,35 +31,36 @@ export default class InfoScreen extends React.Component {
         <Row>
       <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
 </Row>
-
-
+<Col style={styles.contentTitle}>
+                  <Text style={styles.textColor} h2>Pour Information</Text>
+</Col>
   <Col  style={styles.contentView}>
-          <Ionicons name='ios-list' size={35} style={styles.icon}/>
-          <Text style={styles.textColor} h4>Filtrer les events</Text>
+  <Ionicons name='ios-list' size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('Filter')}}/>
+          <Text style={styles.textColor} h4>Filtrer les événements</Text>
         </Col>
 
 
         <Col style={styles.contentView}>
-        <Ionicons name='ios-map' size={35} style={styles.icon} />
-          <Text style={styles.textColor} h4> Map des events </Text>
+        <Ionicons name='ios-map' size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('Map')}}/>
+          <Text style={styles.textColor} h4> Map des évenéments</Text>
         </Col>
 
 
         <Col style={styles.contentView}>
-          <Ionicons name='ios-search' size={35} style={styles.icon} />
-          <Text style={styles.textColor} h4> Chercher un event</Text>
+          <Ionicons name='ios-search' size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('ListEvent')}}/>
+          <Text style={styles.textColor} h4> Chercher un évenement</Text>
         </Col>
 
 
         <Col style={styles.contentView}>
-            <Ionicons name="ios-add-circle-outline" size={35} style={styles.icon} />
+            <Ionicons name="ios-add-circle-outline" size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('AddEvent')}}/>
           <Text style={styles.textColor} h4> Ajouter un Concert </Text>
         </Col>
 
 
 
         <Col style={styles.contentView}>
-          <Ionicons name='ios-person' size={35} style={styles.icon} />
+          <Ionicons name='ios-person' size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('Account')}}/>
           <Text style={styles.textColor} h4> Accéder à son compte</Text>
         </Col>
 
@@ -86,6 +87,11 @@ contentView: {
   flexDirection: 'row',
   width: '100%',
 
+},
+contentTitle: {
+  flex: 0.5,
+  width: '100%',
+  alignItems: 'center'
 },
 row: {
   justifyContent: 'center',
