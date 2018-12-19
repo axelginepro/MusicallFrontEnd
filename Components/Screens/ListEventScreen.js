@@ -24,12 +24,14 @@ class ListEventScreen extends Component {
     })
   };
   render() {
+    var photobis = require ("../../assets/Images/rockhome.jpg");
+
     if (!this.props.filter.style1 && !this.props.filter.style2
       && !this.props.filter.style3 && !this.props.filter.style4
       && !this.props.filter.style5 && !this.props.filter.style6
       && !this.props.filter.style7 && !this.props.filter.style8
       && !this.props.filter.style9) {
-        var eventList = this.props.eventList.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.style} eventDate={event.eventDate} price={event.price}/>);
+        var eventList = this.props.eventList.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.style} eventDate={event.eventDate} price={event.price} handleEventLike={this.props.handleEventLike} like={false}/>);
     } else {
         var eventList = this.props.eventList.map((event, i) => {
         if (this.props.filter.style1 == event.style || this.props.filter.style2 == event.style
@@ -37,7 +39,7 @@ class ListEventScreen extends Component {
           || this.props.filter.style5 == event.style || this.props.filter.style6 == event.style
           || this.props.filter.style7 == event.style || this.props.filter.style8 == event.style
           || this.props.filter.style9 == event.style) {
-            return <EventListItem key={i} artist={event.artist} styleM={event.style} eventDate={event.eventDate} price={event.price}/>
+            return <EventListItem key={i} artist={event.artist} styleM={event.style} eventDate={event.eventDate} price={event.price} handleEventLike={this.props.handleEventLike} like={false}/>
           }
         });
       }
@@ -100,13 +102,15 @@ class Headerbar extends Component {
 
   class EventListItem extends Component {
     state = {
-      like : false
+      like : this.props.like
     }
     handleClickLike = () => {
+      this.props.handleEventLike({...this.props, like: !this.state.like})
 
       this.setState({
         like: !this.state.like
       });
+
     }
     render() {
       var photobis = require ("../../assets/Images/rockhome.jpg");
@@ -115,7 +119,7 @@ class Headerbar extends Component {
       if (this.state.like) {
         Iconbis = require ("../../assets/Icons/CrocheCouleur.png");
       }
-      
+
     return (
       <ListItem
         thumbnail
@@ -149,6 +153,17 @@ const styles = StyleSheet.create({
     });
 
 
+function mapDispatchToProps(dispatch) {
+  return {
+    handleEventLike : function(eventLike) {
+      dispatch({
+        type: 'eventLiked',
+        eventLike
+      })
+    }
+  }
+}
+
 function mapStateToProps(state) {
   console.log(state.filter);
   return {
@@ -157,4 +172,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, null)(ListEventScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ListEventScreen);
