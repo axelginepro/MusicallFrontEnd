@@ -15,15 +15,15 @@ class AddEventScreen extends React.Component {
     super();
     this.state = {
 
-      adresse: null,
-      name: null,
-      artist: null,
-      price: null,
-      description: null,
-      image: null,
+      adresse: '',
+      name: '',
+      artist: '',
+      price: '',
+      description: '',
+      image: '',
       coords: {
-        latitude: null,
-        longitude: null
+        latitude: '',
+        longitude: ''
       },
       fontLoaded: false,
       eventDate: new Date(),
@@ -81,16 +81,17 @@ class AddEventScreen extends React.Component {
           }
         })
       }).then(function(response) {
-        return response.json()
+        return response.json();
       }).then(function(eventData) {
         console.log(eventData.event);
-        ctx.props.handleNewEvent(eventData.event)
-        ctx.props.navigation.navigate('Map')
+        ctx.props.handleNewEvent(eventData.event);       
+        console.log('setState')
+        ctx.props.navigation.navigate('Map');
       }).catch(function(error) {
         console.error(error);
       });
-    }).catch(error => console.warn(error))
-  }
+    }).catch(error => console.warn(error));
+  };
 
   formatChosenDate(date) {
     if (this.props.formatChosenDate) {
@@ -103,6 +104,8 @@ class AddEventScreen extends React.Component {
     ].join('/');
   }
 
+  submitAndClear = () => {}
+
   render() {
    var maintenant = new Date();
    var jour = maintenant.getDate();
@@ -110,13 +113,11 @@ class AddEventScreen extends React.Component {
    var an = maintenant.getFullYear();
 
     return (
-      <ScrollView>
-      {this.state.fontLoaded? (
-      <View style={styles.container}>
-
-
+    <ScrollView>
+    {this.state.fontLoaded? (
+    <View style={styles.container}>
     <Row style={styles.row}>
-      <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+      <Image style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
     </Row>
         <Text style={{fontFamily:'RalewayRegular', color: 'red', fontSize: 30, marginTop: '10%'}}>Ajouter un événement</Text>
           <Divider style={{height:20}}/>
@@ -136,11 +137,11 @@ class AddEventScreen extends React.Component {
                   onDateChange={this.setDate}/>
             </Col>
           <Divider style={{height:20}}/>
-        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" />
+        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" value={this.state.text} clearTextOnFocus='true'/>
           <Divider style={{height:20}}/>
-        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Nom du Bar" />
+        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Nom du Bar" value={this.state.text} clearTextOnFocus='true'/>
            <Divider style={{height:20}}/>
-        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" />
+        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" value={this.state.text} clearTextOnFocus='true'/>
            <Divider style={{height:20}}/>
              <Form >
               <Item picker rounded >
@@ -149,7 +150,6 @@ class AddEventScreen extends React.Component {
                     mode="dropdown"
                     placeholder="Style"
                     placeholderStyle={{flex:1, textAlign:"center", alignItems: 'center', color:"#d3d3d3"}}
-                    // placeHolderText="Style"
                     selectedValue={this.state.style}
                     onValueChange={this.onValueChange2.bind(this)}>
                   <Picker.Item label="Style" value="key0" />
@@ -164,11 +164,11 @@ class AddEventScreen extends React.Component {
                   <Picker.Item label="Variete" value="Variete" />
                </Picker>
               </Item>
-            </Form>
-          <Divider style={{height:20}}/>
-            <TextInput style={styles.form} textAlign={'center'} keyboardType={'phone-pad'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" />
-          <Divider style={{height:20}}/>
-            <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({description: text})} placeholder="Description" />
+             </Form>
+           <Divider style={{height:20}}/>
+            <TextInput style={styles.form} textAlign={'center'} keyboardType={'phone-pad'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" value={this.state.text} clearTextOnFocus='true'/>
+           <Divider style={{height:20}}/>
+            <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({description: text})} placeholder="Horaire" value={this.state.text} clearTextOnFocus='true'/>
           <Divider style={{height:50}}/>
         <Button
             buttonStyle={{borderRadius:25,width:200, marginTop:5}}

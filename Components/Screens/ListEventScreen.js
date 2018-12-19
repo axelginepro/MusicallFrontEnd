@@ -109,7 +109,7 @@ class Headerbar extends Component {
       });
     }
     render() {
-      var photobis = require ("../../assets/Images/rockhome.jpg");
+      var photobis = require ("../../assets/Images/sucre1.png");
       var Iconbis = require ("../../assets/Icons/CrocheNoire2.png");
 
       if (this.state.like) {
@@ -125,7 +125,7 @@ class Headerbar extends Component {
         </Left>
         <Body>
           <Text style={styles.head}>{`Artiste: ${this.props.artist}  style: ${this.props.styleM}`}</Text>
-          <Text style={styles.head}>{` le ${this.props.eventDate}  entrée ${this.props.price}`}</Text>
+          <Text style={styles.head}>{`${this.props.eventDate}  entrée ${this.props.price}`}</Text>
         </Body>
         <Right>
             <Thumbnail source={Iconbis} />
