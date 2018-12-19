@@ -14,7 +14,6 @@ class AddEventScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-
       adresse: null,
       name: null,
       artist: null,
@@ -85,6 +84,20 @@ class AddEventScreen extends React.Component {
       }).then(function(eventData) {
         console.log(eventData.event);
         ctx.props.handleNewEvent(eventData.event)
+        ctx.setState({
+          adresse: null,
+          name: null,
+          artist: null,
+          price: null,
+          description: null,
+          image: null,
+          coords: {
+            latitude: null,
+            longitude: null
+          },
+          eventDate: new Date(),
+          style: undefined
+        })
         ctx.props.navigation.navigate('Map')
       }).catch(function(error) {
         console.error(error);
@@ -136,11 +149,11 @@ class AddEventScreen extends React.Component {
                   onDateChange={this.setDate}/>
             </Col>
           <Divider style={{height:20}}/>
-        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" />
+        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} value={this.state.adresse} placeholder="Adresse" />
           <Divider style={{height:20}}/>
-        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Nom du Bar" />
+        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} value={this.state.name} placeholder="Nom du Bar" />
            <Divider style={{height:20}}/>
-        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" />
+        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} value={this.state.artist} placeholder="Artiste" />
            <Divider style={{height:20}}/>
              <Form >
               <Item picker rounded >
@@ -166,9 +179,9 @@ class AddEventScreen extends React.Component {
               </Item>
             </Form>
           <Divider style={{height:20}}/>
-            <TextInput style={styles.form} textAlign={'center'} keyboardType={'phone-pad'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" />
+            <TextInput style={styles.form} textAlign={'center'} keyboardType={'phone-pad'} onChangeText={(text) => this.setState({price: text})} value={this.state.price} placeholder="Tarif" />
           <Divider style={{height:20}}/>
-            <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({description: text})} placeholder="Description" />
+            <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({description: text})} value={this.state.description} placeholder="Horaire" />
           <Divider style={{height:50}}/>
         <Button
             buttonStyle={{borderRadius:25,width:200, marginTop:5}}

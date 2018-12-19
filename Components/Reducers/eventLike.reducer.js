@@ -1,5 +1,4 @@
 export default function(eventLike = [], action) {
-  console.log('reducer eventLike', action.eventLike);
   if (action.type === 'eventLiked') {
     var eventLikeCopy = [...eventLike]
     if(action.eventLike.like){

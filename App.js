@@ -11,13 +11,14 @@ import filter from './Components/Reducers/filter.reducer';
 import eventList from './Components/Reducers/event.reducer';
 import userData from './Components/Reducers/user.reducer';
 import eventLike from './Components/Reducers/eventLike.reducer';
+import addEvent from './Components/Reducers/addEvent.reducer';
 
 // import de mes outils Redux
 import {Provider} from 'react-redux';
 import {createStore, combineReducers} from 'redux';
 
 
-const store = createStore(combineReducers({filter, eventList, userData, eventLike}));
+const store = createStore(combineReducers({filter, eventList, userData, eventLike, addEvent}));
 
 // Création de mon Store
 
