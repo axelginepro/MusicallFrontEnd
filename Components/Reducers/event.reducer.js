@@ -1,6 +1,6 @@
 export default function (event_List = [], action) {
-  
-console.log(action.newEvent);
+
+console.log('eventReducer', action.newEvent);
 
   if (action.type === 'eventData'){
     return action.event
@@ -11,5 +11,4 @@ console.log(action.newEvent);
   } else {
     return event_List
   }
-
 }
