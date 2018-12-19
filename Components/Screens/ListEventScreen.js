@@ -113,7 +113,7 @@ class Headerbar extends Component {
 
     }
     render() {
-      var photobis = require ("../../assets/Images/rockhome.jpg");
+      var photobis = require ("../../assets/Images/sucre1.png");
       var Iconbis = require ("../../assets/Icons/CrocheNoire2.png");
 
       if (this.state.like) {
