@@ -112,7 +112,7 @@ class AddEventScreen extends React.Component {
 //datetimepicker
 handlePicker = (datetime) => this.setState({
  isVisible:false,
- chosenDate: moment(datetime).format('HH:mm')});
+ chosenDate: moment(datetime).format('HH : mm')});
 
 hidePicker = () => this.setState({
  isVisible:false });
@@ -171,11 +171,11 @@ showPicker  = () => this.setState({
                   is24Hour={true}/>
             </Col>
           <Divider style={{height:20}}/>
-        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" value={this.state.text} />
+        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" value={this.state.adresse} />
           <Divider style={{height:20}}/>
-        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Nom du Bar" value={this.state.text} />
+        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Nom du Bar" value={this.state.name} />
            <Divider style={{height:20}}/>
-        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" value={this.state.text} />
+        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" value={this.state.artist} />
            <Divider style={{height:20}}/>
              <Form >
               <Item picker rounded >
@@ -200,7 +200,7 @@ showPicker  = () => this.setState({
               </Item>
              </Form>
            <Divider style={{height:20}}/>
-            <TextInput style={styles.form} textAlign={'center'} keyboardType={'phone-pad'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" value={this.state.tarif} />
+            <TextInput style={styles.form} textAlign={'center'} keyboardType={'phone-pad'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" value={this.state.price} />
            <Divider style={{height:50}}/>
         <Button
             buttonStyle={{borderRadius:25,width:200, marginTop:5}}

@@ -26,7 +26,7 @@ class ListEventScreen extends Component {
   render() {
     // for (var i = 1; i< photosbis.length; i++) {
 
-    var photobis = require ("../../assets/Images/eventphoto2.png"); 
+    var photobis = require ("../../assets/Images/eventphoto14.png"); 
        
     if (!this.props.filter.style1 && !this.props.filter.style2
       && !this.props.filter.style3 && !this.props.filter.style4
@@ -130,7 +130,7 @@ class Headerbar extends Component {
         <Body>
           <Text style={styles.titleText}>{`Artiste: ${this.props.artist}`}</Text>
           <Text  style={styles.titleText}>{`Style: ${this.props.styleM}`}</Text>
-          <Text style={styles.head}>{`le ${this.props.eventDate}à ${this.props.description} `}</Text>
+          <Text style={styles.head}>{`le ${this.props.eventDate} à ${this.props.description} `}</Text>
           <Text style={styles.head}>{`entrée ${this.props.price}€`}
           </Text>
 
