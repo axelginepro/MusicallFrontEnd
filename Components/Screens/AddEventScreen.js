@@ -16,12 +16,13 @@ class AddEventScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      adresse: null,
-      name: null,
-      artist: null,
-      price: null,
-      description: null,
-      image: null,
+
+      adresse: '',
+      name: '',
+      artist: '',
+      price: '',
+      description: '',
+      image: '',
       coords: {
         latitude: '',
         longitude: ''
@@ -88,22 +89,9 @@ class AddEventScreen extends React.Component {
         return response.json();
       }).then(function(eventData) {
         console.log(eventData.event);
-        ctx.props.handleNewEvent(eventData.event)
-        ctx.setState({
-          adresse: null,
-          name: null,
-          artist: null,
-          price: null,
-          description: null,
-          image: null,
-          coords: {
-            latitude: null,
-            longitude: null
-          },
-          eventDate: new Date(),
-          style: undefined
-        })
-        ctx.props.navigation.navigate('Map')
+        ctx.props.handleNewEvent(eventData.event);       
+        console.log('setState')
+        ctx.props.navigation.navigate('Map');
       }).catch(function(error) {
         console.error(error);
       });
@@ -169,13 +157,6 @@ showPicker  = () => this.setState({
                   onDateChange={this.setDate}/>
             </Col>
           <Divider style={{height:20}}/>
-<<<<<<< HEAD
-        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} value={this.state.adresse} placeholder="Adresse" />
-          <Divider style={{height:20}}/>
-        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} value={this.state.name} placeholder="Nom du Bar" />
-           <Divider style={{height:20}}/>
-        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} value={this.state.artist} placeholder="Artiste" />
-=======
             <Col style={styles.form}>            
                <TouchableOpacity onPress={this.showPicker} >
                 <Text style={{alignSelf: "center", margin:5, fontFamily:'RalewayRegular' }}>
@@ -195,7 +176,6 @@ showPicker  = () => this.setState({
         <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Nom du Bar" value={this.state.text} />
            <Divider style={{height:20}}/>
         <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" value={this.state.text} />
->>>>>>> after
            <Divider style={{height:20}}/>
              <Form >
               <Item picker rounded >
@@ -218,20 +198,10 @@ showPicker  = () => this.setState({
                   <Picker.Item label="Variete" value="Variete" />
                </Picker>
               </Item>
-<<<<<<< HEAD
-            </Form>
-          <Divider style={{height:20}}/>
-            <TextInput style={styles.form} textAlign={'center'} keyboardType={'phone-pad'} onChangeText={(text) => this.setState({price: text})} value={this.state.price} placeholder="Tarif" />
-          <Divider style={{height:20}}/>
-            <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({description: text})} value={this.state.description} placeholder="Horaire" />
-          <Divider style={{height:50}}/>
-=======
              </Form>
            <Divider style={{height:20}}/>
             <TextInput style={styles.form} textAlign={'center'} keyboardType={'phone-pad'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" value={this.state.tarif} />
            <Divider style={{height:50}}/>
-           
->>>>>>> after
         <Button
             buttonStyle={{borderRadius:25,width:200, marginTop:5}}
             title="Add Event"
