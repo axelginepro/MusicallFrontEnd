@@ -172,7 +172,8 @@ function mapStateToProps(state) {
   console.log(state.filter);
   return {
     eventList: state.eventList,
-    filter: state.filter
+    filter: state.filter,
+    eventLiked: state.eventLike
   };
 }
 

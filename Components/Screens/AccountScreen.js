@@ -24,11 +24,13 @@ class AccountScreen extends React.Component {
   };
   render() {
 if (this.props.eventLiked) {
-    var eventListLike = this.props.eventLiked.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.styleM} eventDate={event.eventDate} price={event.price}  />);
+    var eventListLike = this.props.eventLiked.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.styleM} eventDate={event.eventDate} price={event.price}
+    handleEventLike={this.props.handleEventLike} like={true}  />);
 }
 
 if (this.props.addEvent) {
-    var addEventList = this.props.addEvent.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.styleM} eventDate={event.eventDate} price={event.price}  />);
+    var addEventList = this.props.addEvent.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.styleM} eventDate={event.eventDate} price={event.price}
+    handleEventLike={this.props.handleEventLike} like={true}  />);
 }
 
 
@@ -67,14 +69,16 @@ if (this.props.addEvent) {
 
 
 class EventListItem extends Component {
-    state = {
-      like : false
+        state = {
+      like : this.props.like
     }
     handleClickLike = () => {
+      this.props.handleEventLike({...this.props, like: !this.state.like})
 
       this.setState({
         like: !this.state.like
       });
+
     }
     render() {
       var photobis = require ("../../assets/Images/rockhome.jpg");
@@ -83,9 +87,9 @@ class EventListItem extends Component {
         Iconbis = require ("../../assets/Icons/CrocheCouleur.png")
       
     return (
-      < ListItem thumbnail >
+      < ListItem thumbnail onPress={this.handleClickLike} >
         
-        <Left>
+        <Left >
           <Thumbnail square large source={photobis}/>
         </Left>
         <Body>
@@ -126,4 +130,15 @@ function mapStateToProps(state) {
   };
 }
 
-    export default connect(mapStateToProps, null)(AccountScreen)
+function mapDispatchToProps(dispatch) {
+  return {
+    handleEventLike: function (eventLike) {
+      dispatch({
+        type: 'eventLiked',
+        eventLike
+      })
+    }
+  }
+}
+
+    export default connect(mapStateToProps, mapDispatchToProps)(AccountScreen)
