@@ -1,21 +1,26 @@
 export default function(eventLike = [], action) {
-  if (action.type === 'eventLiked') {
+  if (action.type == 'eventLiked') {
+    console.log("eventLikeReducer", action);
     var eventLikeCopy = [...eventLike]
-    if(action.eventLike.like){
-      console.log(action.eventLike)
+    if(eventLikeCopy.length === 0) {
       eventLikeCopy.push(action.eventLike)
       return eventLikeCopy;
     } else {
       for (e of eventLikeCopy) {
-        if (e.artist == action.eventLike.artist) {
+        if (e.eventId == action.eventLike.eventId) {
           var index = eventLikeCopy.indexOf(e)
           eventLikeCopy.splice(index, 1)
-          console.log(eventLikeCopy);
+          console.log("B", eventLikeCopy);
           return eventLikeCopy;
         }
       }
+      eventLikeCopy.push(action.eventLike)
+      console.log("C", eventLikeCopy)
       return eventLikeCopy;
     }
-  };
+  }
+
   return eventLike;
+
+
 };

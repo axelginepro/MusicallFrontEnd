@@ -131,6 +131,7 @@ class MapScreen extends Component {
 
               <Marker
                 pinColor='blue'
+                title='Vous êtes ICI !'
                 coordinate={{latitude: this.state.location.coords.latitude, longitude: this.state.location.coords.longitude}}
               />
 
