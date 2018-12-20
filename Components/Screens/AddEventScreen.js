@@ -16,20 +16,19 @@ class AddEventScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-
-      adresse: '',
-      name: '',
-      artist: '',
-      price: '',
-      description: '',
-      image: '',
-      coords: {
-        latitude: '',
-        longitude: ''
-      },
-      fontLoaded: false,
-      eventDate: new Date(),
-      style: undefined,
+     adresse: null,
+     name: null,
+     artist: null,
+     price: null,
+     description: null,
+     image: null,
+     coords: {
+       latitude: '',
+       longitude: ''
+     },
+     fontLoaded: false,
+     eventDate: new Date(),
+     style: undefined,
       isVisible: false,
       chosenDate: ''
     };
@@ -90,7 +89,22 @@ class AddEventScreen extends React.Component {
       }).then(function(eventData) {
         console.log(eventData.event);
         ctx.props.handleNewEvent(eventData.event);       
-        console.log('setState')
+        ctx.setState({
+         adresse: null,
+         name: null,
+         artist: null,
+         price: null,
+         description: null,
+         image: null,
+         coords: {
+           latitude: null,
+           longitude: null
+         },
+         eventDate: new Date(),
+         style: undefined,
+          isVisible: false,
+         chosenDate: ''
+       })
         ctx.props.navigation.navigate('Map');
       }).catch(function(error) {
         console.error(error);
