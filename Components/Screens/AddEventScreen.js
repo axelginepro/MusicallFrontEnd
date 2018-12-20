@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, View, ScrollView, TextInput } from 'react-native';
+import { Image, StyleSheet, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import {Button, FormLabel, FormInput, Divider, Text} from 'react-native-elements';
 import Geocoder from 'react-native-geocoding';
 import { Col, Row, Grid } from 'react-native-easy-grid';
@@ -7,6 +7,8 @@ import { Container, Header, Content, DatePicker, Form, Item, Picker} from 'nativ
 import { Font } from 'expo';
 import {Ionicons, MatterialCommunityIcons} from '@expo/vector-icons';
 import {connect} from 'react-redux';
+import DateTimePicker from 'react-native-modal-datetime-picker';
+import moment from 'moment';
 
 Geocoder.init('AIzaSyCpwkK4H7BrdzwW-yEhyzR5i92R4JWR5yk');
 
@@ -26,7 +28,9 @@ class AddEventScreen extends React.Component {
       },
       fontLoaded: false,
       eventDate: new Date(),
-      style: undefined
+      style: undefined,
+      isVisible: false,
+      chosenDate: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setDate = this.setDate.bind(this)
@@ -73,7 +77,8 @@ class AddEventScreen extends React.Component {
           artist: this.state.artist,
           style: this.state.style,
           price: this.state.price,
-          description: this.state.description,
+          //on utilise description pour afficher les horaires
+          description: this.state.chosenDate,
           coord: {
             latitude: location.lat,
             longitude: location.lng
@@ -116,7 +121,22 @@ class AddEventScreen extends React.Component {
     ].join('/');
   }
 
-  submitAndClear = () => {}
+//datetimepicker
+handlePicker = (datetime) => this.setState({
+ isVisible:false,
+ chosenDate: moment(datetime).format('HH:mm')});
+
+hidePicker = () => this.setState({
+ isVisible:false });
+
+showPicker = () => this.setState({
+ isVisible: true });
+
+hidePicker = () => this.setState({ 
+  isVisible: false});
+
+showPicker  = () => this.setState({ 
+  isVisible: true });
 
   render() {
    var maintenant = new Date();
@@ -149,11 +169,33 @@ class AddEventScreen extends React.Component {
                   onDateChange={this.setDate}/>
             </Col>
           <Divider style={{height:20}}/>
+<<<<<<< HEAD
         <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} value={this.state.adresse} placeholder="Adresse" />
           <Divider style={{height:20}}/>
         <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} value={this.state.name} placeholder="Nom du Bar" />
            <Divider style={{height:20}}/>
         <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} value={this.state.artist} placeholder="Artiste" />
+=======
+            <Col style={styles.form}>            
+               <TouchableOpacity onPress={this.showPicker} >
+                <Text style={{alignSelf: "center", margin:5, fontFamily:'RalewayRegular' }}>
+                 Horaire {this.state.chosenDate}
+                </Text>
+               </TouchableOpacity>
+                  <DateTimePicker
+                  isVisible={this.state.isVisible}
+                  onConfirm={this.handlePicker}
+                  onCancel={this.hidePicker}
+                  mode={'time'}
+                  is24Hour={true}/>
+            </Col>
+          <Divider style={{height:20}}/>
+        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" value={this.state.text} />
+          <Divider style={{height:20}}/>
+        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Nom du Bar" value={this.state.text} />
+           <Divider style={{height:20}}/>
+        <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" value={this.state.text} />
+>>>>>>> after
            <Divider style={{height:20}}/>
              <Form >
               <Item picker rounded >
@@ -176,12 +218,20 @@ class AddEventScreen extends React.Component {
                   <Picker.Item label="Variete" value="Variete" />
                </Picker>
               </Item>
+<<<<<<< HEAD
             </Form>
           <Divider style={{height:20}}/>
             <TextInput style={styles.form} textAlign={'center'} keyboardType={'phone-pad'} onChangeText={(text) => this.setState({price: text})} value={this.state.price} placeholder="Tarif" />
           <Divider style={{height:20}}/>
             <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({description: text})} value={this.state.description} placeholder="Horaire" />
           <Divider style={{height:50}}/>
+=======
+             </Form>
+           <Divider style={{height:20}}/>
+            <TextInput style={styles.form} textAlign={'center'} keyboardType={'phone-pad'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" value={this.state.tarif} />
+           <Divider style={{height:50}}/>
+           
+>>>>>>> after
         <Button
             buttonStyle={{borderRadius:25,width:200, marginTop:5}}
             title="Add Event"
@@ -224,7 +274,7 @@ const styles = StyleSheet.create({
           alignItems: 'center',
           width: '100%',
           height: '10%',
-},
+        }
     });
 
 function mapDispatchToProps(dispatch){

@@ -24,14 +24,16 @@ class ListEventScreen extends Component {
     })
   };
   render() {
-    var photobis = require ("../../assets/Images/rockhome.jpg");
+    // for (var i = 1; i< photosbis.length; i++) {
 
+    var photobis = require ("../../assets/Images/eventphoto2.png"); 
+       
     if (!this.props.filter.style1 && !this.props.filter.style2
       && !this.props.filter.style3 && !this.props.filter.style4
       && !this.props.filter.style5 && !this.props.filter.style6
       && !this.props.filter.style7 && !this.props.filter.style8
       && !this.props.filter.style9) {
-        var eventList = this.props.eventList.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.style} eventDate={event.eventDate} price={event.price} handleEventLike={this.props.handleEventLike} like={false}/>);
+        var eventList = this.props.eventList.map((event, i) => <EventListItem key={i} photo={photobis} artist={event.artist} styleM={event.style} eventDate={event.eventDate} description={event.description} price={event.price} handleEventLike={this.props.handleEventLike} like={false}/>);
     } else {
         var eventList = this.props.eventList.map((event, i) => {
         if (this.props.filter.style1 == event.style || this.props.filter.style2 == event.style
@@ -39,7 +41,7 @@ class ListEventScreen extends Component {
           || this.props.filter.style5 == event.style || this.props.filter.style6 == event.style
           || this.props.filter.style7 == event.style || this.props.filter.style8 == event.style
           || this.props.filter.style9 == event.style) {
-            return <EventListItem key={i} artist={event.artist} styleM={event.style} eventDate={event.eventDate} price={event.price} handleEventLike={this.props.handleEventLike} like={false}/>
+            return <EventListItem key={i} photo={photobis} artist={event.artist} styleM={event.style} eventDate={event.eventDate} description={event.description} price={event.price} handleEventLike={this.props.handleEventLike} like={false}/>
           }
         });
       }
@@ -86,11 +88,9 @@ class Headerbar extends Component {
             </Button>
           </Left>
           <Right>
-
             <Button transparent>
               <Ionicons name={"ios-search"} size={25} color={"black"}/>
             </Button>
-
             <Item regular>
               <Input style={styles.search} placeholder='Recherche ...'/>
             </Item>
@@ -113,7 +113,7 @@ class Headerbar extends Component {
 
     }
     render() {
-      var photobis = require ("../../assets/Images/sucre1.png");
+     //var photobis = require ("../../assets/Images/sucre1.png");
       var Iconbis = require ("../../assets/Icons/CrocheNoire2.png");
 
       if (this.state.like) {
@@ -125,13 +125,20 @@ class Headerbar extends Component {
         thumbnail
         onPress={this.handleClickLike}>
         <Left>
-          <Thumbnail square large source={photobis}/>
+          <Thumbnail square large source={this.props.photo}/>
         </Left>
         <Body>
           <Text style={styles.titleText}>{`Artiste: ${this.props.artist}`}</Text>
           <Text  style={styles.titleText}>{`Style: ${this.props.styleM}`}</Text>
+<<<<<<< HEAD
           <Text style={styles.head}>{`le ${this.props.eventDate}  `}</Text>
           <Text style={styles.head}>{`entrée ${this.props.price}€`}</Text>
+=======
+          <Text style={styles.head}>{`le ${this.props.eventDate} `}</Text>
+          <Text style={styles.head}>{`à ${this.props.description}`}</Text>
+          <Text style={styles.head}>{`entrée ${this.props.price}€`}
+          </Text>
+>>>>>>> after
         </Body>
         <Right>
             <Thumbnail source={Iconbis} />
@@ -142,13 +149,13 @@ class Headerbar extends Component {
 
 const styles = StyleSheet.create({
       head: {
-      fontFamily:'RalewayRegular',
+        fontFamily:'RalewayRegular',
       },
       search:{
-      fontFamily:'RalewayRegular',
-      fontSize: 20,
-      width: 150,
-      height: 40
+        fontFamily:'RalewayRegular',
+        fontSize: 20,
+        width: 150,
+        height: 40
       },
       titleText :{
         fontWeight: "bold"
