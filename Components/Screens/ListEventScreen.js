@@ -128,8 +128,7 @@ class Headerbar extends Component {
           <Thumbnail square large source={this.props.photo}/>
         </Left>
         <Body>
-          <Text style={styles.titleText}>{`Artiste: ${this.props.artist}`}
-          </Text>
+          <Text style={styles.titleText}>{`Artiste: ${this.props.artist}`}</Text>
           <Text  style={styles.titleText}>{`Style: ${this.props.styleM}`}</Text>
           <Text style={styles.head}>{`le ${this.props.eventDate} `}</Text>
           <Text style={styles.head}>{`à ${this.props.description}`}</Text>
@@ -175,7 +174,8 @@ function mapStateToProps(state) {
   console.log(state.filter);
   return {
     eventList: state.eventList,
-    filter: state.filter
+    filter: state.filter,
+    eventLiked: state.eventLike
   };
 }
 
