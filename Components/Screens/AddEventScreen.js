@@ -126,7 +126,7 @@ class AddEventScreen extends React.Component {
 //datetimepicker
 handlePicker = (datetime) => this.setState({
  isVisible:false,
- chosenDate: moment(datetime).format('HH : mm')});
+ chosenDate: moment(datetime).format('HH:mm')});
 
 hidePicker = () => this.setState({
  isVisible:false });
