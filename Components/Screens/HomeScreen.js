@@ -61,9 +61,6 @@ export default class HomeScreen extends React.Component {
 
       </Grid>
             ) : null}
-            <Text style={styles.txt}  onPress= { ()=> this.props.navigation.navigate('Map')} h3>Pour Naviguer</Text>
-            <Text  onPress= { ()=> this.props.navigation.navigate('Filter')} h4>Go to Filter Mother Fucker</Text>
-
   </ImageBackground>
 
 

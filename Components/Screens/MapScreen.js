@@ -86,7 +86,7 @@ class MapScreen extends Component {
           pinColor='red'
           coordinate={{latitude: event.coord.latitude, longitude: event.coord.longitude}}
           title={`Artiste: ${event.artist} | style: ${event.style}`}
-          description={`Au ${event.name} | le ${event.eventDate} à ${event.description} | entrée: ${event.price}€`}
+          description={`${event.name} | le ${event.eventDate} à ${event.description} | entrée: ${event.price}€`}
         />)
       });
     } else {
