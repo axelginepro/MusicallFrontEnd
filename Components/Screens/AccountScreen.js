@@ -22,29 +22,44 @@ class AccountScreen extends React.Component {
       fontLoaded: true
     })
   };
+
   render() {
 if (this.props.eventLiked) {
-    var eventListLike = this.props.eventLiked.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.styleM} eventDate={event.eventDate} price={event.price}
-    handleEventLike={this.props.handleEventLike} like={true}  />);
+    var eventListLike = this.props.eventLiked.map((event, i) =>
+    <EventListItem key={i}
+      artist={event.artist}
+      styleM={event.styleM}
+      eventDate={event.eventDate}
+      price={event.price}
+      eventId={event.eventId}
+      handleEventLike={this.props.handleEventLike}
+      islike={true}  />);
 }
 
 if (this.props.addEvent) {
-    var addEventList = this.props.addEvent.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.styleM} eventDate={event.eventDate} price={event.price}
-    handleEventLike={this.props.handleEventLike} like={true}  />);
+    var addEventList = this.props.addEvent.map((event, i) =>
+    <EventListItem key={i}
+      artist={event.artist}
+      styleM={event.styleM}
+      eventDate={event.eventDate}
+      price={event.price}
+      eventId={event.eventId}
+      handleEventLike={this.props.handleEventLike}
+      islike={true}  />);
 }
 
 
-  
+
     return (
       this.state.fontLoaded? (
 <Container>
 
     <Content>
-    
+
                 <Row>
                       <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
                 </Row>
-                
+
               <Col style={styles.container}>
                   <Text style={styles.textColor} h4>Mes événements</Text>
               </Col>
@@ -58,8 +73,8 @@ if (this.props.addEvent) {
                     <Text style={styles.textColor} h4>Je participe</Text>
             </Col>
               {eventListLike}
-    </Content> 
-</Container> 
+    </Content>
+</Container>
 ) : null
     );
   }
@@ -69,44 +84,42 @@ if (this.props.addEvent) {
 
 
 class EventListItem extends Component {
-        state = {
-      like : this.props.like
-    }
+
     handleClickLike = () => {
-      this.props.handleEventLike({...this.props, like: !this.state.like})
-
-      this.setState({
-        like: !this.state.like
-      });
-
+      this.props.handleEventLike({...this.props, like: !this.props.islike})
     }
+
     render() {
       var photobis = require ("../../assets/Images/rockhome.jpg");
-      
 
-        Iconbis = require ("../../assets/Icons/CrocheCouleur.png")
-      
-    return (
-      < ListItem thumbnail onPress={this.handleClickLike} >
-        
-        <Left >
-          <Thumbnail square large source={photobis}/>
-        </Left>
-        <Body>
-          <Text style={styles.titleText}>{`Artiste: ${this.props.artist}`}
-          </Text>
-          <Text  style={styles.titleText}>{`Style: ${this.props.styleM}`}</Text>
-          <Text style={styles.head}>{`le ${this.props.eventDate}  `}</Text>
-          <Text style={styles.head}>{`entrée ${this.props.price}€`}
-          </Text>
-        </Body>
-        <Right>
-            <Thumbnail source={Iconbis} />
-        </Right>
-      </ListItem>);
+
+        var Iconbis = require ("../../assets/Icons/CrocheNoire2.png");
+
+        if (this.props.islike) {
+          Iconbis = require ("../../assets/Icons/CrocheCouleur.png");
+        }
+
+      return (
+        <ListItem
+          thumbnail
+          onPress={this.handleClickLike}>
+          <Left>
+            <Thumbnail square large source={photobis}/>
+          </Left>
+          <Body>
+            <Text style={styles.titleText}>{`Artiste: ${this.props.artist}`}</Text>
+            <Text style={styles.titleText}>{`Style: ${this.props.styleM}`}</Text>
+            <Text style={styles.head}>{`le ${this.props.eventDate}  `}</Text>
+            <Text style={styles.head}>{`entrée ${this.props.price}€`}</Text>
+            <Text style={{display: 'none'}}>{this.props.eventId}</Text>
+          </Body>
+          <Right>
+              <Thumbnail source={Iconbis} />
+          </Right>
+        </ListItem>);
   }
   }
-    
+
 const styles = StyleSheet.create({
             container: {
         flex: 1,
