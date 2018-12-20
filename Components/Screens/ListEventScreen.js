@@ -26,16 +26,13 @@ class ListEventScreen extends Component {
   render() {
     // for (var i = 1; i< photosbis.length; i++) {
 
-    var photobis = require ("../../assets/Images/eventphoto14.png"); 
-       
+    var photobis = require ("../../assets/Images/eventphoto14.png");
+
     if (!this.props.filter.style1 && !this.props.filter.style2
       && !this.props.filter.style3 && !this.props.filter.style4
       && !this.props.filter.style5 && !this.props.filter.style6
       && !this.props.filter.style7 && !this.props.filter.style8
       && !this.props.filter.style9) {
-<<<<<<< HEAD
-        var eventList = this.props.eventList.map((event, i) => <EventListItem key={i} photo={photobis} artist={event.artist} styleM={event.style} eventDate={event.eventDate} description={event.description} price={event.price} handleEventLike={this.props.handleEventLike} like={false}/>);
-=======
         var eventList = this.props.eventList.map((event, i) => {
           for (var j = 0; j < this.props.eventLike.length; j++) {
               if(event._id === this.props.eventLike[j].eventId) {
@@ -46,6 +43,8 @@ class ListEventScreen extends Component {
                 eventDate={event.eventDate}
                 price={event.price}
                 eventId={event._id}
+                photo={photobis}
+                description={event.description}
                 handleEventLike={this.props.handleEventLike}
                 islike={true}
                 />
@@ -57,11 +56,12 @@ class ListEventScreen extends Component {
             eventDate={event.eventDate}
             price={event.price}
             eventId={event._id}
+            photo={photobis}
+            description={event.description}
             handleEventLike={this.props.handleEventLike}
             islike={false}
             />
         });
->>>>>>> ListEventLike
     } else {
         var eventList = this.props.eventList.map((event, i) => {
         if (this.props.filter.style1 == event.style || this.props.filter.style2 == event.style
@@ -69,9 +69,6 @@ class ListEventScreen extends Component {
           || this.props.filter.style5 == event.style || this.props.filter.style6 == event.style
           || this.props.filter.style7 == event.style || this.props.filter.style8 == event.style
           || this.props.filter.style9 == event.style) {
-<<<<<<< HEAD
-            return <EventListItem key={i} photo={photobis} artist={event.artist} styleM={event.style} eventDate={event.eventDate} description={event.description} price={event.price} handleEventLike={this.props.handleEventLike} like={false}/>
-=======
             for (var j = 0; j < this.props.eventLike.length; j++) {
                 if(event._id === this.props.eventLike[j].eventId) {
 
@@ -81,6 +78,8 @@ class ListEventScreen extends Component {
                   eventDate={event.eventDate}
                   price={event.price}
                   eventId={event._id}
+                  photo={photobis}
+                  description={event.description}
                   handleEventLike={this.props.handleEventLike}
                   islike={true}
                   />
@@ -92,10 +91,11 @@ class ListEventScreen extends Component {
               eventDate={event.eventDate}
               price={event.price}
               eventId={event._id}
+              photo={photobis}
+              description={event.description}
               handleEventLike={this.props.handleEventLike}
               islike={false}
               />
->>>>>>> ListEventLike
           }
         });
       }
@@ -143,12 +143,7 @@ class Headerbar extends Component {
             </Button>
           </Left>
           <Right>
-            <Button transparent>
-              <Ionicons name={"ios-search"} size={25} color={"black"}/>
-            </Button>
-            <Item regular>
-              <Input style={styles.search} placeholder='Recherche ...'/>
-            </Item>
+             <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
           </Right>
         </Header>
     );
@@ -179,18 +174,10 @@ class Headerbar extends Component {
         </Left>
         <Body>
           <Text style={styles.titleText}>{`Artiste: ${this.props.artist}`}</Text>
-<<<<<<< HEAD
-          <Text  style={styles.titleText}>{`Style: ${this.props.styleM}`}</Text>
-          <Text style={styles.head}>{`le ${this.props.eventDate} à ${this.props.description} `}</Text>
-          <Text style={styles.head}>{`entrée ${this.props.price}€`}
-          </Text>
-
-=======
           <Text style={styles.titleText}>{`Style: ${this.props.styleM}`}</Text>
-          <Text style={styles.head}>{`le ${this.props.eventDate}  `}</Text>
+          <Text style={styles.head}>{`le ${this.props.eventDate} à ${this.props.description} `}</Text>
           <Text style={styles.head}>{`entrée ${this.props.price}€`}</Text>
           <Text style={{display: 'none'}}>{this.props.eventId}</Text>
->>>>>>> ListEventLike
         </Body>
         <Right>
             <Thumbnail source={Iconbis} />

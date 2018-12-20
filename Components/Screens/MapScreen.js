@@ -167,14 +167,7 @@ class Headerbar extends Component {
             </Button>
           </Left>
           <Right>
-
-            <Button transparent>
-              <Ionicons name={"ios-search"} size={25} color={"black"}/>
-            </Button>
-
-            <Item regular>
-              <Input style={styles.head} placeholder='Recherche ...'/>
-            </Item>
+             <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
           </Right>
         </Header>
     );
