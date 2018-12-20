@@ -30,7 +30,7 @@ if (this.props.eventLiked) {
 }
 
 if (this.props.addEvent) {
-    var addEventList = this.props.addEvent.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.styleM} eventDate={event.eventDate} price={event.price}
+    var addEventList = this.props.addEvent.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.style} eventDate={event.eventDate} price={event.price}
     description={event.description}
     handleEventLike={this.props.handleEventLike} like={true}  />);
 }
