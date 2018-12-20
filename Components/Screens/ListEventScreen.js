@@ -130,8 +130,7 @@ class Headerbar extends Component {
         <Body>
           <Text style={styles.titleText}>{`Artiste: ${this.props.artist}`}</Text>
           <Text  style={styles.titleText}>{`Style: ${this.props.styleM}`}</Text>
-          <Text style={styles.head}>{`le ${this.props.eventDate} `}</Text>
-          <Text style={styles.head}>{`à ${this.props.description}`}</Text>
+          <Text style={styles.head}>{`le ${this.props.eventDate}à ${this.props.description} `}</Text>
           <Text style={styles.head}>{`entrée ${this.props.price}€`}
           </Text>
 

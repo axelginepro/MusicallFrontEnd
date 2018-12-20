@@ -158,8 +158,8 @@ showPicker  = () => this.setState({
             </Col>
           <Divider style={{height:20}}/>
             <Col style={styles.form}>            
-               <TouchableOpacity onPress={this.showPicker} >
-                <Text style={{alignSelf: "center", margin:5, fontFamily:'RalewayRegular' }}>
+               <TouchableOpacity onPress={this.showPicker} style={{color:"grey"}} >
+                <Text style={{alignSelf: "center", margin:5, fontFamily:'RalewayRegular'}}>
                  Horaire {this.state.chosenDate}
                 </Text>
                </TouchableOpacity>
@@ -183,7 +183,7 @@ showPicker  = () => this.setState({
                     style={{ width: 350, height: 30, borderWidth: 1, borderColor:"#d3d3d3", borderRadius:50}}
                     mode="dropdown"
                     placeholder="Style"
-                    placeholderStyle={{flex:1, textAlign:"center", alignItems: 'center', color:"#d3d3d3"}}
+                    placeholderStyle={{flex:1, textAlign:"center", alignItems: 'center', color:"#d3d3d3", alignSelf: "center"}}
                     selectedValue={this.state.style}
                     onValueChange={this.onValueChange2.bind(this)}>
                   <Picker.Item label="Style" value="key0" />

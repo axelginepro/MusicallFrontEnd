@@ -25,11 +25,13 @@ class AccountScreen extends React.Component {
   render() {
 if (this.props.eventLiked) {
     var eventListLike = this.props.eventLiked.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.styleM} eventDate={event.eventDate} price={event.price}
+    description={event.description}
     handleEventLike={this.props.handleEventLike} like={true}  />);
 }
 
 if (this.props.addEvent) {
     var addEventList = this.props.addEvent.map((event, i) => <EventListItem key={i} artist={event.artist} styleM={event.styleM} eventDate={event.eventDate} price={event.price}
+    description={event.description}
     handleEventLike={this.props.handleEventLike} like={true}  />);
 }
 
@@ -96,7 +98,7 @@ class EventListItem extends Component {
           <Text style={styles.titleText}>{`Artiste: ${this.props.artist}`}
           </Text>
           <Text  style={styles.titleText}>{`Style: ${this.props.styleM}`}</Text>
-          <Text style={styles.head}>{`le ${this.props.eventDate}  `}</Text>
+          <Text style={styles.head}>{`le ${this.props.eventDate}à ${this.props.description}`}</Text>
           <Text style={styles.head}>{`entrée ${this.props.price}€`}
           </Text>
         </Body>
