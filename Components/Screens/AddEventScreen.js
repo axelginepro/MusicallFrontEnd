@@ -88,7 +88,7 @@ class AddEventScreen extends React.Component {
         return response.json();
       }).then(function(eventData) {
         console.log(eventData.event);
-        ctx.props.handleNewEvent(eventData.event);       
+        ctx.props.handleNewEvent(eventData.event);
         ctx.setState({
          adresse: null,
          name: null,
@@ -134,10 +134,10 @@ hidePicker = () => this.setState({
 showPicker = () => this.setState({
  isVisible: true });
 
-hidePicker = () => this.setState({ 
+hidePicker = () => this.setState({
   isVisible: false});
 
-showPicker  = () => this.setState({ 
+showPicker  = () => this.setState({
   isVisible: true });
 
   render() {
@@ -157,8 +157,8 @@ showPicker  = () => this.setState({
           <Divider style={{height:20}}/>
             <Col style={styles.date}>
               <DatePicker
-                  defaultDate={new Date(an, mois, jour-1)}
-                  minimumDate={new Date(an, mois, jour-1)}
+                  defaultDate={new Date(an, mois, jour)}
+                  minimumDate={new Date(an, mois, jour)}
                   maximumDate={new Date(an, mois, jour+30)}
                   locale={"fr"}
                   timeZoneOffsetInMinutes={undefined}
@@ -171,7 +171,7 @@ showPicker  = () => this.setState({
                   onDateChange={this.setDate}/>
             </Col>
           <Divider style={{height:20}}/>
-            <Col style={styles.form}>            
+            <Col style={styles.form}>
                <TouchableOpacity onPress={this.showPicker} style={{color:"grey"}} >
                 <Text style={{alignSelf: "center", margin:5, fontFamily:'RalewayRegular'}}>
                  Horaire {this.state.chosenDate}
