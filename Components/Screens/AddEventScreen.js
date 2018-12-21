@@ -182,7 +182,8 @@ showPicker  = () => this.setState({
                   onConfirm={this.handlePicker}
                   onCancel={this.hidePicker}
                   mode={'time'}
-                  is24Hour={true}/>
+                  is24Hour={true}
+                  minuteInterval='30'/>
             </Col>
           <Divider style={{height:20}}/>
         <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" value={this.state.adresse} />
