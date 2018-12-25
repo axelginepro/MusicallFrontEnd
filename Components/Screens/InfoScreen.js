@@ -31,39 +31,45 @@ export default class InfoScreen extends React.Component {
         <Row>
       <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
 </Row>
-<Col style={styles.contentTitle}>
+<Grid style={styles.contentTitle}>
                   <Text style={styles.textColor} h2>Pour Information</Text>
-</Col>
+</Grid>
 
-  <Col  style={styles.contentView}>
-  <Ionicons name='ios-list' size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('Filter')}}/>
-          <Text style={styles.textColor} onPress={() => {this.props.navigation.navigate('Filter')}} h4>Filtrer les événements</Text>
-        </Col>
+  <Grid  style={styles.contentView}>
+        <Row onPress={() => {this.props.navigation.navigate('Filter')}}>
+            <Ionicons name='ios-list' size={35} style={styles.icon} />
+            <Text style={styles.textColor}  h4>Filtrer les événements</Text>
+      </Row>
+  </Grid>
+
+    <Grid style={styles.contentView}>
+        <Row onPress={() => {this.props.navigation.navigate('Map')}}>
+              <Ionicons name='ios-map' size={35} style={styles.icon} />
+              <Text style={styles.textColor}  h4> Map des évenéments</Text>
+        </Row>
+    </Grid>
+
+    <Grid style={styles.contentView}>
+        <Row onPress={() => {this.props.navigation.navigate('ListEvent')}}>
+              <Ionicons name='ios-search' size={35} style={styles.icon} />
+              <Text style={styles.textColor}  h4> Chercher un évenement</Text>
+        </Row>
+    </Grid>
+
+    <Grid  style={styles.contentView}>
+        <Row onPress={() => {this.props.navigation.navigate('AddEvent')}}>
+                <Ionicons name="ios-add-circle-outline" size={35} style={styles.icon}/>
+              <Text style={styles.textColor}  h4> Ajouter un Concert </Text>
+        </Row>
+    </Grid>
 
 
-        <Col style={styles.contentView}>
-        <Ionicons name='ios-map' size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('Map')}}/>
-          <Text style={styles.textColor} onPress={() => {this.props.navigation.navigate('Map')}} h4> Map des évenéments</Text>
-        </Col>
-
-
-        <Col style={styles.contentView}>
-          <Ionicons name='ios-search' size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('ListEvent')}}/>
-          <Text style={styles.textColor} onPress={() => {this.props.navigation.navigate('ListEvent')}} h4> Chercher un évenement</Text>
-        </Col>
-
-
-        <Col style={styles.contentView}>
-            <Ionicons name="ios-add-circle-outline" size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('AddEvent')}}/>
-          <Text style={styles.textColor} onPress={() => {this.props.navigation.navigate('AddEvent')}} h4> Ajouter un Concert </Text>
-        </Col>
-
-
-
-        <Col style={styles.contentView}>
-          <Ionicons name='ios-person' size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('Account')}}/>
-          <Text style={styles.textColor} onPress={() => {this.props.navigation.navigate('Account')}} h4> Accéder à son compte</Text>
-        </Col>
+    <Grid style={styles.contentView}>
+        <Row onPress={() => {this.props.navigation.navigate('Account')}}>
+              <Ionicons name='ios-person' size={35} style={styles.icon} />
+              <Text style={styles.textColor}  h4> Accéder à son compte</Text>
+        </Row>
+    </Grid>
 
 
 
@@ -92,7 +98,9 @@ contentView: {
 contentTitle: {
   flex: 0.5,
   width: '100%',
-  alignItems: 'center'
+  alignItems: 'center',
+justifyContent: 'center',
+marginBottom: '10%'
 },
 row: {
   justifyContent: 'center',
@@ -101,8 +109,10 @@ row: {
   height: '10%',
 },
 icon: {
-  marginRight: '6%',
-  marginLeft: '7%',
+  justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: '4%',
+    marginLeft: '6%' ,
   color: 'black'
 },
 textColor: {
