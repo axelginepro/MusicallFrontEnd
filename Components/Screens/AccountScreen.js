@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, ScrollView} from 'react-native';
+import { StyleSheet, View, Image, ScrollView, ImageBackground} from 'react-native';
 import {Divider, Text } from 'react-native-elements';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Container, Header, Content, List, ListItem, Thumbnail, Left, Body, Right, Button, Icon, Item, Input} from 'native-base';
@@ -33,6 +33,7 @@ class AccountScreen extends React.Component {
         price={event.price}
         eventId={event.eventId}
         description={event.description}
+        name={event.name}
         handleEventLike={this.props.handleEventLike}
         islike={true}  />);
   }
@@ -45,6 +46,7 @@ class AccountScreen extends React.Component {
         eventDate={event.eventDate}
         price={event.price}
         eventId={event.eventId}
+        name={event.name}
         description={event.description}
         handleEventLike={this.props.handleEventLike}
         islike={true}  />);
@@ -52,34 +54,37 @@ class AccountScreen extends React.Component {
 
 
       if (addEventList.length > 0 || eventListLike.length > 0) {
-     return (
-       this.state.fontLoaded? (
+      return (
+        this.state.fontLoaded? (
     <Container>
-     <Content>
+      <ImageBackground style={{flex:1}} source={require("../../assets/Images/event.jpg")} resizeMode='stretch'>
+        <Content>
 
-                 <Row>
-                       <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
-                 </Row>
-               <Col style={styles.container}>
-                   <Text style={styles.textColor} h3>Mes événements</Text>
-               </Col>
-               <Col style={styles.container}>
-                   <Text style={styles.textColor} h4 >J'organise</Text>
-             </Col>
-                 <List>
-                   {addEventList}
-               </List>
-                   <Col style={styles.container}>
-                     <Text style={styles.textColor} h4>Je participe</Text>
-             </Col>
-               {eventListLike}
-     </Content>
+                <Row>
+                      <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+                  </Row>
+                <Col style={styles.container}>
+                  <Text style={styles.textColor} h3>Mes événements</Text>
+                </Col>
+                <Col style={styles.container}>
+                    <Text style={styles.textColor} h4 >J'organise</Text>
+              </Col>
+                  <List>
+                    {addEventList}
+                </List>
+                    <Col style={styles.container}>
+                      <Text style={styles.textColor} h4>Je participe</Text>
+              </Col>
+                {eventListLike}
+      </Content>
+      </ImageBackground>
     </Container>
     ) : null
-     );
+    );
     } else {
     return (
       <Container>
+        <ImageBackground style={{flex:1}} source={require("../../assets/Images/no-event.jpg")} resizeMode='stretch'>
         <Content>
           <Row>
             <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
@@ -88,6 +93,7 @@ class AccountScreen extends React.Component {
             <Text style={styles.textColor} h4>Vous n'avez aucun event !</Text>
           </Col>
         </Content>
+        </ImageBackground>
       </Container>
         )
       }

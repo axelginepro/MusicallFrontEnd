@@ -5,7 +5,7 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Font } from 'expo';
 
 export default class SignupScreen extends React.Component {
-   constructor() {
+  constructor() {
     super();
     this.state = {
       pseudo: '',
@@ -37,7 +37,7 @@ export default class SignupScreen extends React.Component {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: 'pseudo='+this.state.pseudo+'&email='+this.state.email+'&password='+this.state.password
-   }).then(function(response) {
+    }).then(function(response) {
       return response.json()
     }).then(function(data) {
       if (data.user) {
@@ -56,20 +56,26 @@ export default class SignupScreen extends React.Component {
       <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")} resizeMode='stretch'>
         {this.state.fontLoaded? (
         <Grid style={styles.row}>
+
           <Row>
             <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
           </Row>
+
           <Col style={styles.grille}>
           </Col>
+
           <Col>
             <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({pseudo: text})} placeholder="Pseudo" placeholderTextColor='white'  />
           </Col>
+
           <Col>
             <TextInput style={styles.form} textAlign={'center'} keyboardType={'email-address'} onChangeText={(text) => this.setState({email: text})} placeholder="Email" placeholderTextColor='white'  />
           </Col>
+
           <Col>
             <TextInput secureTextEntry={true} style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
           </Col>
+
           <Col>
             <Button 
               buttonStyle={{borderRadius:25, width:250, height:65, justifyContent: 'center', marginTop:10}}
@@ -80,14 +86,16 @@ export default class SignupScreen extends React.Component {
               onPress={this.handleSubmit}>
             </Button>
           </Col>
+
           <Col >
             <Text style={styles.bottom}>Already have an account ?</Text><Text style={styles.bottom}
                 onPress={() => this.props.navigation.navigate('SignIn')}>
                               Sign In
             </Text>
           </Col>
+
           <Col>
-           <Text style={styles.bottom}>By creating an account, you agree to our Terms</Text>
+            <Text style={styles.bottom}>By creating an account, you agree to our Terms</Text>
           </Col>
         </Grid>) : null}
       </ImageBackground>

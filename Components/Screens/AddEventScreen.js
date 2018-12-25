@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, View, ScrollView, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import {Button, FormLabel, FormInput, Divider, Text} from 'react-native-elements';
 import Geocoder from 'react-native-geocoding';
 import { Col, Row, Grid } from 'react-native-easy-grid';
@@ -16,19 +16,19 @@ class AddEventScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-     adresse: null,
-     name: null,
-     artist: null,
-     price: null,
-     description: null,
-     image: null,
-     coords: {
-       latitude: '',
-       longitude: ''
-     },
-     fontLoaded: false,
-     eventDate: new Date(),
-     style: undefined,
+      adresse: null,
+      name: null,
+      artist: null,
+      price: null,
+      description: null,
+      image: null,
+      coords: {
+        latitude: '',
+        longitude: ''
+      },
+      fontLoaded: false,
+      eventDate: new Date(),
+      style: undefined,
       isVisible: false,
       chosenDate: ''
     };
@@ -90,21 +90,21 @@ class AddEventScreen extends React.Component {
         console.log(eventData.event);
         ctx.props.handleNewEvent(eventData.event);
         ctx.setState({
-         adresse: null,
-         name: null,
-         artist: null,
-         price: null,
-         description: null,
-         image: null,
-         coords: {
-           latitude: null,
-           longitude: null
-         },
-         eventDate: new Date(),
-         style: undefined,
-          isVisible: false,
-         chosenDate: ''
-       })
+          adresse: null,
+          name: null,
+          artist: null,
+          price: null,
+          description: null,
+          image: null,
+          coords: {
+            latitude: null,
+            longitude: null
+          },
+          eventDate: new Date(),
+          style: undefined,
+            isVisible: false,
+          chosenDate: ''
+        })
         ctx.props.navigation.navigate('Map');
       }).catch(function(error) {
         console.error(error);
@@ -125,14 +125,14 @@ class AddEventScreen extends React.Component {
 
 //datetimepicker
 handlePicker = (datetime) => this.setState({
- isVisible:false,
- chosenDate: moment(datetime).format('HH:mm')});
+  isVisible:false,
+  chosenDate: moment(datetime).format('HH:mm')});
 
 hidePicker = () => this.setState({
- isVisible:false });
+  isVisible:false });
 
 showPicker = () => this.setState({
- isVisible: true });
+  isVisible: true });
 
 hidePicker = () => this.setState({
   isVisible: false});
@@ -141,12 +141,13 @@ showPicker  = () => this.setState({
   isVisible: true });
 
   render() {
-   var maintenant = new Date();
-   var jour = maintenant.getDate();
-   var mois = maintenant.getMonth();
-   var an = maintenant.getFullYear();
+    var maintenant = new Date();
+    var jour = maintenant.getDate();
+    var mois = maintenant.getMonth();
+    var an = maintenant.getFullYear();
 
     return (
+      <ImageBackground style={{flex:1}} source={require("../../assets/Images/event.jpg")} resizeMode='stretch'>
     <ScrollView>
     {this.state.fontLoaded? (
     <View style={styles.container}>
@@ -171,12 +172,13 @@ showPicker  = () => this.setState({
                   onDateChange={this.setDate}/>
             </Col>
           <Divider style={{height:20}}/>
+
             <Col style={styles.form}>
-               <TouchableOpacity onPress={this.showPicker} style={{color:"grey"}} >
+                <TouchableOpacity onPress={this.showPicker} style={{color:"grey"}} >
                 <Text style={{alignSelf: "center", margin:5, fontFamily:'RalewayRegular'}}>
-                 Horaire {this.state.chosenDate}
+                  Horaire {this.state.chosenDate}
                 </Text>
-               </TouchableOpacity>
+              </TouchableOpacity>
                   <DateTimePicker
                   isVisible={this.state.isVisible}
                   onConfirm={this.handlePicker}
@@ -185,14 +187,19 @@ showPicker  = () => this.setState({
                   is24Hour={true}
                   minuteInterval='30'/>
             </Col>
+
           <Divider style={{height:20}}/>
         <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({adresse: text})} placeholder="Adresse" value={this.state.adresse} />
+
           <Divider style={{height:20}}/>
         <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({name: text})} placeholder="Nom du Bar" value={this.state.name} />
-           <Divider style={{height:20}}/>
+
+            <Divider style={{height:20}}/>
         <TextInput style={styles.form} textAlign={'center'} onChangeText={(text) => this.setState({artist: text})} placeholder="Artiste" value={this.state.artist} />
-           <Divider style={{height:20}}/>
-             <Form >
+
+            <Divider style={{height:20}}/>
+
+              <Form >
               <Item picker rounded >
                 <Picker
                     style={{ width: 350, height: 30, borderWidth: 1, borderColor:"#d3d3d3", borderRadius:50}}
@@ -211,12 +218,15 @@ showPicker  = () => this.setState({
                   <Picker.Item label="Reggae" value="Reggae" />
                   <Picker.Item label="Pop" value="Pop" />
                   <Picker.Item label="Variete" value="Variete" />
-               </Picker>
+                </Picker>
               </Item>
-             </Form>
-           <Divider style={{height:20}}/>
+              </Form>
+
+            <Divider style={{height:20}}/>
             <TextInput style={styles.form} textAlign={'center'} keyboardType={'phone-pad'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" value={this.state.price} />
-           <Divider style={{height:50}}/>
+
+            <Divider style={{height:50}}/>
+
         <Button
             buttonStyle={{borderRadius:25,width:200, marginTop:5}}
             title="Add Event"
@@ -224,6 +234,7 @@ showPicker  = () => this.setState({
             onPress={this.handleSubmit}/>
         </View>) : null}
       </ScrollView>
+      </ImageBackground>
     );
   }
 }

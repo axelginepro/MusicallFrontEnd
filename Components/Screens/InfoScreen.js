@@ -7,7 +7,7 @@ import { Icon } from 'native-base';
 import { Font } from 'expo';
 
 export default class InfoScreen extends React.Component {
-   state = {
+    state = {
     fontLoaded: false,
   }
   async componentDidMount() {
@@ -34,34 +34,35 @@ export default class InfoScreen extends React.Component {
 <Col style={styles.contentTitle}>
                   <Text style={styles.textColor} h2>Pour Information</Text>
 </Col>
+
   <Col  style={styles.contentView}>
   <Ionicons name='ios-list' size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('Filter')}}/>
-          <Text style={styles.textColor} h4>Filtrer les événements</Text>
+          <Text style={styles.textColor} onPress={() => {this.props.navigation.navigate('Filter')}} h4>Filtrer les événements</Text>
         </Col>
 
 
         <Col style={styles.contentView}>
         <Ionicons name='ios-map' size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('Map')}}/>
-          <Text style={styles.textColor} h4> Map des évenéments</Text>
+          <Text style={styles.textColor} onPress={() => {this.props.navigation.navigate('Map')}} h4> Map des évenéments</Text>
         </Col>
 
 
         <Col style={styles.contentView}>
           <Ionicons name='ios-search' size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('ListEvent')}}/>
-          <Text style={styles.textColor} h4> Chercher un évenement</Text>
+          <Text style={styles.textColor} onPress={() => {this.props.navigation.navigate('ListEvent')}} h4> Chercher un évenement</Text>
         </Col>
 
 
         <Col style={styles.contentView}>
             <Ionicons name="ios-add-circle-outline" size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('AddEvent')}}/>
-          <Text style={styles.textColor} h4> Ajouter un Concert </Text>
+          <Text style={styles.textColor} onPress={() => {this.props.navigation.navigate('AddEvent')}} h4> Ajouter un Concert </Text>
         </Col>
 
 
 
         <Col style={styles.contentView}>
           <Ionicons name='ios-person' size={35} style={styles.icon} onPress={() => {this.props.navigation.navigate('Account')}}/>
-          <Text style={styles.textColor} h4> Accéder à son compte</Text>
+          <Text style={styles.textColor} onPress={() => {this.props.navigation.navigate('Account')}} h4> Accéder à son compte</Text>
         </Col>
 
 

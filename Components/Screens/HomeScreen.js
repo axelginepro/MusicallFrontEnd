@@ -5,7 +5,7 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Font } from 'expo';
 
 export default class HomeScreen extends React.Component {
-   state = {
+    state = {
     fontLoaded: false,
   }
   async componentDidMount() {

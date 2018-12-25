@@ -51,17 +51,17 @@ class ListEventScreen extends Component {
                 />
               }
           }
-           return <EventListItem key={i}
-            artist={event.artist}
-            styleM={event.style}
-            eventDate={event.eventDate}
-            price={event.price}
-            eventId={event._id}
-            photo={photobis}
-            name={event.name}
-            description={event.description}
-            handleEventLike={this.props.handleEventLike}
-            islike={false}
+            return <EventListItem key={i}
+              artist={event.artist}
+              styleM={event.style}
+              eventDate={event.eventDate}
+              price={event.price}
+              eventId={event._id}
+              photo={photobis}
+              name={event.name}
+              description={event.description}
+              handleEventLike={this.props.handleEventLike}
+              islike={false}
             />
         });
     } else {
@@ -88,17 +88,17 @@ class ListEventScreen extends Component {
                   />
                 }
             }
-             return <EventListItem key={i}
-              artist={event.artist}
-              styleM={event.style}
-              eventDate={event.eventDate}
-              price={event.price}
-              eventId={event._id}
-              photo={photobis}
-              name={event.name}
-              description={event.description}
-              handleEventLike={this.props.handleEventLike}
-              islike={false}
+              return <EventListItem key={i}
+                artist={event.artist}
+                styleM={event.style}
+                eventDate={event.eventDate}
+                price={event.price}
+                eventId={event._id}
+                photo={photobis}
+                name={event.name}
+                description={event.description}
+                handleEventLike={this.props.handleEventLike}
+                islike={false}
               />
           }
         });
@@ -107,12 +107,12 @@ class ListEventScreen extends Component {
   return (
       <Container>
         <Headerbar navigation={this.props.navigation}/>
-       <Content>
-         <List>
-           {eventList}
-         </List>
-       </Content>
-     </Container>
+        <Content>
+          <List>
+            {eventList}
+        </List>
+      </Content>
+    </Container>
     );
   }
 }
@@ -147,7 +147,7 @@ class Headerbar extends Component {
             </Button>
           </Left>
           <Right>
-             <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+            <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
           </Right>
         </Header>
     );
@@ -162,7 +162,6 @@ class Headerbar extends Component {
     }
 
     render() {
-     //var photobis = require ("../../assets/Images/sucre1.png");
       var Iconbis = require ("../../assets/Icons/CrocheNoire2.png");
 
       if (this.props.islike) {

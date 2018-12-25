@@ -92,7 +92,7 @@ class MapScreen extends Component {
     } else {
         var eventListPosition = this.props.eventList.map((event, i) =>{
         if(
-             this.props.filter.style1 == event.style
+            this.props.filter.style1 == event.style
           || this.props.filter.style2 == event.style
           || this.props.filter.style3 == event.style
           || this.props.filter.style4 == event.style
@@ -167,7 +167,7 @@ class Headerbar extends Component {
             </Button>
           </Left>
           <Right>
-             <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+              <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
           </Right>
         </Header>
     );

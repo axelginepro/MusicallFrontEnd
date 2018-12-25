@@ -50,33 +50,37 @@ class SignInScreen extends React.Component {
 
   render() {
     return (
-      <ImageBackground style={{flex:1}} source={require("../../assets/Images/rockhome.jpg")} resizeMode='stretch'>
-        {this.state.fontLoaded? (
-        <Grid style={styles.row}>
-          <Row>
-            <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
-          </Row>
-       <Col style={styles.grille}>
-       </Col>
-       <Col>
-          <TextInput style={styles.form} keyboardType={'email-address'} textAlign={'center'} onChangeText={text => this.setState({email: text})} placeholder="Email" placeholderTextColor='white'  />
-       </Col>
-       <Col>
-	        <TextInput secureTextEntry={true} style={styles.form}  textAlign={'center'}  onChangeText={text => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
-       </Col>
-       <Col>
-          <Button
-            buttonStyle={{borderRadius:25, width:180, height: 65, justifyContent: 'center', marginTop:10}}
-            title="Submit"
-            style={{flex:1}}
-            backgroundColor='#5b6778'
-            color='#FFFFFF'
-            onPress={this.handleSubmit}>
-          </Button>
-            <Text style={{color: '#CD3C30'}}>{this.state.error}</Text>
-        </Col>
-        </Grid>
-         ) : null}
+      <ImageBackground style={{flex:1}} source={require("../../assets/Images/rocksign.jpeg")}   resizeMode='stretch'>
+              {this.state.fontLoaded? (
+              <Grid style={styles.row}>
+                <Row>
+                  <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+                </Row>
+            <Col style={styles.grille}>
+            </Col>
+
+            <Col>
+                <TextInput style={styles.form} keyboardType={'email-address'} textAlign={'center'} onChangeText={text => this.setState({email: text})} placeholder="Email" placeholderTextColor='white'  />
+            </Col>
+
+            <Col>
+                <TextInput secureTextEntry={true} style={styles.form}  textAlign={'center'}  onChangeText={text => this.setState({password: text})} placeholder="Password" placeholderTextColor='white'  />
+            </Col>
+
+            <Col>
+                <Button
+                  buttonStyle={{borderRadius:25, width:180, height: 65, justifyContent: 'center', marginTop:10}}
+                  title="Submit"
+                  style={{flex:1}}
+                  backgroundColor='#5b6778'
+                  color='#FFFFFF'
+                  onPress={this.handleSubmit}>
+                </Button>
+                  <Text style={{color: '#CD3C30'}}>{this.state.error}</Text>
+              </Col>
+
+              </Grid>
+              ) : null}
       </ImageBackground>
       );
     }
@@ -91,32 +95,31 @@ var styles = StyleSheet.create({
     fontFamily: 'RalewayRegular'
 
   },
-   form: {
-    borderRadius: 50,
-    backgroundColor: 'rgba(0,0,0,0.4)',
-    color: 'red',
-    borderColor: 'lightgrey',
-    borderWidth: 2,
-    fontSize: 20,
-    width: 350,
-    height: 55,
-    fontFamily: 'RalewayRegular',
+    form: {
+        borderRadius: 50,
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        color: 'red',
+        borderColor: 'lightgrey',
+        borderWidth: 2,
+        fontSize: 20,
+        width: 350,
+        height: 55,
+        fontFamily: 'RalewayRegular',
+  },
+    row: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '10%',
+        marginBottom: '15%'
 
   },
-   row: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '10%',
-    marginBottom: '15%'
-
-  },
-   grille: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '10%',
-    marginTop: '10%'
+    grille: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '10%',
+        marginTop: '10%'
   }
 });
 

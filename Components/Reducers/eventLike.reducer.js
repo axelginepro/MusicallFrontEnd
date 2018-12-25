@@ -19,8 +19,5 @@ export default function(eventLike = [], action) {
       return eventLikeCopy;
     }
   }
-
   return eventLike;
-
-
 };
