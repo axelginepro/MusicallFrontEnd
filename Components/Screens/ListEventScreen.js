@@ -45,7 +45,7 @@ class ListEventScreen extends Component {
                 eventId={event._id}
                 photo={photobis}
                 name={event.name}
-                description={event.description}
+                horaire={event.horaire}
                 handleEventLike={this.props.handleEventLike}
                 islike={true}
                 />
@@ -59,7 +59,7 @@ class ListEventScreen extends Component {
               eventId={event._id}
               photo={photobis}
               name={event.name}
-              description={event.description}
+              horaire={event.horaire}
               handleEventLike={this.props.handleEventLike}
               islike={false}
             />
@@ -82,7 +82,7 @@ class ListEventScreen extends Component {
                   eventId={event._id}
                   photo={photobis}
                   name={event.name}
-                  description={event.description}
+                  horaire={event.horaire}
                   handleEventLike={this.props.handleEventLike}
                   islike={true}
                   />
@@ -96,7 +96,7 @@ class ListEventScreen extends Component {
                 eventId={event._id}
                 photo={photobis}
                 name={event.name}
-                description={event.description}
+                horaire={event.horaire}
                 handleEventLike={this.props.handleEventLike}
                 islike={false}
               />
@@ -178,8 +178,8 @@ class Headerbar extends Component {
         <Body>
           <Text style={styles.titleText}>{`Artiste: ${this.props.artist}`}</Text>
           <Text style={styles.titleText}>{`Style: ${this.props.styleM}`}</Text>
-          <Text style={styles.head}>{`le ${this.props.eventDate} à ${this.props.description} `}</Text>
-          <Text style={styles.head}>{`${this.props.name} entrée ${this.props.price}€`}</Text>
+          <Text style={styles.head}>{`le ${this.props.eventDate} à ${this.props.horaire} `}</Text>
+          <Text style={styles.head}>{`${this.props.name} | entrée: ${this.props.price}€`}</Text>
           <Text style={{display: 'none'}}>{this.props.eventId}</Text>
         </Body>
         <Right>

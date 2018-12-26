@@ -28,12 +28,12 @@ export default class InfoScreen extends React.Component {
 <ImageBackground style={{flex:1}} source={require("../../assets/Images/piano.jpg")} resizeMode='stretch'>
   {this.state.fontLoaded? (
 <Grid style={styles.row}>
-        <Row>
-      <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
-</Row>
-<Grid style={styles.contentTitle}>
-                  <Text style={styles.textColor} h2>Pour Information</Text>
-</Grid>
+              <Row>
+            <Image  style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+      </Row>
+          <Grid style={styles.contentTitle}>
+              <Text style={styles.textColor} h2>Pour Information</Text>
+          </Grid>
 
   <Grid  style={styles.contentView}>
         <Row onPress={() => {this.props.navigation.navigate('Filter')}}>

@@ -32,7 +32,7 @@ class AccountScreen extends React.Component {
         eventDate={event.eventDate}
         price={event.price}
         eventId={event.eventId}
-        description={event.description}
+        horaire={event.horaire}
         name={event.name}
         handleEventLike={this.props.handleEventLike}
         islike={true}  />);
@@ -47,7 +47,7 @@ class AccountScreen extends React.Component {
         price={event.price}
         eventId={event.eventId}
         name={event.name}
-        description={event.description}
+        horaire={event.horaire}
         handleEventLike={this.props.handleEventLike}
         islike={true}  />);
   }
@@ -129,8 +129,8 @@ class EventListItem extends Component {
           <Body>
             <Text style={styles.titleText}>{`Artiste: ${this.props.artist}`}</Text>
             <Text style={styles.titleText}>{`Style: ${this.props.styleM}`}</Text>
-            <Text style={styles.head}>{`le ${this.props.eventDate} à ${this.props.description}`}</Text>
-            <Text style={styles.head}>{`${this.props.name} entrée ${this.props.price}€`}</Text>
+            <Text style={styles.head}>{`le ${this.props.eventDate} à ${this.props.horaire}`}</Text>
+            <Text style={styles.head}>{`${this.props.name} | entrée: ${this.props.price}€`}</Text>
             <Text style={{display: 'none'}}>{this.props.eventId}</Text>
           </Body>
           <Right>

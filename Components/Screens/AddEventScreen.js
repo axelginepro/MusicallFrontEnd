@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, View, ScrollView, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
+import { Image, StyleSheet, View, ScrollView, TextInput, TouchableOpacity, ImageBackground} from 'react-native';
 import {Button, FormLabel, FormInput, Divider, Text} from 'react-native-elements';
 import Geocoder from 'react-native-geocoding';
 import { Col, Row, Grid } from 'react-native-easy-grid';
@@ -20,7 +20,7 @@ class AddEventScreen extends React.Component {
       name: null,
       artist: null,
       price: null,
-      description: null,
+      horaire: null,
       image: null,
       coords: {
         latitude: '',
@@ -30,7 +30,7 @@ class AddEventScreen extends React.Component {
       eventDate: new Date(),
       style: undefined,
       isVisible: false,
-      chosenDate: ''
+      chosenDate: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setDate = this.setDate.bind(this)
@@ -40,6 +40,7 @@ class AddEventScreen extends React.Component {
       style: value
     });
   }
+  
 
   async componentDidMount() {
     await Font.loadAsync({
@@ -77,8 +78,7 @@ class AddEventScreen extends React.Component {
           artist: this.state.artist,
           style: this.state.style,
           price: this.state.price,
-          //on utilise description pour afficher les horaires
-          description: this.state.chosenDate,
+          horaire: this.state.chosenDate,
           coord: {
             latitude: location.lat,
             longitude: location.lng
@@ -94,7 +94,7 @@ class AddEventScreen extends React.Component {
           name: null,
           artist: null,
           price: null,
-          description: null,
+          horaire: null,
           image: null,
           coords: {
             latitude: null,
@@ -140,6 +140,7 @@ hidePicker = () => this.setState({
 showPicker  = () => this.setState({
   isVisible: true });
 
+  
   render() {
     var maintenant = new Date();
     var jour = maintenant.getDate();
@@ -147,35 +148,41 @@ showPicker  = () => this.setState({
     var an = maintenant.getFullYear();
 
     return (
-      <ImageBackground style={{flex:1}} source={require("../../assets/Images/event.jpg")} resizeMode='stretch'>
-    <ScrollView>
-    {this.state.fontLoaded? (
-    <View style={styles.container}>
-    <Row style={styles.row}>
-      <Image style={{flex:1}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
-    </Row>
-        <Text style={{fontFamily:'RalewayRegular', color: 'red', fontSize: 30, marginTop: '10%'}}>Ajouter un événement</Text>
-          <Divider style={{height:20}}/>
-            <Col style={styles.date}>
-              <DatePicker
-                  defaultDate={new Date(an, mois, jour)}
-                  minimumDate={new Date(an, mois, jour)}
-                  maximumDate={new Date(an, mois, jour+30)}
-                  locale={"fr"}
-                  timeZoneOffsetInMinutes={undefined}
-                  modalTransparent={false}
-                  animationType={"fade"}
-                  androidMode={"default"}
-                  placeHolderText={'Date'}
-                  textStyle={{ color: "grey", textAlign: "center", flex: 1, alignItems: "center", justifyContent: "center"}}
-                  placeHolderTextStyle={{ fontFamily:'RalewayRegular', color: "#d3d3d3" , fontSize: 15, textAlign: "center", textAlignVertical: "center", padding: 5}}
-                  onDateChange={this.setDate}/>
-            </Col>
-          <Divider style={{height:20}}/>
+<ImageBackground style={{flex:1}} source={require("../../assets/Images/event.jpg")} resizeMode='stretch'>
+  <ScrollView>
+            {this.state.fontLoaded? (
+
+        <Grid style={styles.container}>
+
+            <Row style={styles.row}>
+                  <Image style={{flex:1, marginTop: '5%'}} source={require('../../assets/Icons/musicall.png')} resizeMode="contain"/>
+              </Row>
+
+                    <Text style={styles.contentTitle}>Ajouter un événement</Text>
+                    
+              <Divider style={{height:20}}/>
+
+
+                <Col style={styles.date}>
+                  <DatePicker
+                      defaultDate={new Date(an, mois, jour)}
+                      minimumDate={new Date(an, mois, jour)}
+                      maximumDate={new Date(an, mois, jour+30)}
+                      locale={"fr"}
+                      timeZoneOffsetInMinutes={undefined}
+                      modalTransparent={false}
+                      animationType={"fade"}
+                      androidMode={"default"}
+                      placeHolderText={'Date'}
+                      textStyle={{ color: "black", textAlign: "center", flex: 1, alignItems: "center", justifyContent: "center"}}
+                      placeHolderTextStyle={{ fontFamily:'RalewayRegular', color: "#d3d3d3" , fontSize: 15, textAlign: "center", textAlignVertical: "center", padding: 5}}
+                      onDateChange={this.setDate}/>
+                </Col>
+              <Divider style={{height:20}}/>
 
             <Col style={styles.form}>
-                <TouchableOpacity onPress={this.showPicker} style={{color:"grey"}} >
-                <Text style={{alignSelf: "center", margin:5, fontFamily:'RalewayRegular'}}>
+                <TouchableOpacity onPress={this.showPicker} >
+                <Text style={{alignSelf: "center", margin:5, color:"lightgrey", fontFamily:'RalewayRegular'}}>
                   Horaire {this.state.chosenDate}
                 </Text>
               </TouchableOpacity>
@@ -199,28 +206,30 @@ showPicker  = () => this.setState({
 
             <Divider style={{height:20}}/>
 
-              <Form >
-              <Item picker rounded >
-                <Picker
-                    style={{ width: 350, height: 30, borderWidth: 1, borderColor:"#d3d3d3", borderRadius:50}}
-                    mode="dropdown"
-                    placeholder="Style"
-                    placeholderStyle={{flex:1, textAlign:"center", alignItems: 'center', color:"#d3d3d3", alignSelf: "center"}}
-                    selectedValue={this.state.style}
-                    onValueChange={this.onValueChange2.bind(this)}>
-                  <Picker.Item label="Style" value="key0" />
-                  <Picker.Item label="Jazz" value="Jazz" />
-                  <Picker.Item label="Rock" value="Rock" />
-                  <Picker.Item label="Metal" value="Metal" />
-                  <Picker.Item label="Electro" value="Electro" />
-                  <Picker.Item label="World Music" value="World Music" />
-                  <Picker.Item label="Rap" value="Rap" />
-                  <Picker.Item label="Reggae" value="Reggae" />
-                  <Picker.Item label="Pop" value="Pop" />
-                  <Picker.Item label="Variete" value="Variete" />
-                </Picker>
-              </Item>
-              </Form>
+
+                        <Form >
+                            <Item picker rounded >
+                                <Picker
+                                    style={{ width: 350, height: 30, borderWidth: 1, borderColor:"#d3d3d3", borderRadius:50}}
+                                    mode="dropdown"
+                                    placeholder="Style"
+                                    // note={false}
+                                    // placeholderStyle={{flex:1, textAlign:"center", alignItems: 'center', color:"#d3d3d3", alignSelf: "center"}}
+                                    selectedValue={this.state.style}
+                                    onValueChange={this.onValueChange2.bind(this)}>
+                                  <Picker.Item label="Style" value="key0" />
+                                  <Picker.Item label="Jazz" value="Jazz" />
+                                  <Picker.Item label="Rock" value="Rock" />
+                                  <Picker.Item label="Metal" value="Metal" />
+                                  <Picker.Item label="Electro" value="Electro" />
+                                  <Picker.Item label="World Music" value="World Music" />
+                                  <Picker.Item label="Rap" value="Rap" />
+                                  <Picker.Item label="Reggae" value="Reggae" />
+                                  <Picker.Item label="Pop" value="Pop" />
+                                  <Picker.Item label="Variete" value="Variete" />
+                                </Picker>
+                            </Item>
+                        </Form>
 
             <Divider style={{height:20}}/>
             <TextInput style={styles.form} textAlign={'center'} keyboardType={'phone-pad'} onChangeText={(text) => this.setState({price: text})} placeholder="Tarif" value={this.state.price} />
@@ -232,7 +241,7 @@ showPicker  = () => this.setState({
             title="Add Event"
             backgroundColor = "#2c3e50"
             onPress={this.handleSubmit}/>
-        </View>) : null}
+        </Grid>) : null}
       </ScrollView>
       </ImageBackground>
     );
@@ -244,6 +253,15 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+      },
+      contentTitle: {
+            marginTop: '10%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: '10%',
+            fontFamily: 'RalewayRegular', 
+            color: 'red', 
+            fontSize: 30
       },
       form: {
           borderRadius: 50,

@@ -20,6 +20,7 @@
     "react-native-global-font": "^1.0.2",
     "react-native-link": "^4.1.0",
     "react-native-maps": "^0.22.1",
+    "react-native-material-menu": "^0.4.2",
     "react-native-modal-datetime-picker": "^6.0.0",
     "react-navigation": "^3.0.0",
     "react-redux": "^6.0.0",
